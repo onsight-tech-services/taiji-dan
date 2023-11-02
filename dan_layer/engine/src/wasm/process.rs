@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -21,10 +21,10 @@
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 use serde::{de::DeserializeOwned, Serialize};
-use tari_bor::{decode_exact, encode, encode_into, encode_with_len};
-use tari_engine_types::{indexed_value::IndexedValue, instruction_result::InstructionResult};
-use tari_template_abi::{CallInfo, EngineOp};
-use tari_template_lib::{
+use taiji_bor::{decode_exact, encode, encode_into, encode_with_len};
+use taiji_engine_types::{indexed_value::IndexedValue, instruction_result::InstructionResult};
+use taiji_template_abi::{CallInfo, EngineOp};
+use taiji_template_lib::{
     args::{
         Arg,
         BucketInvokeArg,
@@ -55,7 +55,7 @@ use crate::{
     },
 };
 
-const LOG_TARGET: &str = "tari::dan::engine::wasm::process";
+const LOG_TARGET: &str = "taiji::dan::engine::wasm::process";
 
 #[derive(Debug)]
 pub struct WasmProcess {
@@ -68,8 +68,8 @@ impl WasmProcess {
     pub fn start(module: LoadedWasmTemplate, state: Runtime) -> Result<Self, WasmExecutionError> {
         let mut env = WasmEnv::new(state);
         let store = module.wasm_module().store();
-        let tari_engine = Function::new_native_with_env(store, env.clone(), Self::tari_engine_entrypoint);
-        let resolver = env.create_resolver(store, tari_engine);
+        let taiji_engine = Function::new_native_with_env(store, env.clone(), Self::taiji_engine_entrypoint);
+        let resolver = env.create_resolver(store, taiji_engine);
         let instance = Instance::new(module.wasm_module(), &resolver)?;
         env.init_with_instance(&instance)?;
         Ok(Self { module, env, instance })
@@ -88,7 +88,7 @@ impl WasmProcess {
         self.module.wasm_module()
     }
 
-    fn tari_engine_entrypoint(env: &WasmEnv<Runtime>, op: i32, arg_ptr: i32, arg_len: i32) -> i32 {
+    fn taiji_engine_entrypoint(env: &WasmEnv<Runtime>, op: i32, arg_ptr: i32, arg_len: i32) -> i32 {
         let arg = match env.read_from_memory(arg_ptr as u32, arg_len as u32) {
             Ok(arg) => arg,
             Err(err) => {

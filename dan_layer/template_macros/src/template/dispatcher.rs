@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -34,7 +34,7 @@ pub fn generate_dispatcher(ast: &TemplateAst) -> Result<TokenStream> {
     let output = quote! {
         #[no_mangle]
         pub unsafe extern "C" fn #dispatcher_function_name(call_info: *mut u8, call_info_len: usize) -> *mut u8 {
-            use ::tari_template_lib::{template_dependencies::{decode_exact, encode_with_len, CallInfo, wrap_ptr},init_context, panic_hook::register_panic_hook};
+            use ::taiji_template_lib::{template_dependencies::{decode_exact, encode_with_len, CallInfo, wrap_ptr},init_context, panic_hook::register_panic_hook};
 
             register_panic_hook();
 
@@ -97,7 +97,7 @@ fn get_function_block(template_ident: &Ident, ast: FunctionAst) -> Expr {
                 vec![
                     parse_quote! {
                     let component_address =
-                        decode_exact::<::tari_template_lib::models::ComponentAddress>(&call_info.args[#i])
+                        decode_exact::<::taiji_template_lib::models::ComponentAddress>(&call_info.args[#i])
                         .unwrap_or_else(|e| panic!("failed to decode component instance for function '{}': {}",  #func_name, e));
                     },
                     parse_quote! {
@@ -187,7 +187,7 @@ fn replace_self_in_single_value(type_path: &TypePath) -> Option<Stmt> {
     if type_ident == "Self" {
         // TODO: AccessRules - currently we allow all calls for functions that return Self.
         return Some(parse_quote! {
-            let rtn = engine().create_component(rtn, ::tari_template_lib::auth::AccessRules::with_default_allow(), None);
+            let rtn = engine().create_component(rtn, ::taiji_template_lib::auth::AccessRules::with_default_allow(), None);
         });
     }
 
@@ -207,7 +207,7 @@ fn replace_self_in_tuple(type_tuple: &TypeTuple) -> Stmt {
                 if ident == "Self" {
                     // TODO: AccessRules - currently we allow all calls for functions that return Self.
                     parse_quote! {
-                        engine().create_component(#field_expr, ::tari_template_lib::auth::AccessRules::with_default_allow(), None)
+                        engine().create_component(#field_expr, ::taiji_template_lib::auth::AccessRules::with_default_allow(), None)
                     }
                 } else {
                     field_expr

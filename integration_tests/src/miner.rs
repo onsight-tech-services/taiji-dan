@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -22,9 +22,9 @@
 
 use std::time::Duration;
 
-use minotari_app_grpc::{
+use minotaiji_app_grpc::{
     authentication::ClientAuthenticationInterceptor,
-    tari_rpc::{
+    taiji_rpc::{
         pow_algo::PowAlgos,
         wallet_client::WalletClient,
         GetCoinbaseRequest,
@@ -37,10 +37,10 @@ use minotari_app_grpc::{
         TransactionOutput,
     },
 };
-use minotari_node_grpc_client::BaseNodeGrpcClient;
+use minotaiji_node_grpc_client::BaseNodeGrpcClient;
 use tonic::codegen::InterceptedService;
 
-use crate::TariWorld;
+use crate::TaijiWorld;
 
 type BaseNodeClient = BaseNodeGrpcClient<tonic::transport::Channel>;
 type WalletGrpcClient = WalletClient<InterceptedService<tonic::transport::Channel, ClientAuthenticationInterceptor>>;
@@ -52,7 +52,7 @@ pub struct MinerProcess {
     pub wallet_name: String,
 }
 
-pub fn register_miner_process(world: &mut TariWorld, miner_name: String, base_node_name: String, wallet_name: String) {
+pub fn register_miner_process(world: &mut TaijiWorld, miner_name: String, base_node_name: String, wallet_name: String) {
     let miner = MinerProcess {
         name: miner_name.clone(),
         base_node_name,
@@ -61,7 +61,7 @@ pub fn register_miner_process(world: &mut TariWorld, miner_name: String, base_no
     world.miners.insert(miner_name, miner);
 }
 
-pub async fn mine_blocks(world: &mut TariWorld, miner_name: String, num_blocks: u64) {
+pub async fn mine_blocks(world: &mut TaijiWorld, miner_name: String, num_blocks: u64) {
     let miner = world.get_miner(&miner_name);
     let mut base_client = create_base_node_client(world, &miner_name).await;
     let mut wallet_client = world.get_wallet(&miner.wallet_name).create_client().await;
@@ -75,7 +75,7 @@ pub async fn mine_blocks(world: &mut TariWorld, miner_name: String, num_blocks: 
     tokio::time::sleep(Duration::from_secs(5)).await;
 }
 
-async fn create_base_node_client(world: &TariWorld, miner_name: &String) -> BaseNodeClient {
+async fn create_base_node_client(world: &TaijiWorld, miner_name: &String) -> BaseNodeClient {
     let miner = world.miners.get(miner_name).unwrap();
     let base_node_grpc_port = world.base_nodes.get(&miner.base_node_name).unwrap().grpc_port;
     let base_node_grpc_url = format!("http://127.0.0.1:{}", base_node_grpc_port);

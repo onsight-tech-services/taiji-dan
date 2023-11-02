@@ -1,13 +1,13 @@
-//    Copyright 2023 The Tari Project
+//    Copyright 2023 OnSight Tech Services LLC
 //    SPDX-License-Identifier: BSD-3-Clause
 
 use std::fmt::{Display, Formatter};
 
 use serde::Serialize;
-use tari_comms::peer_manager::PeerIdentityClaim;
-use tari_consensus::messages::HotstuffMessage;
-use tari_dan_common_types::{NodeAddressable, ShardId};
-use tari_transaction::Transaction;
+use taiji_comms::peer_manager::PeerIdentityClaim;
+use taiji_consensus::messages::HotstuffMessage;
+use taiji_dan_common_types::{NodeAddressable, ShardId};
+use taiji_transaction::Transaction;
 
 #[derive(Debug, Clone)]
 pub enum Message<TAddr> {

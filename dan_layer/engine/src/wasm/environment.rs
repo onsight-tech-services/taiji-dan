@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -151,7 +151,7 @@ impl<T: Clone + Sync + Send + 'static> WasmEnv<T> {
         self.mem_alloc
             .get_ref()
             .ok_or_else(|| WasmExecutionError::MissingAbiFunction {
-                function: "tari_alloc".into(),
+                function: "taiji_alloc".into(),
             })
     }
 
@@ -159,7 +159,7 @@ impl<T: Clone + Sync + Send + 'static> WasmEnv<T> {
         self.mem_free
             .get_ref()
             .ok_or_else(|| WasmExecutionError::MissingAbiFunction {
-                function: "tari_free".into(),
+                function: "taiji_free".into(),
             })
     }
 
@@ -171,10 +171,10 @@ impl<T: Clone + Sync + Send + 'static> WasmEnv<T> {
         self.memory.get_ref().map(|mem| mem.size()).unwrap_or(Pages(0))
     }
 
-    pub fn create_resolver(&self, store: &Store, tari_engine: Function) -> impl Resolver {
+    pub fn create_resolver(&self, store: &Store, taiji_engine: Function) -> impl Resolver {
         imports! {
             "env" => {
-                "tari_engine" => tari_engine,
+                "taiji_engine" => taiji_engine,
                 "debug" => Function::new_native_with_env(store, self.clone(), Self::debug_handler),
                 "on_panic" => Function::new_native_with_env(store, self.clone(), Self::on_panic_handler),
             }
@@ -182,7 +182,7 @@ impl<T: Clone + Sync + Send + 'static> WasmEnv<T> {
     }
 
     fn debug_handler(env: &Self, arg_ptr: i32, arg_len: i32) {
-        const WASM_DEBUG_LOG_TARGET: &str = "tari::dan::wasm";
+        const WASM_DEBUG_LOG_TARGET: &str = "taiji::dan::wasm";
         match env.read_from_memory(arg_ptr as u32, arg_len as u32) {
             Ok(arg) => {
                 eprintln!("DEBUG: {}", String::from_utf8_lossy(&arg));
@@ -194,7 +194,7 @@ impl<T: Clone + Sync + Send + 'static> WasmEnv<T> {
     }
 
     fn on_panic_handler(env: &Self, msg_ptr: i32, msg_len: i32, line: i32, col: i32) {
-        const WASM_DEBUG_LOG_TARGET: &str = "tari::dan::wasm";
+        const WASM_DEBUG_LOG_TARGET: &str = "taiji::dan::wasm";
         match env.read_from_memory(msg_ptr as u32, msg_len as u32) {
             Ok(msg) => {
                 let msg = String::from_utf8_lossy(&msg);
@@ -223,9 +223,9 @@ impl<T: Clone + Sync + Send> WasmerEnv for WasmEnv<T> {
         self.memory
             .initialize(instance.exports.get_with_generics_weak("memory")?);
         self.mem_alloc
-            .initialize(instance.exports.get_with_generics_weak("tari_alloc")?);
+            .initialize(instance.exports.get_with_generics_weak("taiji_alloc")?);
         self.mem_free
-            .initialize(instance.exports.get_with_generics_weak("tari_free")?);
+            .initialize(instance.exports.get_with_generics_weak("taiji_free")?);
         Ok(())
     }
 }
@@ -234,8 +234,8 @@ impl<T: Debug> Debug for WasmEnv<T> {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         f.debug_struct("WasmEnv")
             .field("memory", &"LazyInit<Memory>")
-            .field("tari_alloc", &" LazyInit<NativeFunc<(i32), (i32)>")
-            .field("tari_free", &"LazyInit<NativeFunc<(i32, i32), ()>>")
+            .field("taiji_alloc", &" LazyInit<NativeFunc<(i32), (i32)>")
+            .field("taiji_free", &"LazyInit<NativeFunc<(i32, i32), ()>>")
             .field("State", &self.state)
             .finish()
     }

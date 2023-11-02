@@ -5,8 +5,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-tari_template_abi = { path = "../../../template_abi" }
-tari_template_lib = { path = "../../../template_lib" }
+taiji_template_abi = { path = "../../../template_abi" }
+taiji_template_lib = { path = "../../../template_lib" }
 
 [profile.release]
 opt-level = 's'     # Optimize for size.

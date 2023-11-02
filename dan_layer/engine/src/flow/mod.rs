@@ -1,4 +1,4 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
 pub mod error;
@@ -12,7 +12,7 @@ pub use error::FlowEngineError;
 pub use flow_context::FlowContext;
 pub use flow_factory::FlowFactory;
 pub use flow_instance::FlowInstance;
-use tari_common_types::types::PublicKey;
+use taiji_common_types::types::PublicKey;
 
 #[derive(Clone, Debug)]
 pub enum ArgValue {

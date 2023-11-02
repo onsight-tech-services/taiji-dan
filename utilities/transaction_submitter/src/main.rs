@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -9,7 +9,7 @@ use std::{
 };
 
 use anyhow::bail;
-use tari_validator_node_client::{types::SubmitTransactionRequest, ValidatorNodeClient};
+use taiji_validator_node_client::{types::SubmitTransactionRequest, ValidatorNodeClient};
 use tokio::task;
 use transaction_generator::{read_number_of_transactions, read_transactions};
 

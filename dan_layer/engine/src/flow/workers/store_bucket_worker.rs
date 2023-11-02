@@ -1,4 +1,4 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
 use std::sync::{Arc, RwLock};
@@ -59,7 +59,7 @@ impl<TUnitOfWork> Worker for StoreBucketWorker<TUnitOfWork> {
     // }
 
     fn name(&self) -> &str {
-        "tari::store_bucket"
+        "taiji::store_bucket"
     }
 
     fn work(&self, _node: &Node, _inputs: InputData) -> anyhow::Result<OutputData> {

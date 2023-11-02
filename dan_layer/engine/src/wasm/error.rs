@@ -1,8 +1,8 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
-use tari_bor::BorError;
-use tari_engine_types::indexed_value::IndexedValueVisitorError;
+use taiji_bor::BorError;
+use taiji_engine_types::indexed_value::IndexedValueVisitorError;
 use thiserror::Error;
 use wasmer::{ExportError, HostEnvInitError, InstantiationError};
 

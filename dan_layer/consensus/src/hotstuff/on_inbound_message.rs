@@ -1,7 +1,7 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 // (New, true) ----(cmd:Prepare) ---> (Prepared, true) -----cmd:LocalPrepared ---> (LocalPrepared, false)
@@ -14,15 +14,15 @@ use std::{
 };
 
 use log::*;
-use tari_dan_common_types::{NodeAddressable, NodeHeight};
-use tari_dan_storage::{
+use taiji_dan_common_types::{NodeAddressable, NodeHeight};
+use taiji_dan_storage::{
     consensus_models::{Block, TransactionRecord},
     StateStore,
     StateStoreWriteTransaction,
 };
-use tari_epoch_manager::EpochManagerReader;
-use tari_shutdown::ShutdownSignal;
-use tari_transaction::TransactionId;
+use taiji_epoch_manager::EpochManagerReader;
+use taiji_shutdown::ShutdownSignal;
+use taiji_transaction::TransactionId;
 use tokio::{sync::mpsc, time};
 
 use crate::{
@@ -32,7 +32,7 @@ use crate::{
     traits::ConsensusSpec,
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::inbound_messages";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::inbound_messages";
 
 pub type IncomingMessageResult<TAddr> = Result<Option<(TAddr, HotstuffMessage<TAddr>)>, NeedsSync<TAddr>>;
 

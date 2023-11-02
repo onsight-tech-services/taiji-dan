@@ -1,13 +1,13 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use log::*;
-use tari_transaction::Transaction;
+use taiji_transaction::Transaction;
 use tokio::sync::mpsc;
 
 use crate::{hotstuff::error::HotStuffError, messages::RequestedTransactionMessage, traits::ConsensusSpec};
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::on_receive_requested_transactions";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::on_receive_requested_transactions";
 
 pub struct OnReceiveRequestedTransactions<TConsensusSpec: ConsensusSpec> {
     tx_mempool: mpsc::UnboundedSender<Transaction>,

@@ -1,4 +1,4 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
 pub mod crypto;
@@ -27,4 +27,4 @@ mod shard_id;
 pub use shard_id::ShardId;
 
 pub mod uint;
-pub use tari_engine_types::serde_with;
+pub use taiji_engine_types::serde_with;

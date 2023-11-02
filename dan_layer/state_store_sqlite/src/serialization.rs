@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 use std::{any::type_name, str::FromStr};
 
 use serde::Serialize;
-use tari_dan_storage::StorageError;
+use taiji_dan_storage::StorageError;
 
 pub fn serialize_json<T: Serialize + ?Sized>(t: &T) -> Result<String, StorageError> {
     serde_json::to_string_pretty(t).map_err(|e| StorageError::EncodingError {

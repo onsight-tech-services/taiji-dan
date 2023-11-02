@@ -1,18 +1,18 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{iter, time::Duration};
 
-use tari_common_types::types::PrivateKey;
-use tari_dan_common_types::ShardId;
-use tari_dan_storage::consensus_models::{Decision, ExecutedTransaction};
-use tari_engine_types::{
+use taiji_common_types::types::PrivateKey;
+use taiji_dan_common_types::ShardId;
+use taiji_dan_storage::consensus_models::{Decision, ExecutedTransaction};
+use taiji_engine_types::{
     commit_result::{ExecuteResult, FinalizeResult, RejectReason, TransactionResult},
     fees::{FeeCostBreakdown, FeeReceipt},
     resource_container::ResourceContainer,
     substate::SubstateDiff,
 };
-use tari_transaction::Transaction;
+use taiji_transaction::Transaction;
 
 use crate::support::helpers::random_shard_in_bucket;
 

@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 // (New, true) ----(cmd:Prepare) ---> (Prepared, true) -----cmd:LocalPrepared ---> (LocalPrepared, false)
@@ -6,12 +6,12 @@
 // Complete
 
 use log::*;
-use tari_dan_common_types::{committee::Committee, optional::Optional, NodeHeight};
-use tari_dan_storage::{
+use taiji_dan_common_types::{committee::Committee, optional::Optional, NodeHeight};
+use taiji_dan_storage::{
     consensus_models::{Block, HighQc, TransactionPool, ValidBlock},
     StateStore,
 };
-use tari_epoch_manager::EpochManagerReader;
+use taiji_epoch_manager::EpochManagerReader;
 use tokio::sync::{broadcast, mpsc};
 
 use crate::{
@@ -26,7 +26,7 @@ use crate::{
     traits::{ConsensusSpec, LeaderStrategy},
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::on_receive_local_proposal";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::on_receive_local_proposal";
 
 pub struct OnReceiveProposalHandler<TConsensusSpec: ConsensusSpec> {
     store: TConsensusSpec::StateStore,

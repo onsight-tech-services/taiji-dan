@@ -1,4 +1,4 @@
-//  Copyright 2021. The Tari Project
+//  Copyright 2021. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -26,7 +26,7 @@ use diesel::{sql_query, RunQueryDsl, SqliteConnection};
 
 use crate::error::SqliteStorageError;
 
-const _LOG_TARGET: &str = "tari::dan::storage::sqlite::transaction";
+const _LOG_TARGET: &str = "taiji::dan::storage::sqlite::transaction";
 
 pub struct SqliteTransaction<'a> {
     connection: MutexGuard<'a, SqliteConnection>,

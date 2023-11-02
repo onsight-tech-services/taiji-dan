@@ -1,14 +1,14 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
 use std::sync::Arc;
 
 use d3ne::WorkersBuilder;
 use serde_json::Value as JsValue;
-use tari_dan_common_types::services::template_provider::TemplateProvider;
-use tari_engine_types::instruction_result::InstructionResult;
-use tari_template_abi::{ArgDef, FunctionDef, TemplateDef, Type};
-use tari_template_lib::args::Arg;
+use taiji_dan_common_types::services::template_provider::TemplateProvider;
+use taiji_engine_types::instruction_result::InstructionResult;
+use taiji_template_abi::{ArgDef, FunctionDef, TemplateDef, Type};
+use taiji_template_lib::args::Arg;
 
 use crate::{
     flow::{FlowContext, FlowEngineError, FlowInstance},

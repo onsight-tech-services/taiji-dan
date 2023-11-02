@@ -1,21 +1,21 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 
 use std::time::Duration;
 
 use cucumber::{then, when};
-use integration_tests::{wallet_daemon_cli, TariWorld};
-use tari_common_types::types::{Commitment, PrivateKey, PublicKey};
+use integration_tests::{wallet_daemon_cli, TaijiWorld};
+use taiji_common_types::types::{Commitment, PrivateKey, PublicKey};
 use tari_crypto::{ristretto::RistrettoComSig, tari_utilities::ByteArray};
-use tari_template_lib::prelude::Amount;
-use tari_wallet_daemon_client::ComponentAddressOrName;
+use taiji_template_lib::prelude::Amount;
+use taiji_wallet_daemon_client::ComponentAddressOrName;
 
 #[when(
     expr = "I claim burn {word} with {word}, {word} and {word} and spend it into account {word} via the wallet daemon \
             {word}"
 )]
 async fn when_i_claim_burn_via_wallet_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     commitment_name: String,
     proof_name: String,
     rangeproof_name: String,
@@ -61,7 +61,7 @@ async fn when_i_claim_burn_via_wallet_daemon(
             {word}, it fails"
 )]
 async fn when_i_claim_burn_via_wallet_daemon_it_fails(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     commitment_name: String,
     proof_name: String,
     rangeproof_name: String,
@@ -103,7 +103,7 @@ async fn when_i_claim_burn_via_wallet_daemon_it_fails(
 
 #[when(expr = "I claim fees for validator {word} and epoch {int} into account {word} using the wallet daemon {word}")]
 async fn when_i_claim_fees_for_validator_and_epoch(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     validator_node: String,
     epoch: u64,
     account_name: String,
@@ -125,7 +125,7 @@ async fn when_i_claim_fees_for_validator_and_epoch(
             fails"
 )]
 async fn when_i_claim_fees_for_validator_and_epoch_fails(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     validator_node: String,
     epoch: u64,
     account_name: String,
@@ -143,7 +143,7 @@ async fn when_i_claim_fees_for_validator_and_epoch_fails(
             wallet_daemon {word}"
 )]
 async fn when_i_create_transfer_proof_via_wallet_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     amount: u64,
     source_account_name: String,
     dest_account_name: String,
@@ -163,7 +163,7 @@ async fn when_i_create_transfer_proof_via_wallet_daemon(
 
 #[when(expr = "I create an account {word} via the wallet daemon {word}")]
 async fn when_i_create_account_via_wallet_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     wallet_daemon_name: String,
 ) {
@@ -172,7 +172,7 @@ async fn when_i_create_account_via_wallet_daemon(
 
 #[when(expr = "I create an account {word} via the wallet daemon {word} with {int} free coins")]
 async fn when_i_create_account_via_wallet_daemon_with_free_coins(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     wallet_daemon_name: String,
     amount: i64,
@@ -188,7 +188,7 @@ async fn when_i_create_account_via_wallet_daemon_with_free_coins(
 }
 
 #[when(expr = "I create a key named {word} for {word}")]
-async fn when_i_create_a_wallet_key(world: &mut TariWorld, key_name: String, wallet_daemon_name: String) {
+async fn when_i_create_a_wallet_key(world: &mut TaijiWorld, key_name: String, wallet_daemon_name: String) {
     let mut client = world.get_wallet_daemon(&wallet_daemon_name).get_authed_client().await;
     let key = client.create_key().await.unwrap();
     world.wallet_keys.insert(key_name, key.id);
@@ -196,7 +196,7 @@ async fn when_i_create_a_wallet_key(world: &mut TariWorld, key_name: String, wal
 
 #[when(expr = "I create an account {word} via the wallet daemon {word} with {int} free coins using key {word}")]
 async fn when_i_create_account_via_wallet_daemon_with_free_coins_using_key(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     wallet_daemon_name: String,
     amount: i64,
@@ -217,7 +217,7 @@ async fn when_i_create_account_via_wallet_daemon_with_free_coins_using_key(
             {word}, range proof {word} and claim public key {word}"
 )]
 async fn when_i_burn_funds_with_wallet_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     amount: u64,
     wallet_name: String,
     wallet_daemon_name: String,
@@ -242,7 +242,7 @@ async fn when_i_burn_funds_with_wallet_daemon(
 
     let mut client = wallet.create_client().await;
     let resp = client
-        .create_burn_transaction(minotari_app_grpc::tari_rpc::CreateBurnTransactionRequest {
+        .create_burn_transaction(minotaiji_app_grpc::taiji_rpc::CreateBurnTransactionRequest {
             amount: amount * 1_000_000,
             fee_per_gram: 1,
             message: "Burn".to_string(),
@@ -254,7 +254,7 @@ async fn when_i_burn_funds_with_wallet_daemon(
 
     assert!(resp.is_success);
     world.commitments.insert(commitment_name, resp.commitment);
-    // TODO: use proto::transaction::CommitmentSignature to deserialize once we update tari to include https://github.com/tari-project/tari/pull/5200
+    // TODO: use proto::transaction::CommitmentSignature to deserialize once we update taiji to include https://github.com/onsight-tech-services/taiji/pull/5200
     let ownership_proof = resp.ownership_proof.unwrap();
     world.commitment_ownership_proofs.insert(
         ownership_proof_name,
@@ -273,7 +273,7 @@ async fn when_i_burn_funds_with_wallet_daemon(
 
 #[when(expr = "I check the balance of {word} on wallet daemon {word} the amount is at {word} {int}")]
 async fn check_account_balance_via_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     wallet_daemon_name: String,
     least_or_most: String,
@@ -300,7 +300,7 @@ async fn check_account_balance_via_daemon(
 
 #[when(expr = "I wait for {word} on wallet daemon {word} to have balance {word} {int}")]
 async fn wait_account_balance_via_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     wallet_daemon_name: String,
     operator: String,
@@ -333,7 +333,7 @@ async fn wait_account_balance_via_daemon(
 
 #[when(expr = "I check the balance of {word} on wallet daemon {word} the amount is exactly {int}")]
 async fn check_account_balance_is_exactly_via_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     wallet_daemon_name: String,
     amount: i64,
@@ -348,7 +348,7 @@ async fn check_account_balance_is_exactly_via_daemon(
 
 #[when(expr = "I check the confidential balance of {word} on wallet daemon {word} the amount is at {word} {int}")]
 async fn check_account_confidential_balance_is_via_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     wallet_daemon_name: String,
     least_or_most: String,
@@ -378,7 +378,7 @@ async fn check_account_confidential_balance_is_via_daemon(
             {word} named {word}"
 )]
 async fn when_transfer_via_wallet_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     amount: i32,
     resource_address: String,
     account_name: String,
@@ -424,7 +424,7 @@ async fn when_transfer_via_wallet_daemon(
             {word} named {word}"
 )]
 async fn when_confidential_transfer_via_wallet_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     amount: i64,
     account_name: String,
     destination_public_key: String,
@@ -445,7 +445,7 @@ async fn when_confidential_transfer_via_wallet_daemon(
 }
 
 #[when(expr = "I set the default account for {word} to {word}")]
-async fn when_i_set_the_default_account(world: &mut TariWorld, wallet_name: String, account_name: String) {
+async fn when_i_set_the_default_account(world: &mut TaijiWorld, wallet_name: String, account_name: String) {
     let wallet = world
         .wallet_daemons
         .get(&wallet_name)

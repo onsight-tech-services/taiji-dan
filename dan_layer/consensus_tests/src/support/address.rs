@@ -1,10 +1,10 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::fmt::Display;
 
 use serde::{Deserialize, Serialize};
-use tari_dan_common_types::NodeAddressable;
+use taiji_dan_common_types::NodeAddressable;
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 pub struct TestAddress(pub String);

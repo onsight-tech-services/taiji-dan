@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -21,8 +21,8 @@
 //   USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 use serde::Serialize;
-use tari_bor::encode;
-use tari_template_abi::{call_engine, rust::collections::HashMap, EngineOp};
+use taiji_bor::encode;
+use taiji_template_abi::{call_engine, rust::collections::HashMap, EngineOp};
 
 use crate::{
     args::{

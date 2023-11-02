@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use serde::Serialize;
-use tari_dan_common_types::{hashing::ValidatorNodeMerkleProof, Epoch, NodeHeight};
-use tari_dan_storage::consensus_models::{BlockId, LastSentVote, QuorumDecision, ValidatorSignature};
+use taiji_dan_common_types::{hashing::ValidatorNodeMerkleProof, Epoch, NodeHeight};
+use taiji_dan_storage::consensus_models::{BlockId, LastSentVote, QuorumDecision, ValidatorSignature};
 
 #[derive(Debug, Clone, Serialize)]
 pub struct VoteMessage<TAddr> {

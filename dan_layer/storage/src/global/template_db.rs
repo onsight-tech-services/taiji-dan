@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -23,7 +23,7 @@
 use std::str::FromStr;
 
 use chrono::NaiveDateTime;
-use tari_common_types::types::FixedHash;
+use taiji_common_types::types::FixedHash;
 
 use crate::global::GlobalDbAdapter;
 

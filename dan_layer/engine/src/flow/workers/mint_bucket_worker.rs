@@ -1,10 +1,10 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
 use std::convert::TryFrom;
 
 use d3ne::{InputData, Node, OutputData, OutputDataBuilder, Worker};
-use tari_template_lib::{args::ResourceRef, models::ResourceAddress};
+use taiji_template_lib::{args::ResourceRef, models::ResourceAddress};
 
 pub struct MintBucketWorker {}
 
@@ -43,7 +43,7 @@ impl Worker for MintBucketWorker {
     // }
 
     fn name(&self) -> &str {
-        "tari::mint_bucket"
+        "taiji::mint_bucket"
     }
 
     fn work(&self, node: &Node, inputs: InputData) -> anyhow::Result<OutputData> {

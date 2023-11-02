@@ -1,11 +1,11 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{sync::Arc, time::Duration};
 
 use tari_crypto::tari_utilities::SafePassword;
-use tari_dan_common_types::optional::{IsNotFoundError, Optional};
-use tari_key_manager::cipher_seed::CipherSeed;
+use taiji_dan_common_types::optional::{IsNotFoundError, Optional};
+use taiji_key_manager::cipher_seed::CipherSeed;
 
 use crate::{
     apis::{

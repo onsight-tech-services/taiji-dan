@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -8,15 +8,15 @@ use std::{
 };
 
 use log::*;
-use tari_dan_common_types::{optional::Optional, NodeHeight};
-use tari_dan_storage::{
+use taiji_dan_common_types::{optional::Optional, NodeHeight};
+use taiji_dan_storage::{
     consensus_models::{Block, HighQc, LastSentVote, LastVoted, LeafBlock, TransactionPool},
     StateStore,
     StateStoreWriteTransaction,
 };
-use tari_epoch_manager::{EpochManagerEvent, EpochManagerReader};
-use tari_shutdown::ShutdownSignal;
-use tari_transaction::{Transaction, TransactionId};
+use taiji_epoch_manager::{EpochManagerEvent, EpochManagerReader};
+use taiji_shutdown::ShutdownSignal;
+use taiji_transaction::{Transaction, TransactionId};
 use tokio::sync::{broadcast, mpsc};
 
 use super::on_receive_requested_transactions::OnReceiveRequestedTransactions;
@@ -42,7 +42,7 @@ use crate::{
     traits::{ConsensusSpec, LeaderStrategy},
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::worker";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::worker";
 
 pub struct HotstuffWorker<TConsensusSpec: ConsensusSpec> {
     validator_addr: TConsensusSpec::Addr,

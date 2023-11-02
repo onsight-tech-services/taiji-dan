@@ -1,21 +1,21 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{collections::HashMap, sync::Arc};
 
 use log::*;
-use tari_dan_common_types::{NodeAddressable, ShardId};
-use tari_engine_types::{
+use taiji_dan_common_types::{NodeAddressable, ShardId};
+use taiji_engine_types::{
     indexed_value::IndexedValueVisitorError,
     substate::{Substate, SubstateAddress},
 };
-use tari_epoch_manager::EpochManagerReader;
-use tari_transaction::{SubstateRequirement, Transaction};
-use tari_validator_node_rpc::client::{SubstateResult, ValidatorNodeClientFactory};
+use taiji_epoch_manager::EpochManagerReader;
+use taiji_transaction::{SubstateRequirement, Transaction};
+use taiji_validator_node_rpc::client::{SubstateResult, ValidatorNodeClientFactory};
 
 use crate::{error::IndexerError, substate_decoder::find_related_substates, substate_scanner::SubstateScanner};
 
-const LOG_TARGET: &str = "tari::indexer::transaction_autofiller";
+const LOG_TARGET: &str = "taiji::indexer::transaction_autofiller";
 
 #[derive(Debug, thiserror::Error)]
 pub enum TransactionAutofillerError {

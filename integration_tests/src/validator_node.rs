@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -27,23 +27,23 @@ use std::{
 };
 
 use reqwest::Url;
-use tari_common::{
+use taiji_common::{
     configuration::{CommonConfig, StringList},
     exit_codes::ExitError,
 };
-use tari_common_types::types::PublicKey;
-use tari_comms::multiaddr::Multiaddr;
-use tari_comms_dht::{DbConnectionUrl, DhtConfig};
-use tari_p2p::{Network, PeerSeedsConfig, TransportType};
-use tari_shutdown::Shutdown;
-use tari_validator_node::{run_validator_node, ApplicationConfig, ValidatorNodeConfig};
-use tari_validator_node_client::ValidatorNodeClient;
+use taiji_common_types::types::PublicKey;
+use taiji_comms::multiaddr::Multiaddr;
+use taiji_comms_dht::{DbConnectionUrl, DhtConfig};
+use taiji_p2p::{Network, PeerSeedsConfig, TransportType};
+use taiji_shutdown::Shutdown;
+use taiji_validator_node::{run_validator_node, ApplicationConfig, ValidatorNodeConfig};
+use taiji_validator_node_client::ValidatorNodeClient;
 use tokio::task;
 
 use crate::{
     helpers::{check_join_handle, get_os_assigned_port, get_os_assigned_ports, wait_listener_on_local_port},
     logging::get_base_dir_for_scenario,
-    TariWorld,
+    TaijiWorld,
 };
 
 #[derive(Debug)]
@@ -72,7 +72,7 @@ impl ValidatorNodeProcess {
 }
 
 pub async fn spawn_validator_node(
-    world: &TariWorld,
+    world: &TaijiWorld,
     validator_node_name: String,
     base_node_name: String,
     wallet_name: String,

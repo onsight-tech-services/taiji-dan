@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -9,9 +9,9 @@ use std::{
 
 use log::*;
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::{FixedHash, FixedHashSizeError};
-use tari_dan_common_types::{hashing, optional::Optional, serde_with, Epoch, NodeAddressable, NodeHeight, ShardId};
-use tari_transaction::TransactionId;
+use taiji_common_types::types::{FixedHash, FixedHashSizeError};
+use taiji_dan_common_types::{hashing, optional::Optional, serde_with, Epoch, NodeAddressable, NodeHeight, ShardId};
+use taiji_transaction::TransactionId;
 use time::PrimitiveDateTime;
 
 use super::QuorumCertificate;
@@ -35,7 +35,7 @@ use crate::{
     StorageError,
 };
 
-const LOG_TARGET: &str = "tari::dan::storage::consensus_models::block";
+const LOG_TARGET: &str = "taiji::dan::storage::consensus_models::block";
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Block<TAddr> {

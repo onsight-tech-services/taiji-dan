@@ -1,19 +1,19 @@
 [package]
-name = "tari_template_abi"
+name = "taiji_template_abi"
 version = "0.0.1"
 edition = "2021"
-authors = ["The Tari Development Community"]
-description = "Defines the low-level Tari engine ABI for WASM targets"
-repository = "https://github.com/tari-project/tari-dan"
+authors = ["OnSight Tech Services LLC"]
+description = "Defines the low-level Taiji engine ABI for WASM targets"
+repository = "https://github.com/onsight-tech-services/taiji-dan"
 license = "BSD-3-Clause"
 
 [dependencies]
-tari_bor = { path = "../tari_bor", default-features = false }
+taiji_bor = { path = "../taiji_bor", default-features = false }
 serde = { version = "1.0.143", default-features = false, features = ["alloc", "derive"] }
 hashbrown = { version = "0.13.2", optional = true }
 
 [features]
 default = ["std"]
-std = ["tari_bor/std"]
+std = ["taiji_bor/std"]
 # TODO: look into how this is done properly
 alloc = ["hashbrown"]

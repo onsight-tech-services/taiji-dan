@@ -1,10 +1,10 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use async_trait::async_trait;
-use tari_common_types::types::{FixedHash, PublicKey};
-use tari_core::{blocks::BlockHeader, transactions::transaction_components::CodeTemplateRegistration};
-use tari_dan_common_types::ShardId;
+use taiji_common_types::types::{FixedHash, PublicKey};
+use taiji_core::{blocks::BlockHeader, transactions::transaction_components::CodeTemplateRegistration};
+use taiji_dan_common_types::ShardId;
 
 use crate::{
     error::BaseNodeClientError,

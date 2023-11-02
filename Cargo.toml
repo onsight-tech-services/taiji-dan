@@ -1,13 +1,13 @@
 [workspace]
 
 members = [
-    "applications/tari_dan_app_utilities",
-    "applications/tari_dan_wallet_cli",
-    "applications/tari_dan_wallet_daemon",
-    "applications/tari_indexer",
-    "applications/tari_signaling_server",
-    "applications/tari_validator_node_cli",
-    "applications/tari_validator_node",
+    "applications/taiji_dan_app_utilities",
+    "applications/taiji_dan_wallet_cli",
+    "applications/taiji_dan_wallet_daemon",
+    "applications/taiji_indexer",
+    "applications/taiji_signaling_server",
+    "applications/taiji_validator_node_cli",
+    "applications/taiji_validator_node",
     "clients/base_node_client",
     "clients/validator_node_client",
     "clients/wallet_daemon_client",
@@ -21,7 +21,7 @@ members = [
     "dan_layer/storage_lmdb",
     "dan_layer/storage_sqlite",
     "dan_layer/storage",
-    "dan_layer/tari_bor",
+    "dan_layer/taiji_bor",
     "dan_layer/template_abi",
     "dan_layer/template_builtin",
     "dan_layer/template_lib",
@@ -53,24 +53,23 @@ liblmdb-sys = { git = "https://github.com/tari-project/lmdb-rs", tag = "0.7.6-ta
 
 # Make a copy of this code, uncomment and replace account and my-branch with the name of your fork and the branch you want to temporarily use
 #[patch."https://github.com/tari-project/tari.git"]
-#minotari_app_grpc = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#minotari_app_grpc = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#minotari_wallet_grpc_client= { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#minotari_node_grpc_client = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_common = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_common_types = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_comms = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_comms_rpc_macros = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_core = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_key_manager = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_mmr = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_p2p = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_shutdown = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_storage = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#minotari_wallet_grpc_client = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_script = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#minotari_wallet = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#minotari_console_wallet = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_service_framework = { git = "https://github.com/account/tari.git", branch = "my-branch" }
-#tari_comms_dht = { git = "https://github.com/account/tari.git", branch = "my-branch" }
+#minotaiji_app_grpc = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#minotaiji_app_grpc = { path = "../taiji/applications/minotaiji_app_grpc" }
+#minotaiji_wallet_grpc_client= { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#minotaiji_node_grpc_client = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_common = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_common_types = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_comms = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_comms_rpc_macros = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_core = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_key_manager = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_mmr = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_p2p = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_shutdown = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_storage = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_script = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#minotaiji_wallet = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#minotaiji_console_wallet = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_service_framework = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+#taiji_comms_dht = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
 

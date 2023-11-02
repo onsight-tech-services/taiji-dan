@@ -1,4 +1,4 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -9,13 +9,13 @@ use std::{
 
 use anyhow::anyhow;
 use serde::de::DeserializeOwned;
-use tari_bor::encode;
+use taiji_bor::encode;
 use tari_crypto::{
     ristretto::RistrettoSecretKey,
     tari_utilities::{hex::Hex, ByteArray},
 };
-use tari_dan_common_types::crypto::create_key_pair;
-use tari_dan_engine::{
+use taiji_dan_common_types::crypto::create_key_pair;
+use taiji_dan_engine::{
     bootstrap_state,
     fees::{FeeModule, FeeTable},
     packager::{LoadedTemplate, Package, TemplateModuleLoader},
@@ -30,7 +30,7 @@ use tari_dan_engine::{
     transaction::{TransactionError, TransactionProcessor},
     wasm::{compile::compile_template, LoadedWasmTemplate, WasmModule},
 };
-use tari_engine_types::{
+use taiji_engine_types::{
     commit_result::ExecuteResult,
     component::{ComponentBody, ComponentHeader},
     hashing::template_hasher,
@@ -40,17 +40,17 @@ use tari_engine_types::{
     vault::Vault,
     virtual_substate::{VirtualSubstate, VirtualSubstateAddress},
 };
-use tari_template_builtin::{get_template_builtin, ACCOUNT_TEMPLATE_ADDRESS};
-use tari_template_lib::{
+use taiji_template_builtin::{get_template_builtin, ACCOUNT_TEMPLATE_ADDRESS};
+use taiji_template_lib::{
     args,
     args::Arg,
     crypto::RistrettoPublicKeyBytes,
     models::{Amount, ComponentAddress, NonFungibleAddress, TemplateAddress},
-    prelude::{AccessRules, CONFIDENTIAL_TARI_RESOURCE_ADDRESS},
+    prelude::{AccessRules, CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS},
     Hash,
 };
-use tari_transaction::{id_provider::IdProvider, Transaction};
-use tari_transaction_manifest::{parse_manifest, ManifestValue};
+use taiji_transaction::{id_provider::IdProvider, Transaction};
+use taiji_transaction_manifest::{parse_manifest, ManifestValue};
 
 use crate::track_calls::TrackCallsModule;
 
@@ -105,7 +105,7 @@ impl TemplateTest {
         {
             let mut tx = state_store.write_access().unwrap();
             bootstrap_state(&mut tx).unwrap();
-            Self::initial_tari_faucet_supply(&mut tx, Amount::from(100_000), test_faucet_template_address);
+            Self::initial_taiji_faucet_supply(&mut tx, Amount::from(100_000), test_faucet_template_address);
             tx.commit().unwrap();
         }
 
@@ -125,7 +125,7 @@ impl TemplateTest {
         }
     }
 
-    fn initial_tari_faucet_supply(
+    fn initial_taiji_faucet_supply(
         tx: &mut MemoryWriteTransaction<'_>,
         initial_supply: Amount,
         test_faucet_template_address: TemplateAddress,
@@ -133,7 +133,7 @@ impl TemplateTest {
         let id_provider = IdProvider::new(Hash::default(), 10);
         let vault_id = id_provider.new_vault_id().unwrap();
         let vault = Vault::new(vault_id, ResourceContainer::Confidential {
-            address: CONFIDENTIAL_TARI_RESOURCE_ADDRESS,
+            address: CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS,
             commitments: Default::default(),
             revealed_amount: initial_supply,
         });
@@ -143,10 +143,10 @@ impl TemplateTest {
         // This must mirror the test faucet component
         #[derive(serde::Serialize)]
         struct Faucet {
-            vault: tari_template_lib::models::Vault,
+            vault: taiji_template_lib::models::Vault,
         }
         let state = encode(&Faucet {
-            vault: tari_template_lib::models::Vault::for_test(vault_id),
+            vault: taiji_template_lib::models::Vault::for_test(vault_id),
         })
         .unwrap();
         tx.set_state(

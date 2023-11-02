@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -21,8 +21,8 @@
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 use serde::Serialize;
-use tari_bor::encode;
-use tari_template_abi::{call_engine, EngineOp};
+use taiji_bor::encode;
+use taiji_template_abi::{call_engine, EngineOp};
 
 use crate::{
     args::{ComponentAction, ComponentInvokeArg, ComponentRef, CreateComponentArg, EmitLogArg, InvokeResult, LogLevel},
@@ -34,17 +34,17 @@ use crate::{
     Hash,
 };
 
-pub fn engine() -> TariEngine {
+pub fn engine() -> TaijiEngine {
     // TODO: I expect some thread local state to be included here
-    TariEngine::new(get_context())
+    TaijiEngine::new(get_context())
 }
 
 #[derive(Debug, Default)]
-pub struct TariEngine {
+pub struct TaijiEngine {
     _context: Context,
 }
 
-impl TariEngine {
+impl TaijiEngine {
     fn new(context: Context) -> Self {
         Self { _context: context }
     }

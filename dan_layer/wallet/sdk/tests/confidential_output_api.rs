@@ -1,13 +1,13 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{convert::Infallible, time::Duration};
 
 use async_trait::async_trait;
-use tari_common_types::types::Commitment;
+use taiji_common_types::types::Commitment;
 use tari_crypto::commitment::HomomorphicCommitmentFactory;
-use tari_dan_common_types::optional::Optional;
-use tari_dan_wallet_sdk::{
+use taiji_dan_common_types::optional::Optional;
+use taiji_dan_wallet_sdk::{
     confidential::get_commitment_factory,
     models::{ConfidentialOutputModel, ConfidentialProofId, OutputStatus},
     network::{SubstateQueryResult, TransactionQueryResult, WalletNetworkInterface},
@@ -15,14 +15,14 @@ use tari_dan_wallet_sdk::{
     DanWalletSdk,
     WalletSdkConfig,
 };
-use tari_dan_wallet_storage_sqlite::SqliteWalletStore;
-use tari_engine_types::substate::SubstateAddress;
-use tari_template_lib::{
-    constants::CONFIDENTIAL_TARI_RESOURCE_ADDRESS,
+use taiji_dan_wallet_storage_sqlite::SqliteWalletStore;
+use taiji_engine_types::substate::SubstateAddress;
+use taiji_template_lib::{
+    constants::CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS,
     models::{Amount, EncryptedData},
     resource::ResourceType,
 };
-use tari_transaction::{SubstateRequirement, Transaction, TransactionId};
+use taiji_transaction::{SubstateRequirement, Transaction, TransactionId};
 
 #[test]
 fn outputs_locked_and_released() {
@@ -155,7 +155,7 @@ impl Test {
             .add_vault(
                 Test::test_account_address(),
                 Test::test_vault_address(),
-                CONFIDENTIAL_TARI_RESOURCE_ADDRESS,
+                CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS,
                 ResourceType::Confidential,
                 Some("TEST".to_string()),
             )

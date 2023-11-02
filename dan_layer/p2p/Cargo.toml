@@ -1,8 +1,8 @@
 [package]
-name = "tari_dan_p2p"
-authors = ["The Tari Development Community"]
-description = "The Tari DAN message types"
-repository = "https://github.com/tari-project/tari-dan"
+name = "taiji_dan_p2p"
+authors = ["OnSight Tech Services LLC"]
+description = "The Taiji DAN message types"
+repository = "https://github.com/onsight-tech-services/taiji-dan"
 license = "BSD-3-Clause"
 version = "0.50.0-pre.0"
 edition = "2021"
@@ -11,11 +11,11 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tari_consensus = { path = "../consensus" }
-tari_dan_common_types = { path = "../common_types" }
-tari_transaction = { path = "../transaction" }
+taiji_consensus = { path = "../consensus" }
+taiji_dan_common_types = { path = "../common_types" }
+taiji_transaction = { path = "../transaction" }
 
-tari_comms = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2", package = "tari_comms" }
+taiji_comms = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2", package = "taiji_comms" }
 
 async-trait = "0.1"
 serde = "1.0"

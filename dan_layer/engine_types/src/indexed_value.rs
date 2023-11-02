@@ -1,11 +1,11 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::collections::BTreeMap;
 
 use serde::{Deserialize, Serialize};
-use tari_bor::{decode, BorError, FromTagAndValue, ValueVisitor};
-use tari_template_lib::{
+use taiji_bor::{decode, BorError, FromTagAndValue, ValueVisitor};
+use taiji_template_lib::{
     models::{BinaryTag, BucketId, NonFungibleAddressContents, ResourceAddress, VaultId},
     prelude::{ComponentAddress, Metadata, NonFungibleAddress},
     Hash,
@@ -36,8 +36,8 @@ pub struct IndexedValue {
 impl IndexedValue {
     pub fn from_raw(bytes: &[u8]) -> Result<Self, IndexedValueVisitorError> {
         let mut visitor = IndexedValueVisitor::new();
-        let value: tari_bor::Value = decode(bytes)?;
-        tari_bor::walk_all(&value, &mut visitor)?;
+        let value: taiji_bor::Value = decode(bytes)?;
+        taiji_bor::walk_all(&value, &mut visitor)?;
 
         Ok(Self {
             buckets: visitor.buckets,
@@ -98,7 +98,7 @@ impl IndexedValue {
     }
 }
 
-pub enum TariValue {
+pub enum TaijiValue {
     ComponentAddress(ComponentAddress),
     ResourceAddress(ResourceAddress),
     TransactionReceiptAddress(TransactionReceiptAddress),
@@ -109,10 +109,10 @@ pub enum TariValue {
     FeeClaim(FeeClaimAddress),
 }
 
-impl FromTagAndValue for TariValue {
+impl FromTagAndValue for TaijiValue {
     type Error = IndexedValueVisitorError;
 
-    fn try_from_tag_and_value(tag: u64, value: &tari_bor::Value) -> Result<Self, Self::Error>
+    fn try_from_tag_and_value(tag: u64, value: &taiji_bor::Value) -> Result<Self, Self::Error>
     where Self: Sized {
         let tag = BinaryTag::from_u64(tag).ok_or(IndexedValueVisitorError::InvalidTag(tag))?;
         match tag {
@@ -177,33 +177,33 @@ impl IndexedValueVisitor {
     }
 }
 
-impl ValueVisitor<TariValue> for IndexedValueVisitor {
+impl ValueVisitor<TaijiValue> for IndexedValueVisitor {
     type Error = IndexedValueVisitorError;
 
-    fn visit(&mut self, value: TariValue) -> Result<(), Self::Error> {
+    fn visit(&mut self, value: TaijiValue) -> Result<(), Self::Error> {
         match value {
-            TariValue::ComponentAddress(address) => {
+            TaijiValue::ComponentAddress(address) => {
                 self.component_addresses.push(address);
             },
-            TariValue::ResourceAddress(address) => {
+            TaijiValue::ResourceAddress(address) => {
                 self.resource_addresses.push(address);
             },
-            TariValue::TransactionReceiptAddress(address) => {
+            TaijiValue::TransactionReceiptAddress(address) => {
                 self.transaction_receipt_addresses.push(address);
             },
-            TariValue::BucketId(bucket_id) => {
+            TaijiValue::BucketId(bucket_id) => {
                 self.buckets.push(bucket_id);
             },
-            TariValue::NonFungibleAddress(address) => {
+            TaijiValue::NonFungibleAddress(address) => {
                 self.non_fungible_addresses.push(address);
             },
-            TariValue::VaultId(vault_id) => {
+            TaijiValue::VaultId(vault_id) => {
                 self.vault_ids.push(vault_id);
             },
-            TariValue::Metadata(metadata) => {
+            TaijiValue::Metadata(metadata) => {
                 self.metadata.push(metadata);
             },
-            TariValue::FeeClaim(_) => {
+            TaijiValue::FeeClaim(_) => {
                 // Do nothing
             },
         }
@@ -214,7 +214,7 @@ impl ValueVisitor<TariValue> for IndexedValueVisitor {
 #[derive(Debug, thiserror::Error)]
 pub enum IndexedValueVisitorError {
     #[error("Bor error: {0}")]
-    BorError(#[from] tari_bor::BorError),
+    BorError(#[from] taiji_bor::BorError),
     #[error("Invalid tag: {0}")]
     InvalidTag(u64),
 }
@@ -224,7 +224,7 @@ mod tests {
     use std::collections::HashMap;
 
     use rand::{rngs::OsRng, RngCore};
-    use tari_template_lib::models::NonFungibleId;
+    use taiji_template_lib::models::NonFungibleId;
 
     use super::*;
     use crate::hashing::{hasher, EngineHashDomainLabel};
@@ -283,7 +283,7 @@ mod tests {
             metadata: Metadata::new(),
         };
 
-        let bytes = tari_bor::encode(&data).unwrap();
+        let bytes = taiji_bor::encode(&data).unwrap();
         let indexed = IndexedValue::from_raw(&bytes).unwrap();
 
         assert!(indexed.component_addresses.contains(&addrs[0]));

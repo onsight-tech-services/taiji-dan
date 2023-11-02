@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -7,7 +7,7 @@ use std::{
     thread,
 };
 
-use tari_transaction::Transaction;
+use taiji_transaction::Transaction;
 
 pub fn read_transactions<R: Read + Seek + Send + 'static>(
     mut reader: R,

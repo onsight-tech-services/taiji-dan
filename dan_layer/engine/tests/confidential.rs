@@ -1,15 +1,15 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_bor::encode;
-use tari_engine_types::substate::SubstateAddress;
-use tari_template_lib::{
+use taiji_bor::encode;
+use taiji_engine_types::substate::SubstateAddress;
+use taiji_template_lib::{
     args,
     models::{Amount, ComponentAddress},
     prelude::ConfidentialOutputProof,
 };
-use tari_template_test_tooling::{SubstateType, TemplateTest};
-use tari_transaction_manifest::ManifestValue;
+use taiji_template_test_tooling::{SubstateType, TemplateTest};
+use taiji_transaction_manifest::ManifestValue;
 
 use self::utilities::*;
 
@@ -366,7 +366,7 @@ fn multi_commitment_join() {
 /// These would live in the wallet
 pub mod utilities {
     use rand::rngs::OsRng;
-    use tari_common_types::types::{BulletRangeProof, PrivateKey, PublicKey, Signature};
+    use taiji_common_types::types::{BulletRangeProof, PrivateKey, PublicKey, Signature};
     use tari_crypto::{
         commitment::{ExtensionDegree, HomomorphicCommitmentFactory},
         errors::RangeProofError,
@@ -375,8 +375,8 @@ pub mod utilities {
         ristretto::bulletproofs_plus::{RistrettoExtendedMask, RistrettoExtendedWitness},
         tari_utilities::ByteArray,
     };
-    use tari_engine_types::confidential::{challenges, get_commitment_factory, get_range_proof_service};
-    use tari_template_lib::{
+    use taiji_engine_types::confidential::{challenges, get_commitment_factory, get_range_proof_service};
+    use taiji_template_lib::{
         crypto::{BalanceProofSignature, RistrettoPublicKeyBytes},
         models::{Amount, ConfidentialOutputProof, ConfidentialStatement, ConfidentialWithdrawProof, EncryptedData},
     };

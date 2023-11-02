@@ -1,15 +1,15 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use log::*;
-use tari_common_types::types::PublicKey;
-use tari_dan_common_types::optional::{IsNotFoundError, Optional};
-use tari_engine_types::{
+use taiji_common_types::types::PublicKey;
+use taiji_dan_common_types::optional::{IsNotFoundError, Optional};
+use taiji_engine_types::{
     commit_result::RejectReason,
     indexed_value::{IndexedValue, IndexedValueVisitorError},
     substate::SubstateDiff,
 };
-use tari_transaction::{SubstateRequirement, Transaction, TransactionId};
+use taiji_transaction::{SubstateRequirement, Transaction, TransactionId};
 
 use crate::{
     models::{TransactionStatus, VersionedSubstateAddress, WalletTransaction},
@@ -17,7 +17,7 @@ use crate::{
     storage::{WalletStorageError, WalletStore, WalletStoreReader, WalletStoreWriter},
 };
 
-const LOG_TARGET: &str = "tari::dan::wallet_sdk::apis::transaction";
+const LOG_TARGET: &str = "taiji::dan::wallet_sdk::apis::transaction";
 
 pub struct TransactionApi<'a, TStore, TNetworkInterface> {
     store: &'a TStore,

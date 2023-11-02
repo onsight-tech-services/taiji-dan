@@ -1,4 +1,4 @@
-// Copyright 2021. The Tari Project
+// Copyright 2021. OnSight Tech Services LLC
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -27,14 +27,14 @@
 // POSSIBILITY OF SUCH DAMAGE.
 syntax = "proto3";
 
-package tari.dan.network;
+package taiji.dan.network;
 
 import "common.proto";
 import "transaction.proto";
 
 message DanMessage {
   oneof message {
-    tari.dan.transaction.NewTransactionMessage new_transaction = 1;
+    taiji.dan.transaction.NewTransactionMessage new_transaction = 1;
     NetworkAnnounce network_announce = 2;
   }
 
@@ -51,7 +51,7 @@ message NetworkAnnounce {
 
 message IdentitySignature {
   uint32 version = 1;
-  tari.dan.common.Signature signature = 2;
+  taiji.dan.common.Signature signature = 2;
   int64 updated_at = 3;
 }
 

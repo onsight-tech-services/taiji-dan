@@ -1,8 +1,8 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_common_types::types::FixedHashSizeError;
-use tari_dan_common_types::optional::IsNotFoundError;
+use taiji_common_types::types::FixedHashSizeError;
+use taiji_dan_common_types::optional::IsNotFoundError;
 use thiserror::Error;
 
 #[derive(Error, Debug)]

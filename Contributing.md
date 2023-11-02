@@ -1,1 +1,1 @@
-See main repo [https://github.com/tari-project/tari]
+See main repo [https://github.com/onsight-tech-services/taiji]

@@ -16,7 +16,7 @@ base_layer/p2p
 base_layer/core
 base_layer/wallet
 base_layer/wallet_ffi
-applications/tari_base_node
+applications/taiji_base_node
 '}
 p_arr=($packages)
 

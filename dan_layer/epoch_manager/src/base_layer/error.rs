@@ -1,9 +1,9 @@
-//    Copyright 2023 The Tari Project
+//    Copyright 2023 OnSight Tech Services LLC
 //    SPDX-License-Identifier: BSD-3-Clause
 
-use tari_base_node_client::BaseNodeClientError;
-use tari_dan_storage_sqlite::error::SqliteStorageError;
-use tari_mmr::{BalancedBinaryMerkleProofError, BalancedBinaryMerkleTreeError};
+use taiji_base_node_client::BaseNodeClientError;
+use taiji_dan_storage_sqlite::error::SqliteStorageError;
+use taiji_mmr::{BalancedBinaryMerkleProofError, BalancedBinaryMerkleTreeError};
 
 use crate::EpochManagerError;
 

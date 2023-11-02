@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use log::*;
@@ -17,7 +17,7 @@ use crate::{
     traits::ConsensusSpec,
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::sm::running";
+const LOG_TARGET: &str = "taiji::dan::consensus::sm::running";
 
 #[derive(Debug)]
 pub(super) struct Running<TSpec> {

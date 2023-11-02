@@ -1,14 +1,14 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use rand::rngs::OsRng;
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::{PublicKey, Signature};
+use taiji_common_types::types::{PublicKey, Signature};
 use tari_crypto::{
     keys::PublicKey as PublicKeyT,
     ristretto::{RistrettoPublicKey, RistrettoSecretKey},
 };
-use tari_engine_types::{
+use taiji_engine_types::{
     hashing::{hasher, EngineHashDomainLabel},
     instruction::Instruction,
 };

@@ -1,4 +1,4 @@
-// Copyright 2021. The Tari Project
+// Copyright 2021. OnSight Tech Services LLC
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 // following conditions are met:
@@ -21,7 +21,7 @@
 // USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 use async_trait::async_trait;
-use tari_dan_common_types::NodeAddressable;
+use taiji_dan_common_types::NodeAddressable;
 
 use crate::Message;
 

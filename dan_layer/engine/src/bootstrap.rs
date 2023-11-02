@@ -1,12 +1,12 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_engine_types::{
+use taiji_engine_types::{
     resource::Resource,
     substate::{Substate, SubstateAddress},
 };
-use tari_template_lib::{
-    constants::{CONFIDENTIAL_TARI_RESOURCE_ADDRESS, PUBLIC_IDENTITY_RESOURCE_ADDRESS},
+use taiji_template_lib::{
+    constants::{CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS, PUBLIC_IDENTITY_RESOURCE_ADDRESS},
     models::Metadata,
     prelude::ResourceType,
 };
@@ -24,10 +24,10 @@ pub fn bootstrap_state<T: StateWriter>(state_db: &mut T) -> Result<(), StateStor
         ),
     )?;
 
-    // Create the second layer tari resource
-    let address = SubstateAddress::Resource(CONFIDENTIAL_TARI_RESOURCE_ADDRESS);
+    // Create the second layer taiji resource
+    let address = SubstateAddress::Resource(CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS);
     let metadata = Metadata::new();
-    // TODO: decide on symbol for L2 tari
+    // TODO: decide on symbol for L2 taiji
     // metadata.insert(TOKEN_SYMBOL, "tXTR2".to_string());
     state_db.set_state(
         &address,

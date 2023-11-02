@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -22,7 +22,7 @@
 
 use std::{fmt, vec::Vec};
 
-use tari_template_lib::prelude::*;
+use taiji_template_lib::prelude::*;
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize, Hash)]
 #[repr(i32)]

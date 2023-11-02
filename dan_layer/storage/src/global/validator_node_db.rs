@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -25,8 +25,8 @@ use std::{
     ops::RangeInclusive,
 };
 
-use tari_common_types::types::PublicKey;
-use tari_dan_common_types::{committee::Committee, shard_bucket::ShardBucket, Epoch, ShardId};
+use taiji_common_types::types::PublicKey;
+use taiji_dan_common_types::{committee::Committee, shard_bucket::ShardBucket, Epoch, ShardId};
 
 use crate::global::{models::ValidatorNode, GlobalDbAdapter};
 

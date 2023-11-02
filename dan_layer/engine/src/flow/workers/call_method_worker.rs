@@ -1,11 +1,11 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 
 use std::{collections::HashMap, str::FromStr};
 
 use d3ne::{Node, OutputValue, Worker};
-use tari_dan_common_types::services::template_provider::TemplateProvider;
-use tari_template_lib::{
+use taiji_dan_common_types::services::template_provider::TemplateProvider;
+use taiji_template_lib::{
     args::Arg,
     models::{ComponentAddress, TemplateAddress},
 };
@@ -18,7 +18,7 @@ impl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> Worker<Flow
     for CallMethodWorker
 {
     fn name(&self) -> &str {
-        "tari::dan::call_method"
+        "taiji::dan::call_method"
     }
 
     fn work(

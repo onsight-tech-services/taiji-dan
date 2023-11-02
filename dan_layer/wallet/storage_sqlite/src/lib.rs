@@ -1,4 +1,4 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 #[macro_use]
 extern crate diesel;
@@ -18,7 +18,7 @@ use std::{
 
 use diesel::{sql_query, Connection, RunQueryDsl, SqliteConnection};
 use diesel_migrations::{embed_migrations, EmbeddedMigrations, MigrationHarness};
-use tari_dan_wallet_sdk::storage::{WalletStorageError, WalletStore};
+use taiji_dan_wallet_sdk::storage::{WalletStorageError, WalletStore};
 
 use crate::{reader::ReadTransaction, writer::WriteTransaction};
 

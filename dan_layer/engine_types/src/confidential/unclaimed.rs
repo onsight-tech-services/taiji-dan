@@ -1,4 +1,4 @@
-//   Copyright 2023. The Tari Project
+//   Copyright 2023. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -22,8 +22,8 @@
 //
 
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::Commitment;
-use tari_template_lib::models::EncryptedData;
+use taiji_common_types::types::Commitment;
+use taiji_template_lib::models::EncryptedData;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct UnclaimedConfidentialOutput {

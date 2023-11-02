@@ -1,4 +1,4 @@
-//    Copyright 2023 The Tari Project
+//    Copyright 2023 OnSight Tech Services LLC
 //    SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -24,7 +24,7 @@ impl BuildHasher for FixedState {
 #[cfg(test)]
 mod tests {
     use rand::{rngs::OsRng, Rng};
-    use tari_dan_common_types::{uint::U256, ShardId};
+    use taiji_dan_common_types::{uint::U256, ShardId};
 
     use super::*;
 

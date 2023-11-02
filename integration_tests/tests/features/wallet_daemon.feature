@@ -1,4 +1,4 @@
-# Copyright 2022 The Tari Project
+# Copyright 2022 OnSight Tech Services LLC
 # SPDX-License-Identifier: BSD-3-Clause
 
 Feature: Wallet Daemon
@@ -104,7 +104,7 @@ Feature: Wallet Daemon
         # Initialize the wallet daemon
         Given a wallet daemon WALLET_D connected to indexer IDX
 
-        # When I create a component SECOND_LAYER_TARI of template "fees" on VN using "new"
+        # When I create a component SECOND_LAYER_TAIJI of template "fees" on VN using "new"
         When I create an account ACCOUNT_1 via the wallet daemon WALLET_D with 10000 free coins
         When I create an account ACCOUNT_2 via the wallet daemon WALLET_D
 

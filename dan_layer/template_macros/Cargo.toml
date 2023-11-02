@@ -1,10 +1,10 @@
 [package]
-name = "tari_template_macros"
+name = "taiji_template_macros"
 version = "0.0.1"
 edition = "2021"
-authors = ["The Tari Development Community"]
-description = "Tari template macro"
-repository = "https://github.com/tari-project/tari-dan"
+authors = ["OnSight Tech Services LLC"]
+description = "Taiji template macro"
+repository = "https://github.com/onsight-tech-services/taiji-dan"
 license = "BSD-3-Clause"
 
 [lib]

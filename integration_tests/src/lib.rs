@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -28,9 +28,9 @@ use http_server::MockHttpServer;
 use indexer::IndexerProcess;
 use indexmap::IndexMap;
 use miner::MinerProcess;
-use tari_common_types::types::PublicKey;
+use taiji_common_types::types::PublicKey;
 use tari_crypto::ristretto::{RistrettoComSig, RistrettoSecretKey};
-use tari_validator_node_cli::versioned_substate_address::VersionedSubstateAddress;
+use taiji_validator_node_cli::versioned_substate_address::VersionedSubstateAddress;
 use template::RegisteredTemplate;
 use validator_node::ValidatorNodeProcess;
 use wallet::WalletProcess;
@@ -50,7 +50,7 @@ pub mod wallet_daemon;
 pub mod wallet_daemon_cli;
 
 #[derive(Debug, Default, cucumber::World)]
-pub struct TariWorld {
+pub struct TaijiWorld {
     pub base_nodes: IndexMap<String, BaseNodeProcess>,
     pub wallets: IndexMap<String, WalletProcess>,
     pub validator_nodes: IndexMap<String, ValidatorNodeProcess>,
@@ -75,7 +75,7 @@ pub struct TariWorld {
     pub fees_enabled: bool,
 }
 
-impl TariWorld {
+impl TaijiWorld {
     pub fn get_mock_server(&self) -> &MockHttpServer {
         self.http_server.as_ref().unwrap()
     }
@@ -148,12 +148,12 @@ impl TariWorld {
         }
         for (name, mut p) in self.base_nodes.drain(..) {
             println!("Shutting down base node {}", name);
-            // You have explicitly trigger the shutdown now because of the change to use Arc/Mutex in tari_shutdown
+            // You have explicitly trigger the shutdown now because of the change to use Arc/Mutex in taiji_shutdown
             p.shutdown.trigger();
         }
         for (name, mut p) in self.wallet_daemons.drain(..) {
             println!("Shutting down wallet daemon {}", name);
-            // You have explicitly trigger the shutdown now because of the change to use Arc/Mutex in tari_shutdown
+            // You have explicitly trigger the shutdown now because of the change to use Arc/Mutex in taiji_shutdown
             p.shutdown.trigger();
         }
         self.outputs.clear();

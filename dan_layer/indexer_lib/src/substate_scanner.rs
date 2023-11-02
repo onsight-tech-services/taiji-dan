@@ -1,4 +1,4 @@
-//  Copyright 2023, The Tari Project
+//  Copyright 2023, OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -22,23 +22,23 @@
 
 use log::*;
 use rand::{prelude::*, rngs::OsRng};
-use tari_dan_common_types::{NodeAddressable, ShardId};
-use tari_engine_types::{
+use taiji_dan_common_types::{NodeAddressable, ShardId};
+use taiji_engine_types::{
     events::Event,
     substate::{SubstateAddress, SubstateValue},
     virtual_substate::{VirtualSubstate, VirtualSubstateAddress},
 };
-use tari_epoch_manager::EpochManagerReader;
-use tari_template_lib::{
+use taiji_epoch_manager::EpochManagerReader;
+use taiji_template_lib::{
     models::NonFungibleIndexAddress,
     prelude::{ComponentAddress, ResourceAddress},
 };
-use tari_transaction::TransactionId;
-use tari_validator_node_rpc::client::{SubstateResult, ValidatorNodeClientFactory, ValidatorNodeRpcClient};
+use taiji_transaction::TransactionId;
+use taiji_validator_node_rpc::client::{SubstateResult, ValidatorNodeClientFactory, ValidatorNodeRpcClient};
 
 use crate::{error::IndexerError, NonFungibleSubstate};
 
-const LOG_TARGET: &str = "tari::indexer::dan_layer_scanner";
+const LOG_TARGET: &str = "taiji::indexer::dan_layer_scanner";
 
 #[derive(Debug, Clone)]
 pub struct SubstateScanner<TEpochManager, TVnClient> {

@@ -1,17 +1,17 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::str::FromStr;
 
 use chrono::NaiveDateTime;
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::PublicKey;
-use tari_dan_common_types::ShardId;
-use tari_dan_wallet_sdk::{
+use taiji_common_types::types::PublicKey;
+use taiji_dan_common_types::ShardId;
+use taiji_dan_wallet_sdk::{
     models::{TransactionStatus, WalletTransaction},
     storage::WalletStorageError,
 };
-use tari_transaction::TransactionSignature;
+use taiji_transaction::TransactionSignature;
 use tari_utilities::hex::Hex;
 
 use crate::{schema::transactions, serialization::deserialize_json};
@@ -62,7 +62,7 @@ impl Transaction {
         } = deserialize_json(&self.meta)?;
 
         Ok(WalletTransaction {
-            transaction: tari_transaction::Transaction::new(
+            transaction: taiji_transaction::Transaction::new(
                 deserialize_json(&self.fee_instructions)?,
                 deserialize_json(&self.instructions)?,
                 signature,

@@ -1,14 +1,14 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 
 use std::path::PathBuf;
 
-use tari_dan_engine::wasm::compile::compile_template;
-use tari_engine_types::{hashing::template_hasher, TemplateAddress};
-use tari_template_lib::Hash;
-use tari_validator_node_client::types::{TemplateRegistrationRequest, TemplateRegistrationResponse};
+use taiji_dan_engine::wasm::compile::compile_template;
+use taiji_engine_types::{hashing::template_hasher, TemplateAddress};
+use taiji_template_lib::Hash;
+use taiji_validator_node_client::types::{TemplateRegistrationRequest, TemplateRegistrationResponse};
 
-use crate::TariWorld;
+use crate::TaijiWorld;
 
 #[derive(Debug)]
 pub struct RegisteredTemplate {
@@ -17,7 +17,7 @@ pub struct RegisteredTemplate {
 }
 
 pub async fn send_template_registration(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     template_name: String,
     vn_name: String,
 ) -> anyhow::Result<TemplateRegistrationResponse> {

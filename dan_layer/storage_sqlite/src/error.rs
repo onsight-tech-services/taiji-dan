@@ -1,6 +1,6 @@
 use std::error::Error;
 
-//  Copyright 2021. The Tari Project
+//  Copyright 2021. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that
 // the  following conditions are met:
@@ -23,9 +23,9 @@ use std::error::Error;
 // OTHERWISE) ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 // DAMAGE.
 use diesel;
-use tari_common_types::types::FixedHashSizeError;
-use tari_dan_common_types::optional::IsNotFoundError;
-use tari_dan_storage::StorageError;
+use taiji_common_types::types::FixedHashSizeError;
+use taiji_dan_common_types::optional::IsNotFoundError;
+use taiji_dan_storage::StorageError;
 use thiserror::Error;
 
 #[derive(Debug, Error)]

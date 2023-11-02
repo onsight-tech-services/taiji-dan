@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-tari_template_lib = { path = "../../dan_layer/template_lib" }
-tari_transaction = { path = "../../dan_layer/transaction" }
-tari_engine_types = { path = "../../dan_layer/engine_types" }
-tari_template_builtin = { path = "../../dan_layer/template_builtin" }
+taiji_template_lib = { path = "../../dan_layer/template_lib" }
+taiji_transaction = { path = "../../dan_layer/transaction" }
+taiji_engine_types = { path = "../../dan_layer/engine_types" }
+taiji_template_builtin = { path = "../../dan_layer/template_builtin" }
 tari_crypto = "0.18"
 
 anyhow = "1.0.72"

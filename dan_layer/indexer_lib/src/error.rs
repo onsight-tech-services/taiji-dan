@@ -1,8 +1,8 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_engine_types::substate::SubstateAddress;
-use tari_epoch_manager::EpochManagerError;
+use taiji_engine_types::substate::SubstateAddress;
+use taiji_epoch_manager::EpochManagerError;
 
 #[derive(Debug, thiserror::Error)]
 pub enum IndexerError {

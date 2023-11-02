@@ -1,4 +1,4 @@
-//   Copyright 2023. The Tari Project
+//   Copyright 2023. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -27,12 +27,12 @@ use std::{
 
 use anyhow::anyhow;
 use chrono::{DateTime, NaiveDateTime, Utc};
-use tari_comms::{
+use taiji_comms::{
     peer_manager::{IdentitySignature, PeerFeatures, PeerIdentityClaim},
     types::CommsPublicKey,
 };
 use tari_crypto::tari_utilities::ByteArray;
-use tari_dan_p2p::{DanMessage, NetworkAnnounce};
+use taiji_dan_p2p::{DanMessage, NetworkAnnounce};
 
 use crate::proto;
 

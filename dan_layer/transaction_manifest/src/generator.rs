@@ -1,11 +1,11 @@
-//   Copyright 2022 The Tari Project
+//   Copyright 2022 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-clause
 
 use std::collections::{HashMap, HashSet};
 
 use syn::Lit;
-use tari_engine_types::{instruction::Instruction, substate::SubstateAddress, TemplateAddress};
-use tari_template_lib::{
+use taiji_engine_types::{instruction::Instruction, substate::SubstateAddress, TemplateAddress};
+use taiji_template_lib::{
     arg,
     args::Arg,
     models::{Amount, NonFungibleId},

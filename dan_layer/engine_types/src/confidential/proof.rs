@@ -1,8 +1,8 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use lazy_static::lazy_static;
-use tari_common_types::types::CommitmentFactory;
+use taiji_common_types::types::CommitmentFactory;
 use tari_crypto::ristretto::bulletproofs_plus::BulletproofsPlusService;
 
 lazy_static! {
@@ -31,8 +31,8 @@ pub fn get_commitment_factory() -> &'static CommitmentFactory {
 }
 
 pub mod challenges {
-    use tari_common_types::types::{Commitment, PublicKey};
-    use tari_template_lib::{models::Amount, Hash};
+    use taiji_common_types::types::{Commitment, PublicKey};
+    use taiji_template_lib::{models::Amount, Hash};
 
     use crate::hashing::{hasher, EngineHashDomainLabel};
 

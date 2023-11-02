@@ -1,17 +1,17 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::borrow::Borrow;
 
-use tari_common_types::types::PrivateKey;
-use tari_dan_common_types::ShardId;
-use tari_engine_types::{
+use taiji_common_types::types::PrivateKey;
+use taiji_dan_common_types::ShardId;
+use taiji_engine_types::{
     confidential::ConfidentialClaim,
     instruction::Instruction,
     substate::SubstateAddress,
     TemplateAddress,
 };
-use tari_template_lib::{
+use taiji_template_lib::{
     args,
     args::Arg,
     models::{Amount, ComponentAddress, ConfidentialWithdrawProof},

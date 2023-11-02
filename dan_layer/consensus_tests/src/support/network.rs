@@ -1,4 +1,4 @@
-//    Copyright 2023 The Tari Project
+//    Copyright 2023 OnSight Tech Services LLC
 //    SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -8,15 +8,15 @@ use std::{
 
 use futures::{stream::FuturesUnordered, FutureExt, StreamExt};
 use itertools::Itertools;
-use tari_consensus::messages::HotstuffMessage;
-use tari_dan_common_types::{committee::Committee, shard_bucket::ShardBucket};
-use tari_dan_storage::{
+use taiji_consensus::messages::HotstuffMessage;
+use taiji_dan_common_types::{committee::Committee, shard_bucket::ShardBucket};
+use taiji_dan_storage::{
     consensus_models::{ExecutedTransaction, TransactionPool},
     StateStore,
 };
-use tari_shutdown::ShutdownSignal;
-use tari_state_store_sqlite::SqliteStateStore;
-use tari_transaction::{Transaction, TransactionId};
+use taiji_shutdown::ShutdownSignal;
+use taiji_state_store_sqlite::SqliteStateStore;
+use taiji_transaction::{Transaction, TransactionId};
 use tokio::sync::{
     mpsc::{self},
     watch,

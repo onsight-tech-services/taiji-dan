@@ -1,0 +1,43 @@
+//   Copyright 2022 OnSight Tech Services LLC
+//   SPDX-License-Identifier: BSD-3-Clause
+
+use std::{fmt::Display, str::FromStr};
+
+use anyhow::anyhow;
+use serde::{Deserialize, Serialize};
+use taiji_dan_common_types::ShardId;
+use taiji_engine_types::{serde_with, substate::SubstateAddress};
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct VersionedSubstateAddress {
+    #[serde(with = "serde_with::string")]
+    pub address: SubstateAddress,
+    pub version: u32,
+}
+
+impl VersionedSubstateAddress {
+    pub fn to_shard_id(&self) -> ShardId {
+        ShardId::from_address(&self.address, self.version)
+    }
+}
+
+impl FromStr for VersionedSubstateAddress {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let mut parts = s.split(':');
+        let address = parts.next().ok_or_else(|| anyhow!("Invalid substate address"))?;
+        let address = SubstateAddress::from_str(address)?;
+        let version = parts.next().map(|v| v.parse()).transpose()?;
+        Ok(Self {
+            address,
+            version: version.unwrap_or(0),
+        })
+    }
+}
+
+impl Display for VersionedSubstateAddress {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}:{}", self.address, self.version)
+    }
+}

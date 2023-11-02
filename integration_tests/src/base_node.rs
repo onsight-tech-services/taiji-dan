@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -22,20 +22,20 @@
 
 use std::{net::SocketAddr, path::PathBuf, str::FromStr, sync::Arc};
 
-use minotari_node::{run_base_node, BaseNodeConfig, MetricsConfig};
+use minotaiji_node::{run_base_node, BaseNodeConfig, MetricsConfig};
 use rand::rngs::OsRng;
-use tari_base_node_client::grpc::GrpcBaseNodeClient;
+use taiji_base_node_client::grpc::GrpcBaseNodeClient;
 use tari_common::{configuration::CommonConfig, exit_codes::ExitError};
-use tari_comms::{multiaddr::Multiaddr, peer_manager::PeerFeatures, NodeIdentity};
+use taiji_comms::{multiaddr::Multiaddr, peer_manager::PeerFeatures, NodeIdentity};
 use tari_comms_dht::{DbConnectionUrl, DhtConfig};
-use tari_p2p::{auto_update::AutoUpdateConfig, Network, PeerSeedsConfig, TransportType};
-use tari_shutdown::Shutdown;
+use taiji_p2p::{auto_update::AutoUpdateConfig, Network, PeerSeedsConfig, TransportType};
+use taiji_shutdown::Shutdown;
 use tokio::task;
 
 use crate::{
     helpers::{get_os_assigned_ports, wait_listener_on_local_port},
     logging::get_base_dir_for_scenario,
-    TariWorld,
+    TaijiWorld,
 };
 
 #[derive(Debug)]
@@ -55,7 +55,7 @@ impl BaseNodeProcess {
     }
 }
 
-pub async fn spawn_base_node(world: &mut TariWorld, bn_name: String) {
+pub async fn spawn_base_node(world: &mut TaijiWorld, bn_name: String) {
     // each spawned base node will use different ports
     let (port, grpc_port) = get_os_assigned_ports();
     // let (port, grpc_port) = match world.base_nodes.values().last() {
@@ -75,7 +75,7 @@ pub async fn spawn_base_node(world: &mut TariWorld, bn_name: String) {
     let handle = task::spawn({
         let shutdown = shutdown.clone();
         async move {
-            let mut base_node_config = minotari_node::ApplicationConfig {
+            let mut base_node_config = minotaiji_node::ApplicationConfig {
                 common: CommonConfig::default(),
                 auto_update: AutoUpdateConfig::default(),
                 base_node: BaseNodeConfig::default(),

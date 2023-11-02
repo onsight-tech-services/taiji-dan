@@ -1,4 +1,4 @@
-//   Copyright 2022 The Tari Project
+//   Copyright 2022 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -7,7 +7,7 @@ use std::{
 };
 
 use serde::{de::DeserializeOwned, Serialize};
-use tari_common_types::types::PublicKey;
+use taiji_common_types::types::PublicKey;
 use tari_crypto::tari_utilities::ByteArray;
 
 pub trait NodeAddressable: Eq + Hash + Clone + Debug + Send + Sync + Display + Serialize + DeserializeOwned {

@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{collections::HashMap, str::FromStr, sync::MutexGuard};
@@ -7,8 +7,8 @@ use bigdecimal::{BigDecimal, ToPrimitive};
 use diesel::{dsl::sum, sql_query, OptionalExtension, QueryDsl, RunQueryDsl, SqliteConnection};
 use log::error;
 use serde::de::DeserializeOwned;
-use tari_common_types::types::{Commitment, PublicKey};
-use tari_dan_wallet_sdk::{
+use taiji_common_types::types::{Commitment, PublicKey};
+use taiji_dan_wallet_sdk::{
     models::{
         Account,
         ConfidentialOutputModel,
@@ -23,17 +23,17 @@ use tari_dan_wallet_sdk::{
     },
     storage::{WalletStorageError, WalletStoreReader},
 };
-use tari_engine_types::substate::{InvalidSubstateAddressFormat, SubstateAddress};
-use tari_template_lib::{
+use taiji_engine_types::substate::{InvalidSubstateAddressFormat, SubstateAddress};
+use taiji_template_lib::{
     models::{ResourceAddress, VaultId},
     prelude::NonFungibleId,
 };
-use tari_transaction::TransactionId;
+use taiji_transaction::TransactionId;
 use tari_utilities::hex::Hex;
 
 use crate::{diesel::ExpressionMethods, models, serialization::deserialize_json};
 
-const LOG_TARGET: &str = "tari::dan::wallet_sdk::storage_sqlite::reader";
+const LOG_TARGET: &str = "taiji::dan::wallet_sdk::storage_sqlite::reader";
 
 pub struct ReadTransaction<'a> {
     connection: MutexGuard<'a, SqliteConnection>,

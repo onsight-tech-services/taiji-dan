@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 // Clippy complains about mutable key types in the serde::Deserialize implementation. PublicKey is a safe key type as
@@ -8,9 +8,9 @@
 use std::{collections::BTreeMap, iter};
 
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::PublicKey;
-use tari_template_abi::rust::collections::BTreeSet;
-use tari_template_lib::{
+use taiji_common_types::types::PublicKey;
+use taiji_template_abi::rust::collections::BTreeSet;
+use taiji_template_lib::{
     models::{Amount, ConfidentialOutputProof, ConfidentialWithdrawProof, NonFungibleId, ResourceAddress},
     prelude::ResourceType,
 };

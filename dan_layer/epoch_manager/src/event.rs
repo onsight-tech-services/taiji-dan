@@ -1,7 +1,7 @@
-//    Copyright 2023 The Tari Project
+//    Copyright 2023 OnSight Tech Services LLC
 //    SPDX-License-Identifier: BSD-3-Clause
 
-use tari_dan_common_types::{Epoch, ShardId};
+use taiji_dan_common_types::{Epoch, ShardId};
 
 #[derive(Debug, Clone)]
 pub enum EpochManagerEvent {

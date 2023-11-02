@@ -1,10 +1,10 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::any::type_name;
 
 use serde::de::DeserializeOwned;
-use tari_bor::decode_exact;
+use taiji_bor::decode_exact;
 
 use crate::runtime::RuntimeError;
 

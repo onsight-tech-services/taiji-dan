@@ -1,9 +1,9 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
 syntax = "proto3";
 
-package tari.dan.consensus;
+package taiji.dan.consensus;
 
 import "common.proto";
 import "transaction.proto";
@@ -37,7 +37,7 @@ message VoteMessage {
   bytes block_id = 2;
   uint64 block_height = 3;
   QuorumDecision decision = 4;
-  tari.dan.common.SignatureAndPublicKey signature = 5;
+  taiji.dan.common.SignatureAndPublicKey signature = 5;
   bytes merkle_proof = 6;
 }
 
@@ -88,7 +88,7 @@ message QuorumCertificate {
   bytes block_id = 1;
   uint64 block_height = 2;
   uint64 epoch = 3;
-  repeated tari.dan.common.SignatureAndPublicKey signatures = 4;
+  repeated taiji.dan.common.SignatureAndPublicKey signatures = 4;
   bytes merged_proof = 5;
   repeated bytes leaf_hashes = 6;
   QuorumDecision decision = 7;
@@ -104,18 +104,18 @@ message HotStuffTreeNode {
   uint64 epoch = 7;
   bytes proposed_by = 8;
   QuorumCertificate justify = 9;
-  TariDanPayload payload = 10;
+  TaijiDanPayload payload = 10;
   uint64 leader_round = 11;
 }
 
 message ValidatorMetadata {
   bytes public_key = 1;
   bytes vn_shard_key = 2;
-  tari.dan.common.Signature signature = 3;
+  taiji.dan.common.Signature signature = 3;
 }
 
-message TariDanPayload {
-  tari.dan.transaction.Transaction transaction = 1;
+message TaijiDanPayload {
+  taiji.dan.transaction.Transaction transaction = 1;
 }
 
 
@@ -160,7 +160,7 @@ message RequestMissingTransactionsMessage {
 message RequestedTransactionMessage {
   uint64 epoch = 1;
   bytes block_id = 2;
-  repeated tari.dan.transaction.Transaction transactions = 3;
+  repeated taiji.dan.transaction.Transaction transactions = 3;
 }
 
 message Substate {
@@ -178,7 +178,7 @@ message Substate {
 }
 
 message SubstateDestroyed {
-  tari.dan.common.Epoch epoch = 9;
+  taiji.dan.common.Epoch epoch = 9;
   bytes block = 10;
   bytes transaction = 11;
   bytes justify = 12;
@@ -203,6 +203,6 @@ message SyncResponse {
 message FullBlock {
   Block block = 1;
   repeated QuorumCertificate qcs = 2;
-  repeated tari.dan.transaction.Transaction transactions = 3;
+  repeated taiji.dan.transaction.Transaction transactions = 3;
 }
 

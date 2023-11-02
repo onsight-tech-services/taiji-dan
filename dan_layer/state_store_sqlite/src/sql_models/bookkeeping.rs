@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use diesel::Queryable;
-use tari_dan_common_types::{Epoch, NodeAddressable, NodeHeight};
-use tari_dan_storage::{
+use taiji_dan_common_types::{Epoch, NodeAddressable, NodeHeight};
+use taiji_dan_storage::{
     consensus_models::{self, QuorumDecision},
     StorageError,
 };

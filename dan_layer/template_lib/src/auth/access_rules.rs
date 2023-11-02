@@ -1,8 +1,8 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use serde::{Deserialize, Serialize};
-use tari_template_abi::rust::collections::BTreeMap;
+use taiji_template_abi::rust::collections::BTreeMap;
 
 use crate::{auth::NativeFunctionCall, models::NonFungibleAddress};
 

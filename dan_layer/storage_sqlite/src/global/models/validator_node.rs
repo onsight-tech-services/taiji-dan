@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -20,9 +20,9 @@
 //  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-use tari_common_types::types::PublicKey;
-use tari_dan_common_types::{shard_bucket::ShardBucket, Epoch, ShardId};
-use tari_dan_storage::global::models::ValidatorNode;
+use taiji_common_types::types::PublicKey;
+use taiji_dan_common_types::{shard_bucket::ShardBucket, Epoch, ShardId};
+use taiji_dan_storage::global::models::ValidatorNode;
 use tari_utilities::ByteArray;
 
 use crate::{error::SqliteStorageError, global::schema::*};

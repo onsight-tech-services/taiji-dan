@@ -1,8 +1,8 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
 use d3ne::{InputData, Node, OutputData, OutputDataBuilder, Worker};
-use tari_common_types::types::PublicKey;
+use taiji_common_types::types::PublicKey;
 use tari_utilities::hex::Hex;
 
 pub struct SenderWorker {

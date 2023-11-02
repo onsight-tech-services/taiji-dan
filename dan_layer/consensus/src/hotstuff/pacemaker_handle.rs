@@ -1,8 +1,8 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 
-use tari_dan_common_types::NodeHeight;
-use tari_dan_storage::consensus_models::LeafBlock;
+use taiji_dan_common_types::NodeHeight;
+use taiji_dan_storage::consensus_models::LeafBlock;
 use tokio::sync::mpsc;
 
 use crate::hotstuff::{

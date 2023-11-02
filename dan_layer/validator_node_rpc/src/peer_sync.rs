@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -21,14 +21,14 @@
 //   USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 use log::*;
-use tari_comms::{peer_manager::PeerIdentityClaim, types::CommsPublicKey, PeerConnection};
+use taiji_comms::{peer_manager::PeerIdentityClaim, types::CommsPublicKey, PeerConnection};
 use tari_crypto::tari_utilities::ByteArray;
-use tari_dan_p2p::{DanPeer, PeerProvider};
+use taiji_dan_p2p::{DanPeer, PeerProvider};
 use tokio_stream::StreamExt;
 
 use crate::{proto, rpc_service};
 
-const LOG_TARGET: &str = "tari::validator_node::networking::peer_sync";
+const LOG_TARGET: &str = "taiji::validator_node::networking::peer_sync";
 
 pub struct PeerSyncProtocol<TPeerProvider> {
     conn: PeerConnection,

@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -22,12 +22,12 @@
 
 use std::{collections::HashMap, fs};
 
-use tari_engine_types::{instruction::Instruction, substate::SubstateAddress};
-use tari_template_lib::{
+use taiji_engine_types::{instruction::Instruction, substate::SubstateAddress};
+use taiji_template_lib::{
     args,
     models::{Amount, ComponentAddress, ResourceAddress, TemplateAddress},
 };
-use tari_transaction_manifest::parse_manifest;
+use taiji_transaction_manifest::parse_manifest;
 
 #[test]
 #[allow(clippy::too_many_lines)]

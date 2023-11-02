@@ -1,12 +1,12 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use rand::rngs::OsRng;
-use tari_common_types::types::{FixedHash, PrivateKey, PublicKey};
-use tari_consensus::traits::{ValidatorSignatureService, VoteSignatureService};
+use taiji_common_types::types::{FixedHash, PrivateKey, PublicKey};
+use taiji_consensus::traits::{ValidatorSignatureService, VoteSignatureService};
 use tari_crypto::keys::PublicKey as _;
-use tari_dan_common_types::NodeAddressable;
-use tari_dan_storage::consensus_models::{BlockId, QuorumDecision, ValidatorSchnorrSignature, ValidatorSignature};
+use taiji_dan_common_types::NodeAddressable;
+use taiji_dan_storage::consensus_models::{BlockId, QuorumDecision, ValidatorSchnorrSignature, ValidatorSignature};
 
 #[derive(Debug, Clone)]
 pub struct TestVoteSignatureService<TAddr> {

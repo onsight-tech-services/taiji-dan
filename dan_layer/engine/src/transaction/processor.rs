@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -23,23 +23,23 @@
 use std::sync::Arc;
 
 use log::*;
-use tari_bor::encode;
-use tari_dan_common_types::{services::template_provider::TemplateProvider, Epoch};
-use tari_engine_types::{
+use taiji_bor::encode;
+use taiji_dan_common_types::{services::template_provider::TemplateProvider, Epoch};
+use taiji_engine_types::{
     commit_result::{ExecuteResult, FinalizeResult, RejectReason},
     indexed_value::IndexedValue,
     instruction::Instruction,
     instruction_result::InstructionResult,
 };
-use tari_template_abi::Type;
-use tari_template_lib::{
+use taiji_template_abi::Type;
+use taiji_template_lib::{
     arg,
     args::{Arg, WorkspaceAction},
     invoke_args,
     models::ComponentAddress,
     prelude::TemplateAddress,
 };
-use tari_transaction::{id_provider::IdProvider, Transaction};
+use taiji_transaction::{id_provider::IdProvider, Transaction};
 
 use crate::{
     packager::LoadedTemplate,
@@ -61,7 +61,7 @@ use crate::{
     wasm::WasmProcess,
 };
 
-const LOG_TARGET: &str = "tari::dan::engine::instruction_processor";
+const LOG_TARGET: &str = "taiji::dan::engine::instruction_processor";
 pub const MAX_CALL_DEPTH: usize = 10;
 
 pub struct TransactionProcessor<TTemplateProvider> {

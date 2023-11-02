@@ -1,15 +1,15 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::str::FromStr;
 
 use cucumber::{then, when};
-use integration_tests::TariWorld;
-use tari_comms::multiaddr::Multiaddr;
-use tari_indexer_client::types::AddPeerRequest;
+use integration_tests::TaijiWorld;
+use taiji_comms::multiaddr::Multiaddr;
+use taiji_indexer_client::types::AddPeerRequest;
 
 #[when(expr = "indexer {word} connects to all other validators")]
-async fn given_validator_connects_to_other_vns(world: &mut TariWorld, name: String) {
+async fn given_validator_connects_to_other_vns(world: &mut TaijiWorld, name: String) {
     let indexer = world.get_indexer(&name);
     let details = world.all_validators_iter().filter(|vn| vn.name != name).map(|vn| {
         (
@@ -31,7 +31,7 @@ async fn given_validator_connects_to_other_vns(world: &mut TariWorld, name: Stri
 }
 
 #[then(expr = "indexer {word} has scanned to height {int} within {int} seconds")]
-async fn indexer_has_scanned_to_height(world: &mut TariWorld, name: String, block_height: u64, seconds: usize) {
+async fn indexer_has_scanned_to_height(world: &mut TaijiWorld, name: String, block_height: u64, seconds: usize) {
     let indexer = world.get_indexer(&name);
     let mut client = indexer.get_jrpc_indexer_client();
     for _ in 0..seconds {

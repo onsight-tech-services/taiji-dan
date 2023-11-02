@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -30,19 +30,19 @@ use std::{
 };
 
 use log::Level;
-use minotari_app_grpc::{
+use minotaiji_app_grpc::{
     authentication::ClientAuthenticationInterceptor,
-    tari_rpc::{wallet_client::WalletClient, ConnectivityStatus, Empty, GetIdentityRequest, SetBaseNodeRequest},
+    taiji_rpc::{wallet_client::WalletClient, ConnectivityStatus, Empty, GetIdentityRequest, SetBaseNodeRequest},
 };
-use minotari_app_utilities::common_cli_args::CommonCliArgs;
-use minotari_console_wallet::{run_wallet_with_cli, ApplicationConfig};
-use minotari_wallet::WalletConfig;
-use tari_common::{configuration::CommonConfig, exit_codes::ExitError};
-use tari_common_types::grpc_authentication::GrpcAuthentication;
-use tari_comms::multiaddr::Multiaddr;
-use tari_comms_dht::{DbConnectionUrl, DhtConfig};
-use tari_p2p::{auto_update::AutoUpdateConfig, Network, PeerSeedsConfig, TransportType};
-use tari_shutdown::Shutdown;
+use minotaiji_app_utilities::common_cli_args::CommonCliArgs;
+use minotaiji_console_wallet::{run_wallet_with_cli, ApplicationConfig};
+use minotaiji_wallet::WalletConfig;
+use taiji_common::{configuration::CommonConfig, exit_codes::ExitError};
+use taiji_common_types::grpc_authentication::GrpcAuthentication;
+use taiji_comms::multiaddr::Multiaddr;
+use taiji_comms_dht::{DbConnectionUrl, DhtConfig};
+use taiji_p2p::{auto_update::AutoUpdateConfig, Network, PeerSeedsConfig, TransportType};
+use taiji_shutdown::Shutdown;
 use tokio::{runtime, runtime::Runtime};
 use tonic::{
     codegen::InterceptedService,
@@ -53,7 +53,7 @@ type WalletGrpcClient = WalletClient<InterceptedService<Channel, ClientAuthentic
 use crate::{
     helpers::{get_os_assigned_ports, wait_listener_on_local_port_os_thread},
     logging::get_base_dir_for_scenario,
-    TariWorld,
+    TaijiWorld,
 };
 
 #[derive(Debug)]
@@ -97,7 +97,7 @@ impl WalletProcess {
     }
 }
 
-pub async fn spawn_wallet(world: &mut TariWorld, wallet_name: String, base_node_name: String) {
+pub async fn spawn_wallet(world: &mut TaijiWorld, wallet_name: String, base_node_name: String) {
     // each spawned wallet will use different ports
     let (port, grpc_port) = get_os_assigned_ports();
     // let (port, grpc_port) = match world.base_nodes.values().last() {
@@ -127,7 +127,7 @@ pub async fn spawn_wallet(world: &mut TariWorld, wallet_name: String, base_node_
     let handle = thread::spawn({
         let mut shutdown = shutdown.clone();
         move || {
-            let mut wallet_config = minotari_console_wallet::ApplicationConfig {
+            let mut wallet_config = minotaiji_console_wallet::ApplicationConfig {
                 common: CommonConfig::default(),
                 auto_update: AutoUpdateConfig::default(),
                 wallet: WalletConfig::default(),
@@ -224,7 +224,7 @@ pub fn run_wallet(runtime: Runtime, config: &mut ApplicationConfig, shutdown: &m
 
     let log_config = Path::new(env!("CARGO_MANIFEST_DIR")).join("tests/log4rs/wallet.yml");
 
-    let cli = minotari_console_wallet::Cli {
+    let cli = minotaiji_console_wallet::Cli {
         common: CommonCliArgs {
             base_path: data_dir_str,
             config: config_path.into_os_string().into_string().unwrap(),

@@ -1,4 +1,4 @@
-//   Copyright 2022 The Tari Project
+//   Copyright 2022 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-clause
 
 use proc_macro2::{Ident, TokenStream};
@@ -27,9 +27,9 @@ use syn::{
     Stmt,
     UseTree,
 };
-use tari_engine_types::TemplateAddress;
-use tari_template_builtin::ACCOUNT_TEMPLATE_ADDRESS;
-use tari_template_lib::args::LogLevel;
+use taiji_engine_types::TemplateAddress;
+use taiji_template_builtin::ACCOUNT_TEMPLATE_ADDRESS;
+use taiji_template_lib::args::LogLevel;
 
 #[derive(Debug, Clone)]
 pub enum ManifestIntent {

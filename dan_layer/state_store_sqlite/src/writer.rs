@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -9,8 +9,8 @@ use std::{
 
 use diesel::{AsChangeset, ExpressionMethods, OptionalExtension, QueryDsl, RunQueryDsl, SqliteConnection};
 use log::*;
-use tari_dan_common_types::{optional::Optional, Epoch, NodeAddressable, NodeHeight, ShardId};
-use tari_dan_storage::{
+use taiji_dan_common_types::{optional::Optional, Epoch, NodeAddressable, NodeHeight, ShardId};
+use taiji_dan_storage::{
     consensus_models::{
         Block,
         BlockId,
@@ -39,7 +39,7 @@ use tari_dan_storage::{
     StateStoreWriteTransaction,
     StorageError,
 };
-use tari_transaction::{Transaction, TransactionId};
+use taiji_transaction::{Transaction, TransactionId};
 use time::PrimitiveDateTime;
 
 use crate::{
@@ -50,7 +50,7 @@ use crate::{
     sqlite_transaction::SqliteTransaction,
 };
 
-const LOG_TARGET: &str = "tari::dan::storage";
+const LOG_TARGET: &str = "taiji::dan::storage";
 
 pub struct SqliteStateStoreWriteTransaction<'a, TAddr> {
     /// None indicates if the transaction has been explicitly committed/rolled back

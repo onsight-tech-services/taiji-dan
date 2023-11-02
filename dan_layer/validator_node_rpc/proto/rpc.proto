@@ -1,4 +1,4 @@
-// Copyright 2021. The Tari Project
+// Copyright 2021. OnSight Tech Services LLC
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 // following conditions are met:
@@ -21,7 +21,7 @@
 // USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 syntax = "proto3";
 
-package tari.dan.rpc;
+package taiji.dan.rpc;
 
 import "common.proto";
 import "consensus.proto";
@@ -67,7 +67,7 @@ message GetIdentityResponse {
 }
 
 message SubmitTransactionRequest{
-  tari.dan.transaction.Transaction transaction = 1;
+  taiji.dan.transaction.Transaction transaction = 1;
 }
 
 message SubmitTransactionResponse {
@@ -80,13 +80,13 @@ message GetPeersRequest {
 
 message GetPeersResponse {
   bytes identity = 1;
-  repeated tari.dan.network.PeerIdentityClaim claims = 2;
+  repeated taiji.dan.network.PeerIdentityClaim claims = 2;
 }
 
 message VnStateSyncRequest {
-  tari.dan.common.ShardId start_shard_id = 1;
-  tari.dan.common.ShardId end_shard_id = 2;
-  repeated tari.dan.common.ShardId inventory = 3;
+  taiji.dan.common.ShardId start_shard_id = 1;
+  taiji.dan.common.ShardId end_shard_id = 2;
+  repeated taiji.dan.common.ShardId inventory = 3;
 }
 
 message VnStateSyncResponse {
@@ -100,7 +100,7 @@ message VnStateSyncResponse {
   bytes created_transaction = 7;
   bytes created_justify = 8;
 
-  tari.dan.common.Epoch destroyed_epoch = 9;
+  taiji.dan.common.Epoch destroyed_epoch = 9;
   bytes destroyed_block = 10;
   bytes destroyed_transaction = 11;
   bytes destroyed_justify = 12;
@@ -117,7 +117,7 @@ message GetSubstateResponse {
   bytes substate = 3;
   bytes created_transaction_hash = 4;
   SubstateStatus status = 5;
-  repeated tari.dan.consensus.QuorumCertificate quorum_certificates = 6;
+  repeated taiji.dan.consensus.QuorumCertificate quorum_certificates = 6;
   bytes destroyed_transaction_hash = 7;
 }
 
@@ -134,7 +134,7 @@ message GetTransactionResultRequest {
 message GetTransactionResultResponse {
   PayloadResultStatus status = 1;
   bytes execution_result = 2;
-  tari.dan.consensus.Decision final_decision = 3;
+  taiji.dan.consensus.Decision final_decision = 3;
   string abort_details = 4;
 }
 
@@ -150,7 +150,7 @@ message GetVirtualSubstateRequest {
 message GetVirtualSubstateResponse {
   // Encoded Substate
   bytes substate = 1;
-  repeated tari.dan.consensus.QuorumCertificate quorum_certificates = 2;
+  repeated taiji.dan.consensus.QuorumCertificate quorum_certificates = 2;
 }
 
 message SyncStateRequest {
@@ -164,7 +164,7 @@ message SyncStateResponse {
 
 message SubstateCreatedProof {
   SubstateData substate = 1;
-  tari.dan.consensus.QuorumCertificate created_justify = 2;
+  taiji.dan.consensus.QuorumCertificate created_justify = 2;
 }
 
 // Minimal substate data
@@ -177,7 +177,7 @@ message SubstateData {
 
 message SubstateDestroyedProof {
   bytes shard_id = 1;
-  tari.dan.consensus.QuorumCertificate destroyed_justify = 2;
+  taiji.dan.consensus.QuorumCertificate destroyed_justify = 2;
   bytes destroyed_by_transaction = 3;
 }
 
@@ -194,7 +194,7 @@ message SyncBlocksRequest {
 
 message SyncBlocksResponse {
   oneof sync_data {
-    tari.dan.consensus.Block block = 1;
+    taiji.dan.consensus.Block block = 1;
     QuorumCertificates quorum_certificates = 2;
     uint32 substate_count = 3;
     SubstateUpdate substate_update = 4;
@@ -203,16 +203,16 @@ message SyncBlocksResponse {
 }
 
 message QuorumCertificates {
-  repeated tari.dan.consensus.QuorumCertificate quorum_certificates = 1;
+  repeated taiji.dan.consensus.QuorumCertificate quorum_certificates = 1;
 }
 
 message Transactions {
-  repeated tari.dan.transaction.Transaction transactions = 1;
+  repeated taiji.dan.transaction.Transaction transactions = 1;
 }
 
 message GetHighQcRequest { }
 
 message GetHighQcResponse {
-  tari.dan.consensus.QuorumCertificate high_qc = 1;
+  taiji.dan.consensus.QuorumCertificate high_qc = 1;
 }
 

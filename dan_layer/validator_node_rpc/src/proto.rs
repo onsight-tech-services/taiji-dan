@@ -1,4 +1,4 @@
-//  Copyright 2023, The Tari Project
+//  Copyright 2023, OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -21,22 +21,22 @@
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 pub mod transaction {
-    include!(concat!(env!("OUT_DIR"), "/tari.dan.transaction.rs"));
+    include!(concat!(env!("OUT_DIR"), "/taiji.dan.transaction.rs"));
 }
 
 pub mod consensus {
-    include!(concat!(env!("OUT_DIR"), "/tari.dan.consensus.rs"));
+    include!(concat!(env!("OUT_DIR"), "/taiji.dan.consensus.rs"));
 }
 
 pub mod network {
     #![allow(clippy::large_enum_variant)]
-    include!(concat!(env!("OUT_DIR"), "/tari.dan.network.rs"));
+    include!(concat!(env!("OUT_DIR"), "/taiji.dan.network.rs"));
 }
 
 pub mod rpc {
-    include!(concat!(env!("OUT_DIR"), "/tari.dan.rpc.rs"));
+    include!(concat!(env!("OUT_DIR"), "/taiji.dan.rpc.rs"));
 }
 
 pub mod common {
-    include!(concat!(env!("OUT_DIR"), "/tari.dan.common.rs"));
+    include!(concat!(env!("OUT_DIR"), "/taiji.dan.common.rs"));
 }

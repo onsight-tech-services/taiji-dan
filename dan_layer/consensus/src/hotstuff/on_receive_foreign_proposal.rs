@@ -1,14 +1,14 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 use std::ops::DerefMut;
 
 use log::*;
-use tari_dan_common_types::{committee::CommitteeShard, optional::Optional, NodeHeight};
-use tari_dan_storage::{
+use taiji_dan_common_types::{committee::CommitteeShard, optional::Optional, NodeHeight};
+use taiji_dan_storage::{
     consensus_models::{Block, LeafBlock, TransactionPool, TransactionPoolStage},
     StateStore,
 };
-use tari_epoch_manager::EpochManagerReader;
+use taiji_epoch_manager::EpochManagerReader;
 
 use crate::{
     hotstuff::{error::HotStuffError, pacemaker_handle::PaceMakerHandle, ProposalValidationError},
@@ -16,7 +16,7 @@ use crate::{
     traits::ConsensusSpec,
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::on_receive_foreign_proposal";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::on_receive_foreign_proposal";
 
 pub struct OnReceiveForeignProposalHandler<TConsensusSpec: ConsensusSpec> {
     store: TConsensusSpec::StateStore,

@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "membership",
+    "tests"
+]
+
+exclude = [
+    "package"
+]

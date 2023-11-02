@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::ops::DerefMut;
@@ -6,10 +6,10 @@ use std::ops::DerefMut;
 use async_trait::async_trait;
 use futures::StreamExt;
 use log::*;
-use tari_comms::{protocol::rpc::RpcError, types::CommsPublicKey};
-use tari_consensus::traits::{SyncManager, SyncStatus};
-use tari_dan_common_types::{committee::Committee, optional::Optional, NodeHeight};
-use tari_dan_storage::{
+use taiji_comms::{protocol::rpc::RpcError, types::CommsPublicKey};
+use taiji_consensus::traits::{SyncManager, SyncStatus};
+use taiji_dan_common_types::{committee::Committee, optional::Optional, NodeHeight};
+use taiji_dan_storage::{
     consensus_models::{
         Block,
         HighQc,
@@ -23,24 +23,24 @@ use tari_dan_storage::{
     StateStore,
     StateStoreWriteTransaction,
 };
-use tari_epoch_manager::EpochManagerReader;
-use tari_transaction::Transaction;
-use tari_validator_node_rpc::{
-    client::{TariCommsValidatorNodeClientFactory, ValidatorNodeClientFactory},
+use taiji_epoch_manager::EpochManagerReader;
+use taiji_transaction::Transaction;
+use taiji_validator_node_rpc::{
+    client::{TaijiCommsValidatorNodeClientFactory, ValidatorNodeClientFactory},
     proto::rpc::{GetHighQcRequest, SyncBlocksRequest},
     rpc_service::ValidatorNodeRpcClient,
 };
 
 use crate::error::CommsRpcConsensusSyncError;
 
-const LOG_TARGET: &str = "tari::dan::comms_rpc_state_sync";
+const LOG_TARGET: &str = "taiji::dan::comms_rpc_state_sync";
 
 const MAX_SUBSTATE_UPDATES: usize = 10000;
 
 pub struct CommsRpcStateSyncManager<TEpochManager, TStateStore> {
     epoch_manager: TEpochManager,
     state_store: TStateStore,
-    client_factory: TariCommsValidatorNodeClientFactory,
+    client_factory: TaijiCommsValidatorNodeClientFactory,
 }
 
 impl<TEpochManager, TStateStore> CommsRpcStateSyncManager<TEpochManager, TStateStore>
@@ -51,7 +51,7 @@ where
     pub fn new(
         epoch_manager: TEpochManager,
         state_store: TStateStore,
-        client_factory: TariCommsValidatorNodeClientFactory,
+        client_factory: TaijiCommsValidatorNodeClientFactory,
     ) -> Self {
         Self {
             epoch_manager,

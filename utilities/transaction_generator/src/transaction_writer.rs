@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{io::Write, sync::mpsc, thread};
@@ -7,14 +7,14 @@ use bytes::{BufMut, Bytes, BytesMut};
 use rand::rngs::OsRng;
 use rayon::iter::{ParallelBridge, ParallelIterator};
 use tari_crypto::{keys::PublicKey, ristretto::RistrettoPublicKey, tari_utilities::ByteArray};
-use tari_engine_types::{component::new_component_address_from_parts, instruction::Instruction};
-use tari_template_builtin::ACCOUNT_TEMPLATE_ADDRESS;
-use tari_template_lib::{
+use taiji_engine_types::{component::new_component_address_from_parts, instruction::Instruction};
+use taiji_template_builtin::ACCOUNT_TEMPLATE_ADDRESS;
+use taiji_template_lib::{
     args,
     crypto::RistrettoPublicKeyBytes,
     models::{Amount, NonFungibleAddress},
 };
-use tari_transaction::Transaction;
+use taiji_transaction::Transaction;
 
 pub fn write_transactions<W: Write>(
     num_transactions: u64,

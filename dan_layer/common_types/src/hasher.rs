@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 use std::{io, io::Write};
 
@@ -7,20 +7,20 @@ use blake2::{
     Blake2b,
 };
 use serde::Serialize;
-use tari_bor::encode_into;
-use tari_common_types::types::FixedHash;
+use taiji_bor::encode_into;
+use taiji_common_types::types::FixedHash;
 use tari_crypto::hashing::DomainSeparation;
 
-pub fn tari_hasher<D: DomainSeparation>(label: &'static str) -> TariHasher {
-    TariHasher::new_with_label::<D>(label)
+pub fn taiji_hasher<D: DomainSeparation>(label: &'static str) -> TaijiHasher {
+    TaijiHasher::new_with_label::<D>(label)
 }
 
 #[derive(Debug, Clone)]
-pub struct TariHasher {
+pub struct TaijiHasher {
     hasher: Blake2b<U32>,
 }
 
-impl TariHasher {
+impl TaijiHasher {
     pub fn new_with_label<D: DomainSeparation>(label: &'static str) -> Self {
         let mut hasher = Blake2b::<U32>::new();
         D::add_domain_separation_tag(&mut hasher, label);

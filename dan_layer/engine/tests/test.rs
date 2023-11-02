@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -21,25 +21,25 @@
 //   USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 use std::iter;
 
-use tari_dan_engine::{
+use taiji_dan_engine::{
     packager::{PackageError, TemplateModuleLoader},
     wasm::{compile::compile_template, WasmExecutionError},
 };
-use tari_engine_types::{
+use taiji_engine_types::{
     commit_result::{FinalizeResult, RejectReason},
     instruction::Instruction,
     substate::SubstateAddress,
     virtual_substate::{VirtualSubstate, VirtualSubstateAddress},
 };
-use tari_template_lib::{
+use taiji_template_lib::{
     args,
     crypto::RistrettoPublicKeyBytes,
     models::{Amount, ComponentAddress, NonFungibleAddress},
     prelude::{NonFungibleId, ResourceAddress},
 };
-use tari_template_test_tooling::{SubstateType, TemplateTest};
-use tari_transaction::Transaction;
-use tari_transaction_manifest::ManifestValue;
+use taiji_template_test_tooling::{SubstateType, TemplateTest};
+use taiji_transaction::Transaction;
+use taiji_transaction_manifest::ManifestValue;
 use tari_utilities::hex::to_hex;
 
 #[test]

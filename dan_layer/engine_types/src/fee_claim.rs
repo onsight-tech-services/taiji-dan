@@ -1,12 +1,12 @@
-//    Copyright 2023 The Tari Project
+//    Copyright 2023 OnSight Tech Services LLC
 //    SPDX-License-Identifier: BSD-3-Clause
 
 use std::{fmt, fmt::Display};
 
 use serde::{Deserialize, Serialize};
-use tari_bor::BorTag;
-use tari_common_types::types::PublicKey;
-use tari_template_lib::{models::BinaryTag, prelude::Amount, Hash};
+use taiji_bor::BorTag;
+use taiji_common_types::types::PublicKey;
+use taiji_template_lib::{models::BinaryTag, prelude::Amount, Hash};
 
 use crate::hashing::{hasher, EngineHashDomainLabel};
 

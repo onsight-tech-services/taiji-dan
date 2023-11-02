@@ -1,7 +1,7 @@
 #!/bin/bash
 # Must be run from the repo root
 
-rg -i "Copyright.*The Tari Project" --files-without-match \
+rg -i "Copyright.*OnSight Tech Services LLC" --files-without-match \
     -g '!*.{Dockerfile,asc,bat,config,config.js,css,csv,drawio,env,gitkeep,hbs,html,ini,iss,json,lock,md,min.js,ps1,py,rc,scss,sh,sql,svg,toml,txt,yml,vue}' . \
     | sort > /tmp/rgtemp
 

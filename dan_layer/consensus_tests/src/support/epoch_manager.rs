@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -8,15 +8,15 @@ use std::{
 };
 
 use async_trait::async_trait;
-use tari_dan_common_types::{
+use taiji_dan_common_types::{
     committee::{Committee, CommitteeShard},
     hashing::{ValidatorNodeBalancedMerkleTree, ValidatorNodeMerkleProof},
     shard_bucket::ShardBucket,
     Epoch,
     ShardId,
 };
-use tari_dan_storage::global::models::ValidatorNode;
-use tari_epoch_manager::{EpochManagerError, EpochManagerEvent, EpochManagerReader};
+use taiji_dan_storage::global::models::ValidatorNode;
+use taiji_epoch_manager::{EpochManagerError, EpochManagerEvent, EpochManagerReader};
 use tokio::sync::{broadcast, Mutex, MutexGuard};
 
 use crate::support::{address::TestAddress, helpers::random_shard_in_bucket};

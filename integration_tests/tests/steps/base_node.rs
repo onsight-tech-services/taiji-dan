@@ -1,13 +1,13 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 
 use cucumber::then;
 
-use crate::TariWorld;
+use crate::TaijiWorld;
 
 #[then(expr = "there is {int} transaction in the mempool of {word} within {int} seconds")]
 async fn then_there_is_transaction_in_the_mempool_of(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     num_tx: usize,
     node: String,
     seconds: usize,

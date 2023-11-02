@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -25,28 +25,28 @@ use std::{io, io::Write};
 use blake2::{digest::consts::U32, Blake2b};
 use digest::Digest;
 use serde::Serialize;
-use tari_bor::encode_into;
+use taiji_bor::encode_into;
 use tari_crypto::{hash_domain, hashing::DomainSeparation};
-use tari_template_lib::Hash;
+use taiji_template_lib::Hash;
 
-hash_domain!(TariEngineHashDomain, "com.tari.dan.engine", 0);
+hash_domain!(TaijiEngineHashDomain, "com.taiji.dan.engine", 0);
 
-pub fn hasher(label: EngineHashDomainLabel) -> TariHasher {
-    TariHasher::new_with_label::<TariEngineHashDomain>(label.as_label())
+pub fn hasher(label: EngineHashDomainLabel) -> TaijiHasher {
+    TaijiHasher::new_with_label::<TaijiEngineHashDomain>(label.as_label())
 }
 
-pub fn template_hasher() -> TariHasher {
+pub fn template_hasher() -> TaijiHasher {
     hasher(EngineHashDomainLabel::Template)
 }
 
-hash_domain!(ConfidentialOutputHashDomain, "com.tari.dan.confidential_output", 1);
+hash_domain!(ConfidentialOutputHashDomain, "com.taiji.dan.confidential_output", 1);
 
 #[derive(Debug, Clone)]
-pub struct TariHasher {
+pub struct TaijiHasher {
     hasher: Blake2b<U32>,
 }
 
-impl TariHasher {
+impl TaijiHasher {
     pub fn new_with_label<TDomain: DomainSeparation>(label: &'static str) -> Self {
         let mut hasher = Blake2b::<U32>::new();
         TDomain::add_domain_separation_tag(&mut hasher, label);

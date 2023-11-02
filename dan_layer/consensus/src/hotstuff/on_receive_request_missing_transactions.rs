@@ -1,8 +1,8 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use log::*;
-use tari_dan_storage::{consensus_models::TransactionRecord, StateStore};
+use taiji_dan_storage::{consensus_models::TransactionRecord, StateStore};
 use tokio::sync::mpsc;
 
 use crate::{
@@ -11,7 +11,7 @@ use crate::{
     traits::ConsensusSpec,
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::on_receive_request_missing_transactions";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::on_receive_request_missing_transactions";
 
 pub struct OnReceiveRequestMissingTransactions<TConsensusSpec: ConsensusSpec> {
     store: TConsensusSpec::StateStore,

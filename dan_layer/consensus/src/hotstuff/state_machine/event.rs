@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{fmt, fmt::Display};
 
-use tari_dan_common_types::Epoch;
+use taiji_dan_common_types::Epoch;
 
 use crate::hotstuff::HotStuffError;
 

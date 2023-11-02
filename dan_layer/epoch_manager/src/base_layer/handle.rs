@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -7,18 +7,18 @@ use std::{
 };
 
 use async_trait::async_trait;
-use tari_base_node_client::types::BaseLayerConsensusConstants;
-use tari_common_types::types::{FixedHash, PublicKey};
-use tari_comms::types::CommsPublicKey;
-use tari_core::transactions::transaction_components::ValidatorNodeRegistration;
-use tari_dan_common_types::{
+use taiji_base_node_client::types::BaseLayerConsensusConstants;
+use taiji_common_types::types::{FixedHash, PublicKey};
+use taiji_comms::types::CommsPublicKey;
+use taiji_core::transactions::transaction_components::ValidatorNodeRegistration;
+use taiji_dan_common_types::{
     committee::{Committee, CommitteeShard},
     hashing::ValidatorNodeMerkleProof,
     shard_bucket::ShardBucket,
     Epoch,
     ShardId,
 };
-use tari_dan_storage::global::models::ValidatorNode;
+use taiji_dan_storage::global::models::ValidatorNode;
 use tokio::sync::{broadcast, mpsc, oneshot};
 
 use crate::{

@@ -1,17 +1,17 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::ops::DerefMut;
 
 use log::*;
-use tari_common_types::types::FixedHash;
-use tari_dan_common_types::{committee::CommitteeShard, hashing::MergedValidatorNodeMerkleProof, optional::Optional};
-use tari_dan_storage::{
+use taiji_common_types::types::FixedHash;
+use taiji_dan_common_types::{committee::CommitteeShard, hashing::MergedValidatorNodeMerkleProof, optional::Optional};
+use taiji_dan_storage::{
     consensus_models::{Block, HighQc, QuorumCertificate, QuorumDecision, Vote},
     StateStore,
     StateStoreWriteTransaction,
 };
-use tari_epoch_manager::EpochManagerReader;
+use taiji_epoch_manager::EpochManagerReader;
 
 use crate::{
     hotstuff::{error::HotStuffError, pacemaker_handle::PaceMakerHandle},
@@ -19,7 +19,7 @@ use crate::{
     traits::{ConsensusSpec, LeaderStrategy, VoteSignatureService},
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::on_receive_vote";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::on_receive_vote";
 
 #[derive(Clone)]
 pub struct VoteReceiver<TConsensusSpec: ConsensusSpec> {

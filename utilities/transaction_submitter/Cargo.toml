@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 transaction_generator = { path = "../transaction_generator" }
-tari_validator_node_client = { path = "../../clients/validator_node_client" }
+taiji_validator_node_client = { path = "../../clients/validator_node_client" }
 
 anyhow = "1.0.72"
 clap = "4.3.21"

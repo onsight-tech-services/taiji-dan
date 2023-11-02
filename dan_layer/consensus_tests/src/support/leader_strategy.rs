@@ -1,8 +1,8 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_consensus::traits::LeaderStrategy;
-use tari_dan_common_types::{committee::Committee, NodeAddressable, NodeHeight};
+use taiji_consensus::traits::LeaderStrategy;
+use taiji_dan_common_types::{committee::Committee, NodeAddressable, NodeHeight};
 
 #[derive(Debug, Clone, Copy, Default)]
 pub struct RoundRobinLeaderStrategy;

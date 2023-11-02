@@ -1,7 +1,7 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 
-use tari_engine_types::TemplateAddress;
+use taiji_engine_types::TemplateAddress;
 
 pub trait TemplateProvider: Send + Sync + Clone + 'static {
     type Template;

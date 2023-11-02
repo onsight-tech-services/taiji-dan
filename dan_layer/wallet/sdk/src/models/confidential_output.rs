@@ -1,11 +1,11 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::str::FromStr;
 
-use tari_common_types::types::{Commitment, PrivateKey, PublicKey};
-use tari_engine_types::substate::SubstateAddress;
-use tari_template_lib::models::EncryptedData;
+use taiji_common_types::types::{Commitment, PrivateKey, PublicKey};
+use taiji_engine_types::substate::SubstateAddress;
+use taiji_template_lib::models::EncryptedData;
 
 use crate::models::ConfidentialProofId;
 

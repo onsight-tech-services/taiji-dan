@@ -1,4 +1,4 @@
-//   Copyright 2022 The Tari Project
+//   Copyright 2022 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use blake2::{
@@ -6,7 +6,7 @@ use blake2::{
     Blake2b,
 };
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::{FixedHash, PublicKey, Signature};
+use taiji_common_types::types::{FixedHash, PublicKey, Signature};
 
 use crate::{NodeAddressable, ShardId};
 

@@ -1,10 +1,10 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::collections::HashMap;
 
-use tari_dan_common_types::services::template_provider::TemplateProvider;
-use tari_engine_types::substate::{SubstateAddress, SubstateValue};
+use taiji_dan_common_types::services::template_provider::TemplateProvider;
+use taiji_engine_types::substate::{SubstateAddress, SubstateValue};
 
 use crate::{packager::LoadedTemplate, runtime::StateTracker};
 
@@ -33,5 +33,5 @@ pub trait RuntimeModule<TTemplateProvider: TemplateProvider<Template = LoadedTem
 #[derive(Debug, thiserror::Error)]
 pub enum RuntimeModuleError {
     #[error("BOR error: {0}")]
-    Bor(#[from] tari_bor::BorError),
+    Bor(#[from] taiji_bor::BorError),
 }

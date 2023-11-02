@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -23,10 +23,10 @@
 use std::{ops::Deref, path::Path, sync::Arc};
 
 use lmdb_zero::{db, put, ConstTransaction, LmdbResultExt, ReadTransaction, WriteTransaction};
-use tari_bor::encode;
-use tari_dan_common_types::optional::Optional;
-use tari_dan_engine::state_store::{AtomicDb, StateReader, StateStoreError, StateWriter};
-use tari_storage::lmdb_store::{DatabaseRef, LMDBBuilder};
+use taiji_bor::encode;
+use taiji_dan_common_types::optional::Optional;
+use taiji_dan_engine::state_store::{AtomicDb, StateReader, StateStoreError, StateWriter};
+use taiji_storage::lmdb_store::{DatabaseRef, LMDBBuilder};
 
 pub struct LmdbTransaction<T> {
     db: DatabaseRef,

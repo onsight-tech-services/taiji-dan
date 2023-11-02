@@ -1,10 +1,10 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 
 use std::{fmt, net::SocketAddr};
 
 use httpmock::MockServer;
-use tari_shutdown::ShutdownSignal;
+use taiji_shutdown::ShutdownSignal;
 use tokio::task;
 
 use crate::helpers::get_os_assigned_port;

@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -24,21 +24,21 @@ use std::ops::RangeInclusive;
 
 use multiaddr::Multiaddr;
 use serde::{Deserialize, Serialize};
-use tari_common_types::{transaction::TxId, types::PublicKey};
-use tari_dan_common_types::{committee::CommitteeShard, shard_bucket::ShardBucket, Epoch, ShardId};
-use tari_dan_storage::{
+use taiji_common_types::{transaction::TxId, types::PublicKey};
+use taiji_dan_common_types::{committee::CommitteeShard, shard_bucket::ShardBucket, Epoch, ShardId};
+use taiji_dan_storage::{
     consensus_models::{Block, BlockId, ExecutedTransaction, QuorumDecision, SubstateRecord},
     global::models::ValidatorNode,
     Ordering,
 };
-use tari_engine_types::{
+use taiji_engine_types::{
     commit_result::{ExecuteResult, FinalizeResult, RejectReason},
     fees::FeeCostBreakdown,
     serde_with,
     substate::{SubstateAddress, SubstateValue},
     TemplateAddress,
 };
-use tari_transaction::{Transaction, TransactionId};
+use taiji_transaction::{Transaction, TransactionId};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GetIdentityResponse {

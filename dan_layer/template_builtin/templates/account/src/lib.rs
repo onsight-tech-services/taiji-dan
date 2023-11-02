@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2023. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -20,8 +20,8 @@
 //   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 //   USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-use tari_template_abi::rust::collections::BTreeMap;
-use tari_template_lib::prelude::*;
+use taiji_template_abi::rust::collections::BTreeMap;
+use taiji_template_lib::prelude::*;
 
 #[template]
 mod account_template {
@@ -182,13 +182,13 @@ mod account_template {
         /// Pay fees from previously revealed confidential resource.
         pub fn pay_fee(&mut self, amount: Amount) {
             emit_event("pay_fee", [("amount", amount.to_string())]);
-            self.get_vault_mut(CONFIDENTIAL_TARI_RESOURCE_ADDRESS).pay_fee(amount);
+            self.get_vault_mut(CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS).pay_fee(amount);
         }
 
         /// Reveal confidential tokens and return the revealed bucket to pay fees.
         pub fn pay_fee_confidential(&mut self, proof: ConfidentialWithdrawProof) {
             emit_event("pay_fee_confidential", [("num_inputs", proof.inputs.len().to_string())]);
-            self.get_vault_mut(CONFIDENTIAL_TARI_RESOURCE_ADDRESS)
+            self.get_vault_mut(CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS)
                 .pay_fee_confidential(proof);
         }
     }

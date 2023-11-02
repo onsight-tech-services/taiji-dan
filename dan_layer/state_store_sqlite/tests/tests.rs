@@ -1,16 +1,16 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use rand::{rngs::OsRng, RngCore};
-use tari_dan_common_types::{Epoch, NodeHeight};
-use tari_dan_storage::{
+use taiji_dan_common_types::{Epoch, NodeHeight};
+use taiji_dan_storage::{
     consensus_models::{Block, Command, Decision, TransactionAtom, TransactionPoolStage, TransactionPoolStatusUpdate},
     StateStore,
     StateStoreReadTransaction,
     StateStoreWriteTransaction,
 };
-use tari_state_store_sqlite::SqliteStateStore;
-use tari_transaction::TransactionId;
+use taiji_state_store_sqlite::SqliteStateStore;
+use taiji_transaction::TransactionId;
 
 fn create_db() -> SqliteStateStore<String> {
     SqliteStateStore::connect(":memory:").unwrap()

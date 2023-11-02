@@ -1,21 +1,21 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::ops::{Deref, DerefMut};
 
-use tari_common_types::types::{Commitment, PublicKey};
-use tari_dan_common_types::optional::IsNotFoundError;
-use tari_dan_storage::consensus_models::QuorumCertificate;
-use tari_engine_types::{
+use taiji_common_types::types::{Commitment, PublicKey};
+use taiji_dan_common_types::optional::IsNotFoundError;
+use taiji_dan_storage::consensus_models::QuorumCertificate;
+use taiji_engine_types::{
     commit_result::{FinalizeResult, RejectReason},
     substate::SubstateAddress,
     TemplateAddress,
 };
-use tari_template_lib::{
+use taiji_template_lib::{
     models::Amount,
     prelude::{NonFungibleId, ResourceAddress},
 };
-use tari_transaction::{Transaction, TransactionId};
+use taiji_transaction::{Transaction, TransactionId};
 
 use crate::models::{
     Account,

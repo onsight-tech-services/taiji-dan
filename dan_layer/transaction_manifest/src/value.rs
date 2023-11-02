@@ -1,11 +1,11 @@
-//   Copyright 2022 The Tari Project
+//   Copyright 2022 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-clause
 
 use std::str::FromStr;
 
 use syn::{parse2, Lit};
-use tari_engine_types::substate::SubstateAddress;
-use tari_template_lib::models::NonFungibleId;
+use taiji_engine_types::substate::SubstateAddress;
+use taiji_template_lib::models::NonFungibleId;
 
 #[derive(Debug, Clone)]
 pub enum ManifestValue {
@@ -63,7 +63,7 @@ pub struct ManifestParseError(String);
 
 #[cfg(test)]
 mod tests {
-    use tari_template_lib::models::{ComponentAddress, ResourceAddress, VaultId};
+    use taiji_template_lib::models::{ComponentAddress, ResourceAddress, VaultId};
 
     use super::*;
 

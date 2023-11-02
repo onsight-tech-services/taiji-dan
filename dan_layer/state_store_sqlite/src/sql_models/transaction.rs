@@ -1,10 +1,10 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{str::FromStr, time::Duration};
 
 use diesel::Queryable;
-use tari_dan_storage::{consensus_models, consensus_models::Decision, StorageError};
+use taiji_dan_storage::{consensus_models, consensus_models::Decision, StorageError};
 use time::PrimitiveDateTime;
 
 use crate::serialization::deserialize_json;
@@ -28,7 +28,7 @@ pub struct Transaction {
     pub created_at: PrimitiveDateTime,
 }
 
-impl TryFrom<Transaction> for tari_transaction::Transaction {
+impl TryFrom<Transaction> for taiji_transaction::Transaction {
     type Error = StorageError;
 
     fn try_from(value: Transaction) -> Result<Self, Self::Error> {

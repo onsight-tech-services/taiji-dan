@@ -1,6 +1,6 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
-use tari_template_abi::{call_engine, EngineOp};
+use taiji_template_abi::{call_engine, EngineOp};
 
 use crate::{
     args::{CallerContextAction, CallerContextInvokeArg, InvokeResult},

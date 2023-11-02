@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -23,7 +23,7 @@
 use std::collections::BTreeSet;
 
 use serde::{Deserialize, Serialize};
-use tari_template_abi::rust::{
+use taiji_template_abi::rust::{
     collections::HashMap,
     fmt::{Display, Formatter},
     str::FromStr,

@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::FixedHash;
-use tari_dan_common_types::{shard_bucket::ShardBucket, vn_node_hash, Epoch, NodeAddressable, ShardId};
+use taiji_common_types::types::FixedHash;
+use taiji_dan_common_types::{shard_bucket::ShardBucket, vn_node_hash, Epoch, NodeAddressable, ShardId};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ValidatorNode<TAddr> {

@@ -1,11 +1,11 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::str::FromStr;
 
-use tari_dan_wallet_sdk::storage::{WalletStore, WalletStoreReader, WalletStoreWriter};
-use tari_dan_wallet_storage_sqlite::SqliteWalletStore;
-use tari_engine_types::substate::SubstateAddress;
+use taiji_dan_wallet_sdk::storage::{WalletStore, WalletStoreReader, WalletStoreWriter};
+use taiji_dan_wallet_storage_sqlite::SqliteWalletStore;
+use taiji_engine_types::substate::SubstateAddress;
 
 #[test]
 fn update_account() {

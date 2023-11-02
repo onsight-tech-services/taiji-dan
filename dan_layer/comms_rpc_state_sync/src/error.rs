@@ -1,14 +1,14 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_comms::protocol::rpc::RpcError;
-use tari_consensus::hotstuff::HotStuffError;
-use tari_dan_storage::{
+use taiji_comms::protocol::rpc::RpcError;
+use taiji_consensus::hotstuff::HotStuffError;
+use taiji_dan_storage::{
     consensus_models::{BlockId, TransactionPoolError},
     StorageError,
 };
-use tari_epoch_manager::EpochManagerError;
-use tari_validator_node_rpc::ValidatorNodeRpcClientError;
+use taiji_epoch_manager::EpochManagerError;
+use taiji_validator_node_rpc::ValidatorNodeRpcClientError;
 
 #[derive(Debug, thiserror::Error)]
 pub enum CommsRpcConsensusSyncError {

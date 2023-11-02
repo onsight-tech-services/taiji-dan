@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -29,18 +29,18 @@ use tari_crypto::{
     signatures::CommitmentSignature,
     tari_utilities::ByteArray,
 };
-use tari_dan_common_types::Epoch;
-use tari_engine_types::instruction::Instruction;
-use tari_template_lib::{
+use taiji_dan_common_types::Epoch;
+use taiji_engine_types::instruction::Instruction;
+use taiji_template_lib::{
     args,
-    constants::CONFIDENTIAL_TARI_RESOURCE_ADDRESS,
+    constants::CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS,
     models::Amount,
     prelude::{NonFungibleId, ResourceAddress},
 };
-use tari_transaction::SubstateRequirement;
-use tari_transaction_manifest::{parse_manifest, ManifestValue};
-use tari_validator_node_cli::command::transaction::CliArg;
-use tari_wallet_daemon_client::{
+use taiji_transaction::SubstateRequirement;
+use taiji_transaction_manifest::{parse_manifest, ManifestValue};
+use taiji_validator_node_cli::command::transaction::CliArg;
+use taiji_wallet_daemon_client::{
     error::WalletDaemonClientError,
     types::{
         AccountGetResponse,
@@ -65,10 +65,10 @@ use tari_wallet_daemon_client::{
 };
 use tokio::time::timeout;
 
-use crate::{validator_node_cli::add_substate_addresses, TariWorld};
+use crate::{validator_node_cli::add_substate_addresses, TaijiWorld};
 
 pub async fn claim_burn(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     commitment: Vec<u8>,
     range_proof: Vec<u8>,
@@ -97,7 +97,7 @@ pub async fn claim_burn(
 }
 
 pub async fn claim_fees(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     wallet_daemon_name: String,
     account_name: String,
     validator_name: String,
@@ -117,7 +117,7 @@ pub async fn claim_fees(
     client.claim_validator_fees(request).await
 }
 
-pub async fn reveal_burned_funds(world: &mut TariWorld, account_name: String, amount: u64, wallet_daemon_name: String) {
+pub async fn reveal_burned_funds(world: &mut TaijiWorld, account_name: String, amount: u64, wallet_daemon_name: String) {
     let mut client = get_auth_wallet_daemon_client(world, &wallet_daemon_name).await;
 
     let request = RevealFundsRequest {
@@ -142,13 +142,13 @@ pub async fn reveal_burned_funds(world: &mut TariWorld, account_name: String, am
 
 #[allow(clippy::too_many_arguments)]
 pub async fn transfer_confidential(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     source_account_name: String,
     dest_account_name: String,
     amount: u64,
     wallet_daemon_name: String,
     outputs_name: String,
-) -> tari_wallet_daemon_client::types::TransactionSubmitResponse {
+) -> taiji_wallet_daemon_client::types::TransactionSubmitResponse {
     let mut client = get_auth_wallet_daemon_client(world, &wallet_daemon_name).await;
 
     let source_account_addr = world
@@ -182,7 +182,7 @@ pub async fn transfer_confidential(
         .expect("Failed to get component address from destination account");
     let destination_public_key = destination_account_resp.public_key;
 
-    let resource_address = CONFIDENTIAL_TARI_RESOURCE_ADDRESS;
+    let resource_address = CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS;
 
     let create_transfer_proof_req = ProofsGenerateRequest {
         account: Some(source_account_name),
@@ -252,7 +252,7 @@ pub async fn transfer_confidential(
     submit_resp
 }
 
-pub async fn create_account(world: &mut TariWorld, account_name: String, wallet_daemon_name: String) {
+pub async fn create_account(world: &mut TaijiWorld, account_name: String, wallet_daemon_name: String) {
     let mut client = get_auth_wallet_daemon_client(world, &wallet_daemon_name).await;
 
     let request = AccountsCreateRequest {
@@ -282,7 +282,7 @@ pub async fn create_account(world: &mut TariWorld, account_name: String, wallet_
 }
 
 pub async fn create_account_with_free_coins(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     wallet_daemon_name: String,
     amount: Amount,
@@ -323,7 +323,7 @@ pub async fn create_account_with_free_coins(
 }
 
 pub async fn mint_new_nft_on_account(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     _nft_name: String,
     account_name: String,
     wallet_daemon_name: String,
@@ -334,7 +334,7 @@ pub async fn mint_new_nft_on_account(
     let token_symbol = "MY_NFT".to_string();
     let metadata = metadata.unwrap_or_else(|| {
         serde_json::json!({
-            "name": "TariProject",
+            "name": "TaijiProject",
             "departure": "Now",
             "landing_on": "Moon"
         })
@@ -368,7 +368,7 @@ pub async fn mint_new_nft_on_account(
     );
 }
 
-pub async fn get_balance(world: &mut TariWorld, account_name: &str, wallet_daemon_name: &str) -> i64 {
+pub async fn get_balance(world: &mut TaijiWorld, account_name: &str, wallet_daemon_name: &str) -> i64 {
     let account_name = ComponentAddressOrName::Name(account_name.to_string());
     let get_balance_req = AccountsGetBalancesRequest {
         account: Some(account_name),
@@ -385,7 +385,7 @@ pub async fn get_balance(world: &mut TariWorld, account_name: &str, wallet_daemo
 }
 
 pub async fn get_confidential_balance(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     wallet_daemon_name: String,
 ) -> Amount {
@@ -405,7 +405,7 @@ pub async fn get_confidential_balance(
 }
 
 pub async fn submit_manifest_with_signing_keys(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     wallet_daemon_name: String,
     account_signing_key: String,
     manifest_content: String,
@@ -521,7 +521,7 @@ pub async fn submit_manifest_with_signing_keys(
 }
 
 pub async fn submit_manifest(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     wallet_daemon_name: String,
     manifest_content: String,
     inputs: String,
@@ -633,7 +633,7 @@ pub async fn submit_manifest(
 }
 
 pub async fn submit_transaction(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     wallet_daemon_name: String,
     fee_instructions: Vec<Instruction>,
     instructions: Vec<Instruction>,
@@ -672,7 +672,7 @@ pub async fn submit_transaction(
 }
 
 pub async fn create_component(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     outputs_name: String,
     template_name: String,
     _account_name: String,
@@ -733,7 +733,7 @@ pub async fn create_component(
 }
 
 pub async fn transfer(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     destination_public_key: RistrettoPublicKey,
     resource_address: ResourceAddress,
@@ -759,7 +759,7 @@ pub async fn transfer(
 }
 
 pub async fn confidential_transfer(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     account_name: String,
     destination_public_key: RistrettoPublicKey,
     amount: Amount,
@@ -776,14 +776,14 @@ pub async fn confidential_transfer(
         amount,
         validator_public_key: destination_public_key,
         fee,
-        resource_address: CONFIDENTIAL_TARI_RESOURCE_ADDRESS,
+        resource_address: CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS,
     };
 
     let resp = client.accounts_confidential_transfer(request).await.unwrap();
     add_substate_addresses(world, outputs_name, resp.result.result.accept().unwrap());
 }
 
-pub async fn get_auth_wallet_daemon_client(world: &TariWorld, wallet_daemon_name: &str) -> WalletDaemonClient {
+pub async fn get_auth_wallet_daemon_client(world: &TaijiWorld, wallet_daemon_name: &str) -> WalletDaemonClient {
     world
         .wallet_daemons
         .get(wallet_daemon_name)

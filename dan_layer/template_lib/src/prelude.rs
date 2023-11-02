@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -21,10 +21,10 @@
 //   USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 //! The prelude contains all the commonly used types and functions that are used. To use it, add the import `use
-//! tari_template_lib::prelude::*;`
-pub use tari_bor;
+//! taiji_template_lib::prelude::*;`
+pub use taiji_bor;
 #[cfg(feature = "macro")]
-pub use tari_template_macros::template;
+pub use taiji_template_macros::template;
 
 pub use crate::{
     auth::{AccessRule, AccessRules, RestrictedAccessRule::*},
@@ -34,7 +34,7 @@ pub use crate::{
         ComponentManager,
     },
     consensus::Consensus,
-    constants::{CONFIDENTIAL_TARI_RESOURCE_ADDRESS, PUBLIC_IDENTITY_RESOURCE_ADDRESS},
+    constants::{CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS, PUBLIC_IDENTITY_RESOURCE_ADDRESS},
     crypto::RistrettoPublicKeyBytes,
     events::emit_event,
     invoke_args,

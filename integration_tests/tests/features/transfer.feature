@@ -1,4 +1,4 @@
-# Copyright 2022 The Tari Project
+# Copyright 2022 OnSight Tech Services LLC
 # SPDX-License-Identifier: BSD-3-Clause
 
 Feature: Account transfers
@@ -37,7 +37,7 @@ Feature: Account transfers
     # Create a new Faucet component
     When I call function "mint" on template "faucet" using account ACCOUNT to pay fees via wallet daemon WALLET_D with args "amount_10000" and 3 outputs named "FAUCET"
 
-    # Burn some tari in the base layer to have funds for fees in the sender account
+    # Burn some taiji in the base layer to have funds for fees in the sender account
     When I burn 10T on wallet WALLET with wallet daemon WALLET_D into commitment COMMITMENT with proof PROOF for ACCOUNT, range proof RANGEPROOF and claim public key CLAIM_PUBKEY
     When miner MINER mines 13 new blocks
     Then VN has scanned to height 45 within 10 seconds
@@ -113,7 +113,7 @@ Feature: Account transfers
     # Create a new Faucet component
     When I call function "mint" on template "faucet" using account ACCOUNT_1 to pay fees via wallet daemon WALLET_D with args "amount_10000" and 3 outputs named "FAUCET"
 
-    # Burn some tari in the base layer to have funds for fees in the sender account
+    # Burn some taiji in the base layer to have funds for fees in the sender account
     When I burn 10T on wallet WALLET with wallet daemon WALLET_D into commitment COMMITMENT with proof PROOF for ACCOUNT_1, range proof RANGEPROOF and claim public key CLAIM_PUBKEY
     When miner MINER mines 13 new blocks
     Then VN has scanned to height 45 within 10 seconds

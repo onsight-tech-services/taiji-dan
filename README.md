@@ -1,37 +1,37 @@
-# Tari DAN implementation
+# Taiji DAN implementation
 
-This is where you can find the cutting edge development of the Tari smart contract layer - the Digital Assets 
+This is where you can find the cutting edge development of the Taiji smart contract layer - the Digital Assets 
 Network, or DAN.
 
 You can read about the technical specifications of the DAN in the [RFCs](https://rfc.tari.com).
 
-If you're looking for the core Tari base layer code, it's an [this repository](https://github.com/tari-project/tari)
+If you're looking for the core Taiji base layer code, it's an [this repository](https://github.com/onsight-tech-services/taiji)
 
-## Tari DAN Validator node
+## Taiji DAN Validator node
 
-See the dedicated [README](./applications/tari_validator_node/README.md) for installation and running guides.
+See the dedicated [README](./applications/taiji_validator_node/README.md) for installation and running guides.
 
-## Tari DAN CLI
+## Taiji DAN CLI
 
 A CLI tool to help manage accounts, templates, VNs and transactions on the DAN.
 
-## Tari DAN web-gui
+## Taiji DAN web-gui
 
 A very basic web-gui for interacting with VNS.
 
-See the dedicated [README](./applications/tari_validator_node_web_ui/README.md) for installation and running guides.
+See the dedicated [README](./applications/taiji_validator_node_web_ui/README.md) for installation and running guides.
 
 ## Running and testing a validator
 
 NOTE: This repo is heavily under development, so these instructions may change without notice.
 
-First thing you need is to run a Tari base node, Tari console wallet and most likely `tor`. You will also need to run a Tari miner to mine some 
+First thing you need is to run a Taiji base node, Taiji console wallet and most likely `tor`. You will also need to run a Taiji miner to mine some 
 blocks. You should use the `feature-dan` branch and `igor` network for now.
 
 A validator node can be started using:
 
 ```
-cargo run --bin tari_validator_node -- --network igor
+cargo run --bin taiji_validator_node -- --network igor
 ``` 
 
 You may find it useful to run multiple validator nodes, in which case, create a subfolder for each one and add the `-b <folder>` to run it in that folder
@@ -39,26 +39,26 @@ You may find it useful to run multiple validator nodes, in which case, create a 
 Example
 ```
 cd vn1 
-cargo run --bin tari_validator_node -- -b . --network igor
+cargo run --bin taiji_validator_node -- -b . --network igor
 
 // other terminal 
 cd vn2
-cargo run --bin tari_validator_node -- -b . --network igor
+cargo run --bin taiji_validator_node -- -b . --network igor
 ```
 
 #### Registering the VN
 The validator node web ui can be found at `http://localhost:5000`. When you open it, you can click on `Register VN` to register it. Alternatively, register using the cli:
 ```
-cargo run --bin tari_validator_node_cli -- vn register
+cargo run --bin taiji_validator_node_cli -- vn register
 ```
 
 You'll need to mine a number of blocks, but after that the vn should have a shard key and show up as registered on the web ui
 
-#### Running the Tari Dan Wallet Daemon
-To be able to use the Tari Dan Wallet CLI communicate with the running validator node, one needs to set up a tari dan wallet daemon,
+#### Running the Taiji Dan Wallet Daemon
+To be able to use the Taiji Dan Wallet CLI communicate with the running validator node, one needs to set up a taiji dan wallet daemon,
 as follows:
 ```
-cargo run --bin tari_dan_wallet_daemon -- -b .
+cargo run --bin taiji_dan_wallet_daemon -- -b .
 ```
 
 The wallet daemon will listen to wallet requests and submit it to the running VN. Notice that, each VN running should have
@@ -90,37 +90,37 @@ Upload the WASM file created in `package/target/wasm32-unknown-unknown/release` 
 After editing the project, you can deploy the project using the validator_node_cli:
 
 ```
-cargo run --bin tari_validator_node_cli -- templates publish 
+cargo run --bin taiji_validator_node_cli -- templates publish 
 ```
 
-(See help on tari_validator_node_cli for more details)
+(See help on taiji_validator_node_cli for more details)
 
 Once the template is registered on the base layer and sufficiently mined, you should see it in the `templates` table of the `global_storage.sqlite` file  under `data/validator`. The `compiled_code` column should contain binary data and the `status` column should be `Active`.
 
-### Get airdropped base layer (Mino)Tari tokens to pay for fees
+### Get airdropped base layer (Mino)Taiji tokens to pay for fees
 
-Before the user can start submitting transactions to the network, it has to obtain base layer (Mino)Tari tokens to pay for fees. At the moment, the
+Before the user can start submitting transactions to the network, it has to obtain base layer (Mino)Taiji tokens to pay for fees. At the moment, the
 simplest way to do so is to request an airdrop of (free test) tokens from the network itself. In order to do so, the user should
-first create an account, using the tari wallet client, as follows:
+first create an account, using the taiji wallet client, as follows:
 
 ```
-    cargo run --bin tari_dan_wallet_cli -- accounts create --account-name <USER_ACCOUNT_NAME>
+    cargo run --bin taiji_dan_wallet_cli -- accounts create --account-name <USER_ACCOUNT_NAME>
 ```
 
 After the user has created an account, it can request an airdrop via the command
 
 ```
-    cargo run --bin tari_dan_wallet_cli -- accounts faucet --account-name <USER_ACCOUNT_NAME> --amount <AMOUNT> --fee <FEE_AMOUNT>
+    cargo run --bin taiji_dan_wallet_cli -- accounts faucet --account-name <USER_ACCOUNT_NAME> --amount <AMOUNT> --fee <FEE_AMOUNT>
 ```
 
 Notice that for the DAN wallet cli to execute successfully, the user must have a wallet daemon connected to a validator node (see the
 above).
 
-### Claiming L1 burn Tari on the DAN
+### Claiming L1 burn Taiji on the DAN
 
-L1 Minotari coins are able to be burnt and claimed, the user may convert (1:1) these to Tari coins on the layer-2 network. This process is
-fairly complex and manual at the time of writing, but is planned to improve in the future. The first step is to burn Minotari base layer
-funds making sure to include a claim public key. A private claim key must be known to claim the funds on the layer-2 Tari network. Burning
+L1 Minotaiji coins are able to be burnt and claimed, the user may convert (1:1) these to Taiji coins on the layer-2 network. This process is
+fairly complex and manual at the time of writing, but is planned to improve in the future. The first step is to burn Minotaiji base layer
+funds making sure to include a claim public key. A private claim key must be known to claim the funds on the layer-2 Taiji network. Burning
 yields the following data:
 
 ```
@@ -134,11 +134,11 @@ yields the following data:
 }
 ```
 
-The user must create an account on the Tari network using the `accounts create` wallet CLI command prior to claiming. See the previous
+The user must create an account on the Taiji network using the `accounts create` wallet CLI command prior to claiming. See the previous
 section for details on creating an account. The public key of this account should be used as the claim public key when burning funds.
 
-the user can then claim burn Tari on the second layer, as follows: create a new `.json` file, with path
-`<JSON_FILE_TO_RETRIEVE_BURN_TARI>`
+the user can then claim burn Taiji on the second layer, as follows: create a new `.json` file, with path
+`<JSON_FILE_TO_RETRIEVE_BURN_TAIJI>`
 
 ```
 {
@@ -153,23 +153,23 @@ the user can then claim burn Tari on the second layer, as follows: create a new 
 then run the command
 
 ```
-cargo run --bin tari_dan_wallet_cli -- accounts claim-burn --account <ACCOUNT_NAME> --json <JSON_FILE_TO_RETRIEVE_BURN_TARI> --fee <FEE>
+cargo run --bin taiji_dan_wallet_cli -- accounts claim-burn --account <ACCOUNT_NAME> --json <JSON_FILE_TO_RETRIEVE_BURN_TAIJI> --fee <FEE>
 ```
 
 ### Calling a function
-With the templated registered we can invoke a function by using the `tari_dan_wallet_cli`.
+With the templated registered we can invoke a function by using the `taiji_dan_wallet_cli`.
 
 Next we can get a list of templates
 
 ```
-cargo run --bin tari_validator_node_cli -- templates list
+cargo run --bin taiji_validator_node_cli -- templates list
 ```
 
-To be entitled to pay for network fees, the user will have to claim burn Tari, see the previous section.
+To be entitled to pay for network fees, the user will have to claim burn Taiji, see the previous section.
 Finally, call the function (In this case we'll be calling the `new` function on the example `Counter` template)
 
 ```
-cargo run --bin tari_dan_wallet_cli -- transactions submit --wait-for-result call-function <template_address> new 
+cargo run --bin taiji_dan_wallet_cli -- transactions submit --wait-for-result call-function <template_address> new 
 ```
 
 ### Debugging Hotstuff 

@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -27,8 +27,8 @@ use reqwest::{header, header::HeaderMap, IntoUrl, Url};
 use serde::{de::DeserializeOwned, Serialize};
 use serde_json as json;
 use serde_json::json;
-use tari_common_types::{transaction::TxId, types::PublicKey};
-use tari_comms_logging::LoggedMessage;
+use taiji_common_types::{transaction::TxId, types::PublicKey};
+use taiji_comms_logging::LoggedMessage;
 
 use crate::types::{
     AddPeerRequest,

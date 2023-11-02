@@ -1,10 +1,10 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
-use tari_template_lib::models::{Amount, VaultId};
+use taiji_template_lib::models::{Amount, VaultId};
 
 use crate::resource_container::ResourceContainer;
 

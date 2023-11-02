@@ -1,19 +1,19 @@
 [package]
-name = "tari_base_node_client"
+name = "taiji_base_node_client"
 version = "0.50.0-pre.0"
-authors = ["The Tari Development Community"]
+authors = ["OnSight Tech Services LLC"]
 edition = "2021"
 license = "BSD-3-Clause"
 
 [dependencies]
-minotari_app_grpc = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-minotari_node_grpc_client = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_common_types = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_core = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2", default-features = false, features = ["transactions"] }
+minotaiji_app_grpc = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+minotaiji_node_grpc_client = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_common_types = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_core = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2", default-features = false, features = ["transactions"] }
 tari_utilities = "0.5.1"
 
-tari_dan_common_types = { path = "../../dan_layer/common_types" }
-tari_engine_types = { path = "../../dan_layer/engine_types" }
+taiji_dan_common_types = { path = "../../dan_layer/common_types" }
+taiji_engine_types = { path = "../../dan_layer/engine_types" }
 
 async-trait = "0.1"
 log = "0.4.8"

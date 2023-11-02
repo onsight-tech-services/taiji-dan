@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -7,12 +7,12 @@ use std::{
 };
 
 use log::*;
-use tari_dan_common_types::NodeHeight;
-use tari_dan_storage::{
+use taiji_dan_common_types::NodeHeight;
+use taiji_dan_storage::{
     consensus_models::{Block, BlockId, LeafBlock, LockedBlock, QuorumCertificate},
     StateStore,
 };
-use tari_epoch_manager::EpochManagerReader;
+use taiji_epoch_manager::EpochManagerReader;
 
 use super::vote_receiver::VoteReceiver;
 use crate::{
@@ -21,7 +21,7 @@ use crate::{
     traits::{ConsensusSpec, LeaderStrategy},
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::on_receive_new_view";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::on_receive_new_view";
 
 pub struct OnReceiveNewViewHandler<TConsensusSpec: ConsensusSpec> {
     store: TConsensusSpec::StateStore,

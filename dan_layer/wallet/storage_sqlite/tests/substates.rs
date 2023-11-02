@@ -1,16 +1,16 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::str::FromStr;
 
-use tari_dan_common_types::optional::Optional;
-use tari_dan_wallet_sdk::{
+use taiji_dan_common_types::optional::Optional;
+use taiji_dan_wallet_sdk::{
     models::VersionedSubstateAddress,
     storage::{WalletStore, WalletStoreReader, WalletStoreWriter},
 };
-use tari_dan_wallet_storage_sqlite::SqliteWalletStore;
-use tari_engine_types::substate::SubstateAddress;
-use tari_transaction::TransactionId;
+use taiji_dan_wallet_storage_sqlite::SqliteWalletStore;
+use taiji_engine_types::substate::SubstateAddress;
+use taiji_transaction::TransactionId;
 
 #[test]
 fn get_and_insert_substates() {

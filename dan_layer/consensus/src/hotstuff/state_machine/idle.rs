@@ -1,11 +1,11 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::marker::PhantomData;
 
 use log::*;
-use tari_dan_common_types::Epoch;
-use tari_epoch_manager::{EpochManagerEvent, EpochManagerReader};
+use taiji_dan_common_types::Epoch;
+use taiji_epoch_manager::{EpochManagerEvent, EpochManagerReader};
 use tokio::sync::broadcast;
 
 use crate::{
@@ -16,7 +16,7 @@ use crate::{
     traits::ConsensusSpec,
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::sm::idle";
+const LOG_TARGET: &str = "taiji::dan::consensus::sm::idle";
 
 #[derive(Debug, Clone)]
 pub struct Idle<TSpec>(PhantomData<TSpec>);

@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use chrono::NaiveDateTime;
 use diesel::{Identifiable, Queryable};
-use tari_engine_types::substate::InvalidSubstateAddressFormat;
+use taiji_engine_types::substate::InvalidSubstateAddressFormat;
 
 use crate::schema::accounts;
 
@@ -19,7 +19,7 @@ pub struct Account {
     pub is_default: bool,
 }
 
-impl TryFrom<Account> for tari_dan_wallet_sdk::models::Account {
+impl TryFrom<Account> for taiji_dan_wallet_sdk::models::Account {
     type Error = InvalidSubstateAddressFormat;
 
     fn try_from(account: Account) -> Result<Self, Self::Error> {

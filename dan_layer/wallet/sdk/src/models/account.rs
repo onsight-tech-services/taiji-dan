@@ -1,7 +1,7 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_engine_types::substate::SubstateAddress;
+use taiji_engine_types::substate::SubstateAddress;
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct Account {

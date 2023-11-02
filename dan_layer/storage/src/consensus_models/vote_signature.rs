@@ -1,12 +1,12 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use rand::rngs::OsRng;
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::{PrivateKey, PublicKey};
-use tari_core::transactions::transaction_components::ValidatorNodeHashDomain;
+use taiji_common_types::types::{PrivateKey, PublicKey};
+use taiji_core::transactions::transaction_components::ValidatorNodeHashDomain;
 use tari_crypto::{keys::PublicKey as _, signatures::SchnorrSignature};
-use tari_dan_common_types::NodeAddressable;
+use taiji_dan_common_types::NodeAddressable;
 
 pub type ValidatorSchnorrSignature = SchnorrSignature<PublicKey, PrivateKey, ValidatorNodeHashDomain>;
 

@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -18,9 +18,9 @@ use diesel::{
 };
 use log::*;
 use serde::Serialize;
-use tari_common_types::types::{Commitment, PublicKey};
-use tari_dan_storage::consensus_models::QuorumCertificate;
-use tari_dan_wallet_sdk::{
+use taiji_common_types::types::{Commitment, PublicKey};
+use taiji_dan_storage::consensus_models::QuorumCertificate;
+use taiji_dan_wallet_sdk::{
     models::{
         ConfidentialOutputModel,
         ConfidentialProofId,
@@ -32,13 +32,13 @@ use tari_dan_wallet_sdk::{
     },
     storage::{WalletStorageError, WalletStoreReader, WalletStoreWriter},
 };
-use tari_engine_types::{
+use taiji_engine_types::{
     commit_result::{FinalizeResult, RejectReason},
     substate::SubstateAddress,
     TemplateAddress,
 };
-use tari_template_lib::models::{Amount, EncryptedData};
-use tari_transaction::{Transaction, TransactionId};
+use taiji_template_lib::models::{Amount, EncryptedData};
+use taiji_transaction::{Transaction, TransactionId};
 use tari_utilities::hex::Hex;
 
 use crate::{
@@ -49,7 +49,7 @@ use crate::{
     serialization::serialize_json,
 };
 
-const LOG_TARGET: &str = "auth::tari::dan::wallet_sdk::storage_sqlite::writer";
+const LOG_TARGET: &str = "auth::taiji::dan::wallet_sdk::storage_sqlite::writer";
 
 pub struct WriteTransaction<'a> {
     /// In SQLite any transaction is writable. We keep a ReadTransaction to satisfy the Deref requirement of the
@@ -725,12 +725,12 @@ impl WalletStoreWriter for WriteTransaction<'_> {
     // -------------------------------- Non fungible tokens -------------------------------- //
     fn non_fungible_token_insert(
         &mut self,
-        non_fungible_token: &tari_dan_wallet_sdk::models::NonFungibleToken,
+        non_fungible_token: &taiji_dan_wallet_sdk::models::NonFungibleToken,
     ) -> Result<(), WalletStorageError> {
         use crate::schema::{non_fungible_tokens, vaults};
 
         info!(
-            target: "tari::dan::wallet_daemon::account_monitor",
+            target: "taiji::dan::wallet_daemon::account_monitor",
             "Inserting new non fungible token with id = {}", non_fungible_token.nft_id
         );
 

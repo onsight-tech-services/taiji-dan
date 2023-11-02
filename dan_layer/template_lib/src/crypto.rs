@@ -1,10 +1,10 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use serde::{Deserialize, Serialize};
 // #[cfg(not(feature = "hex"))]
 use serde_big_array::BigArray;
-use tari_template_abi::rust::{
+use taiji_template_abi::rust::{
     fmt::{Display, Formatter},
     string::String,
 };

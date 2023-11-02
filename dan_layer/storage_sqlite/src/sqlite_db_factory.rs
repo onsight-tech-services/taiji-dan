@@ -1,4 +1,4 @@
-//  Copyright 2021. The Tari Project
+//  Copyright 2021. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -23,14 +23,14 @@
 use std::{fs::create_dir_all, path::PathBuf};
 
 use diesel::{sql_query, Connection, RunQueryDsl, SqliteConnection};
-use tari_dan_storage::{
+use taiji_dan_storage::{
     global::{DbFactory, GlobalDb},
     StorageError,
 };
 
 use crate::{error::SqliteStorageError, global::SqliteGlobalDbAdapter};
 
-const _LOG_TARGET: &str = "tari::dan::sqlite_storage";
+const _LOG_TARGET: &str = "taiji::dan::sqlite_storage";
 
 #[derive(Debug, Clone)]
 pub struct SqliteDbFactory {

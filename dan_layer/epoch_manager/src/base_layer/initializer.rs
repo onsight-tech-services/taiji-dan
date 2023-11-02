@@ -1,4 +1,4 @@
-//  Copyright 2023. The Tari Project
+//  Copyright 2023. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -20,11 +20,11 @@
 //  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-use tari_base_node_client::grpc::GrpcBaseNodeClient;
-use tari_common_types::types::PublicKey;
-use tari_dan_storage::global::GlobalDb;
-use tari_dan_storage_sqlite::global::SqliteGlobalDbAdapter;
-use tari_shutdown::ShutdownSignal;
+use taiji_base_node_client::grpc::GrpcBaseNodeClient;
+use taiji_common_types::types::PublicKey;
+use taiji_dan_storage::global::GlobalDb;
+use taiji_dan_storage_sqlite::global::SqliteGlobalDbAdapter;
+use taiji_shutdown::ShutdownSignal;
 use tokio::{sync::mpsc, task::JoinHandle};
 
 use crate::base_layer::{config::EpochManagerConfig, epoch_manager_service::EpochManagerService, EpochManagerHandle};

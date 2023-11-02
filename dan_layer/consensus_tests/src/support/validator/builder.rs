@@ -1,11 +1,11 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_consensus::hotstuff::{ConsensusWorker, ConsensusWorkerContext, HotstuffWorker};
-use tari_dan_common_types::{shard_bucket::ShardBucket, ShardId};
-use tari_dan_storage::consensus_models::TransactionPool;
-use tari_shutdown::ShutdownSignal;
-use tari_state_store_sqlite::SqliteStateStore;
+use taiji_consensus::hotstuff::{ConsensusWorker, ConsensusWorkerContext, HotstuffWorker};
+use taiji_dan_common_types::{shard_bucket::ShardBucket, ShardId};
+use taiji_dan_storage::consensus_models::TransactionPool;
+use taiji_shutdown::ShutdownSignal;
+use taiji_state_store_sqlite::SqliteStateStore;
 use tokio::sync::{broadcast, mpsc, watch};
 
 use crate::support::{

@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -21,11 +21,11 @@
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 use log::error;
-use tari_base_node_client::grpc::GrpcBaseNodeClient;
-use tari_common_types::types::PublicKey;
-use tari_dan_storage::global::GlobalDb;
-use tari_dan_storage_sqlite::global::SqliteGlobalDbAdapter;
-use tari_shutdown::ShutdownSignal;
+use taiji_base_node_client::grpc::GrpcBaseNodeClient;
+use taiji_common_types::types::PublicKey;
+use taiji_dan_storage::global::GlobalDb;
+use taiji_dan_storage_sqlite::global::SqliteGlobalDbAdapter;
+use taiji_shutdown::ShutdownSignal;
 use tokio::{
     sync::{broadcast, mpsc::Receiver, oneshot},
     task::JoinHandle,
@@ -41,7 +41,7 @@ use crate::{
     EpochManagerEvent,
 };
 
-const LOG_TARGET: &str = "tari::validator_node::epoch_manager";
+const LOG_TARGET: &str = "taiji::validator_node::epoch_manager";
 
 pub struct EpochManagerService<TGlobalStore, TBaseNodeClient> {
     rx_request: Receiver<EpochManagerRequest>,

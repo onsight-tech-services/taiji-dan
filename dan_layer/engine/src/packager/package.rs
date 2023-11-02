@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -21,9 +21,9 @@
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 use std::{collections::HashMap, convert::Infallible};
 
-use tari_dan_common_types::services::template_provider::TemplateProvider;
-use tari_template_abi::TemplateDef;
-use tari_template_lib::models::TemplateAddress;
+use taiji_dan_common_types::services::template_provider::TemplateProvider;
+use taiji_template_abi::TemplateDef;
+use taiji_template_lib::models::TemplateAddress;
 
 use crate::packager::template::LoadedTemplate;
 
@@ -84,7 +84,7 @@ impl TemplateProvider for Package {
 
     fn get_template_module(
         &self,
-        id: &tari_engine_types::TemplateAddress,
+        id: &taiji_engine_types::TemplateAddress,
     ) -> Result<Option<Self::Template>, Self::Error> {
         Ok(self.templates.get(id).cloned())
     }

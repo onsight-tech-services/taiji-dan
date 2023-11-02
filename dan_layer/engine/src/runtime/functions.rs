@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::fmt::{Display, Formatter};
 
-use tari_template_lib::auth::NativeFunctionCall;
+use taiji_template_lib::auth::NativeFunctionCall;
 
 #[derive(Debug, Clone)]
 pub enum FunctionIdent {

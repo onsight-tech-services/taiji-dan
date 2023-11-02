@@ -1,32 +1,32 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 
 use std::{collections::HashMap, path::PathBuf, str::FromStr};
 
-use tari_engine_types::{
+use taiji_engine_types::{
     instruction::Instruction,
     substate::{SubstateAddress, SubstateDiff},
 };
-use tari_template_builtin::ACCOUNT_TEMPLATE_ADDRESS;
-use tari_template_lib::args;
-use tari_transaction_manifest::{parse_manifest, ManifestValue};
-use tari_validator_node_cli::{
+use taiji_template_builtin::ACCOUNT_TEMPLATE_ADDRESS;
+use taiji_template_lib::args;
+use taiji_transaction_manifest::{parse_manifest, ManifestValue};
+use taiji_validator_node_cli::{
     command::transaction::{handle_submit, submit_transaction, CliArg, CliInstruction, CommonSubmitArgs, SubmitArgs},
     from_hex::FromHex,
     key_manager::KeyManager,
     versioned_substate_address::VersionedSubstateAddress,
 };
-use tari_validator_node_client::types::SubmitTransactionResponse;
+use taiji_validator_node_client::types::SubmitTransactionResponse;
 
-use crate::{logging::get_base_dir_for_scenario, TariWorld};
+use crate::{logging::get_base_dir_for_scenario, TaijiWorld};
 
-fn get_key_manager(world: &mut TariWorld) -> KeyManager {
+fn get_key_manager(world: &mut TaijiWorld) -> KeyManager {
     let path = get_cli_data_dir(world);
 
     // initialize the account public/private keys
     KeyManager::init(path).unwrap()
 }
-pub fn create_or_use_key(world: &mut TariWorld, key_name: String) {
+pub fn create_or_use_key(world: &mut TaijiWorld, key_name: String) {
     let km = get_key_manager(world);
     if let Some((_, k)) = world.account_keys.get(&key_name) {
         km.set_active_key(&k.to_string()).unwrap();
@@ -36,7 +36,7 @@ pub fn create_or_use_key(world: &mut TariWorld, key_name: String) {
         world.account_keys.insert(key_name, (key.secret_key, key.public_key));
     }
 }
-pub fn create_key(world: &mut TariWorld, key_name: String) {
+pub fn create_key(world: &mut TaijiWorld, key_name: String) {
     let key = get_key_manager(world)
         .create()
         .expect("Could not create a new key pair");
@@ -44,7 +44,7 @@ pub fn create_key(world: &mut TariWorld, key_name: String) {
     world.account_keys.insert(key_name, (key.secret_key, key.public_key));
 }
 
-pub async fn create_account(world: &mut TariWorld, account_name: String, validator_node_name: String) {
+pub async fn create_account(world: &mut TaijiWorld, account_name: String, validator_node_name: String) {
     let data_dir = get_cli_data_dir(world);
     let key = get_key_manager(world).create().expect("Could not create keypair");
     let owner_token = key.to_owner_token();
@@ -90,7 +90,7 @@ pub async fn create_account(world: &mut TariWorld, account_name: String, validat
 }
 
 pub async fn create_component(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     outputs_name: String,
     template_name: String,
     vn_name: String,
@@ -146,7 +146,7 @@ pub async fn create_component(
     );
 }
 
-pub(crate) fn add_substate_addresses(world: &mut TariWorld, outputs_name: String, diff: &SubstateDiff) {
+pub(crate) fn add_substate_addresses(world: &mut TaijiWorld, outputs_name: String, diff: &SubstateDiff) {
     let outputs = world.outputs.entry(outputs_name).or_default();
     let mut counters = [0usize, 0, 0, 0, 0, 0, 0, 0, 0];
     for (addr, data) in diff.up_iter() {
@@ -222,7 +222,7 @@ pub(crate) fn add_substate_addresses(world: &mut TariWorld, outputs_name: String
 }
 
 pub async fn call_method(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     vn_name: String,
     fq_component_name: String,
     outputs_name: String,
@@ -285,7 +285,7 @@ pub async fn call_method(
 }
 
 pub async fn submit_manifest(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     vn_name: String,
     outputs_name: String,
     manifest_content: String,
@@ -383,7 +383,7 @@ pub async fn submit_manifest(
     );
 }
 
-pub(crate) fn get_cli_data_dir(world: &mut TariWorld) -> PathBuf {
+pub(crate) fn get_cli_data_dir(world: &mut TaijiWorld) -> PathBuf {
     get_base_dir_for_scenario("vn_cli", world.current_scenario_name.as_ref().unwrap(), "SHARED")
 }
 

@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -49,13 +49,13 @@ mod workspace;
 
 use std::{fmt::Debug, sync::Arc};
 
-use tari_common_types::types::PublicKey;
-use tari_dan_common_types::Epoch;
-use tari_engine_types::{
+use taiji_common_types::types::PublicKey;
+use taiji_dan_common_types::Epoch;
+use taiji_engine_types::{
     component::ComponentHeader,
     confidential::{ConfidentialClaim, ConfidentialOutput},
 };
-use tari_template_lib::{
+use taiji_template_lib::{
     args::{
         Arg,
         BucketAction,

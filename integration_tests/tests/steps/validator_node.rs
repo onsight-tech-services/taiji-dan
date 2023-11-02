@@ -1,4 +1,4 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -12,18 +12,18 @@ use integration_tests::{
     template::{send_template_registration, RegisteredTemplate},
     validator_node::spawn_validator_node,
     validator_node_cli::create_key,
-    TariWorld,
+    TaijiWorld,
 };
-use tari_base_node_client::{grpc::GrpcBaseNodeClient, BaseNodeClient};
-use tari_common_types::types::PublicKey;
-use tari_comms::multiaddr::Multiaddr;
-use tari_dan_common_types::{optional::Optional, Epoch, ShardId};
-use tari_engine_types::substate::SubstateAddress;
-use tari_template_lib::Hash;
-use tari_validator_node_client::types::{AddPeerRequest, GetStateRequest, GetTemplateRequest, ListBlocksRequest};
+use taiji_base_node_client::{grpc::GrpcBaseNodeClient, BaseNodeClient};
+use taiji_common_types::types::PublicKey;
+use taiji_comms::multiaddr::Multiaddr;
+use taiji_dan_common_types::{optional::Optional, Epoch, ShardId};
+use taiji_engine_types::substate::SubstateAddress;
+use taiji_template_lib::Hash;
+use taiji_validator_node_client::types::{AddPeerRequest, GetStateRequest, GetTemplateRequest, ListBlocksRequest};
 
 #[given(expr = "a seed validator node {word} connected to base node {word} and wallet {word}")]
-async fn start_seed_validator_node(world: &mut TariWorld, seed_vn_name: String, bn_name: String, wallet_name: String) {
+async fn start_seed_validator_node(world: &mut TaijiWorld, seed_vn_name: String, bn_name: String, wallet_name: String) {
     let validator = spawn_validator_node(world, seed_vn_name.clone(), bn_name, wallet_name).await;
     // Ensure any existing nodes know about the new seed node
     let mut client = validator.get_client();
@@ -42,7 +42,7 @@ async fn start_seed_validator_node(world: &mut TariWorld, seed_vn_name: String, 
     for indexer in world.indexers.values() {
         let mut client = indexer.get_jrpc_indexer_client();
         client
-            .add_peer(tari_indexer_client::types::AddPeerRequest {
+            .add_peer(taiji_indexer_client::types::AddPeerRequest {
                 public_key: ident.public_key.clone(),
                 addresses: ident.public_addresses.clone(),
                 wait_for_dial: false,
@@ -55,7 +55,7 @@ async fn start_seed_validator_node(world: &mut TariWorld, seed_vn_name: String, 
 }
 
 #[given(expr = "{int} validator nodes connected to base node {word} and wallet {word}")]
-async fn start_multiple_validator_nodes(world: &mut TariWorld, num_nodes: u64, bn_name: String, wallet_name: String) {
+async fn start_multiple_validator_nodes(world: &mut TaijiWorld, num_nodes: u64, bn_name: String, wallet_name: String) {
     for i in 1..=num_nodes {
         let vn_name = format!("VAL_{i}");
         let vn = spawn_validator_node(world, vn_name.clone(), bn_name.clone(), wallet_name.clone()).await;
@@ -64,7 +64,7 @@ async fn start_multiple_validator_nodes(world: &mut TariWorld, num_nodes: u64, b
 }
 
 #[given(expr = "validator {word} nodes connect to all other validators")]
-async fn given_validator_connects_to_other_vns(world: &mut TariWorld, name: String) {
+async fn given_validator_connects_to_other_vns(world: &mut TaijiWorld, name: String) {
     let details = world
         .all_validators_iter()
         .filter(|vn| vn.name != name)
@@ -90,7 +90,7 @@ async fn given_validator_connects_to_other_vns(world: &mut TariWorld, name: Stri
 }
 
 #[when(expr = "validator node {word} sends a registration transaction")]
-async fn send_vn_registration(world: &mut TariWorld, vn_name: String) {
+async fn send_vn_registration(world: &mut TaijiWorld, vn_name: String) {
     let mut client = world.get_validator_node(&vn_name).get_client();
     if let Err(e) = client.register_validator_node(PublicKey::default()).await {
         println!("register_validator_node error = {}", e);
@@ -107,7 +107,7 @@ async fn send_vn_registration(world: &mut TariWorld, vn_name: String) {
             {word}"
 )]
 async fn send_vn_registration_with_claim_wallet(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     vn_name: String,
     wallet_daemon_name: String,
     key_name: String,
@@ -132,7 +132,7 @@ async fn send_vn_registration_with_claim_wallet(
 }
 
 #[when(expr = "all validator nodes send registration transactions")]
-async fn all_vns_send_registration(world: &mut TariWorld) {
+async fn all_vns_send_registration(world: &mut TaijiWorld) {
     for vn_ps in world.all_validators_iter() {
         let mut client = vn_ps.get_client();
         let _resp = client.register_validator_node(Default::default()).await.unwrap();
@@ -144,7 +144,7 @@ async fn all_vns_send_registration(world: &mut TariWorld) {
 }
 
 #[when(expr = "validator node {word} registers the template \"{word}\"")]
-async fn register_template(world: &mut TariWorld, vn_name: String, template_name: String) {
+async fn register_template(world: &mut TaijiWorld, vn_name: String, template_name: String) {
     let resp = match send_template_registration(world, template_name.clone(), vn_name).await {
         Ok(resp) => resp,
         Err(e) => {
@@ -168,7 +168,7 @@ async fn register_template(world: &mut TariWorld, vn_name: String, template_name
 }
 
 #[then(expr = "all validator nodes are listed as registered")]
-async fn assert_all_vns_are_registered(world: &mut TariWorld) {
+async fn assert_all_vns_are_registered(world: &mut TaijiWorld) {
     for vn_ps in world.all_validators_iter() {
         // create a base node client
         let base_node_grpc_port = vn_ps.base_node_grpc_port;
@@ -189,7 +189,7 @@ async fn assert_all_vns_are_registered(world: &mut TariWorld) {
 }
 
 #[then(expr = "the validator node {word} is listed as registered")]
-async fn assert_vn_is_registered(world: &mut TariWorld, vn_name: String) {
+async fn assert_vn_is_registered(world: &mut TaijiWorld, vn_name: String) {
     // create a base node client
     let vn = world.get_validator_node(&vn_name);
     let mut base_node_client: GrpcBaseNodeClient = get_base_node_client(vn.base_node_grpc_port);
@@ -222,7 +222,7 @@ async fn assert_vn_is_registered(world: &mut TariWorld, vn_name: String) {
 }
 
 #[then(expr = "the template \"{word}\" is listed as registered by the validator node {word}")]
-async fn assert_template_is_registered(world: &mut TariWorld, template_name: String, vn_name: String) {
+async fn assert_template_is_registered(world: &mut TaijiWorld, template_name: String, vn_name: String) {
     // give it some time for the template tx to be picked up by the VNs
     // tokio::time::sleep(Duration::from_secs(4)).await;
 
@@ -253,7 +253,7 @@ async fn assert_template_is_registered(world: &mut TariWorld, template_name: Str
 }
 
 #[then(expr = "the template \"{word}\" is listed as registered by all validator nodes")]
-async fn assert_template_is_registered_by_all(world: &mut TariWorld, template_name: String) {
+async fn assert_template_is_registered_by_all(world: &mut TaijiWorld, template_name: String) {
     // give it some time for the template tx to be picked up by the VNs
     // tokio::time::sleep(Duration::from_secs(4)).await;
 
@@ -285,7 +285,7 @@ async fn assert_template_is_registered_by_all(world: &mut TariWorld, template_na
 }
 
 #[then(expr = "validator node {word} has state at {word}")]
-async fn then_validator_node_has_state_at(world: &mut TariWorld, vn_name: String, state_address_name: String) {
+async fn then_validator_node_has_state_at(world: &mut TaijiWorld, vn_name: String, state_address_name: String) {
     let state_address = world
         .addresses
         .get(&state_address_name)
@@ -303,7 +303,7 @@ async fn then_validator_node_has_state_at(world: &mut TariWorld, vn_name: String
 }
 
 #[then(expr = "{word} is on epoch {int} within {int} seconds")]
-async fn vn_has_scanned_to_epoch(world: &mut TariWorld, vn_name: String, epoch: u64, seconds: usize) {
+async fn vn_has_scanned_to_epoch(world: &mut TaijiWorld, vn_name: String, epoch: u64, seconds: usize) {
     let epoch = Epoch(epoch);
     let vn = world.get_validator_node(&vn_name);
     let mut client = vn.create_client();
@@ -320,7 +320,7 @@ async fn vn_has_scanned_to_epoch(world: &mut TariWorld, vn_name: String, epoch: 
 }
 
 #[then(expr = "{word} has scanned to height {int} within {int} seconds")]
-async fn vn_has_scanned_to_height(world: &mut TariWorld, vn_name: String, block_height: u64, seconds: usize) {
+async fn vn_has_scanned_to_height(world: &mut TaijiWorld, vn_name: String, block_height: u64, seconds: usize) {
     let vn = world.get_validator_node(&vn_name);
     let mut client = vn.create_client();
     for _ in 0..seconds {
@@ -336,12 +336,12 @@ async fn vn_has_scanned_to_height(world: &mut TariWorld, vn_name: String, block_
 }
 
 #[when(expr = "I create a new key pair {word}")]
-async fn when_i_create_new_key_pair(world: &mut TariWorld, key_name: String) {
+async fn when_i_create_new_key_pair(world: &mut TaijiWorld, key_name: String) {
     create_key(world, key_name);
 }
 
 #[when(expr = "I wait for validator {word} has leaf block height of at least {int}")]
-async fn when_i_wait_for_validator_leaf_block_at_least(world: &mut TariWorld, name: String, height: u64) {
+async fn when_i_wait_for_validator_leaf_block_at_least(world: &mut TaijiWorld, name: String, height: u64) {
     let vn = world.get_validator_node(&name);
     let mut client = vn.create_client();
     for _ in 0..20 {

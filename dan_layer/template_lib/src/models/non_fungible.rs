@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
-use tari_bor::BorTag;
-use tari_template_abi::{
+use taiji_bor::BorTag;
+use taiji_template_abi::{
     call_engine,
     rust::{fmt, fmt::Display, write},
     EngineOp,
@@ -396,14 +396,14 @@ mod tests {
             assert_eq!(r, v);
 
             // Check that CBOR does not include the string
-            let cbor = tari_bor::encode(&v).unwrap();
+            let cbor = taiji_bor::encode(&v).unwrap();
             assert!(
                 !cbor.windows(resx_str.len()).any(|window| window == resx_str.as_bytes()),
                 "CBOR is serializing a string"
             );
 
             // Deserialize from CBOR
-            let r = tari_bor::decode::<NonFungibleAddressContents>(&cbor).unwrap();
+            let r = taiji_bor::decode::<NonFungibleAddressContents>(&cbor).unwrap();
             assert_eq!(r, v);
         }
     }

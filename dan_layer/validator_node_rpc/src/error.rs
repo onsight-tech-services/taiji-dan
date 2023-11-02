@@ -1,13 +1,13 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_bor::BorError;
-use tari_comms::{
+use taiji_bor::BorError;
+use taiji_comms::{
     connectivity::ConnectivityError,
     protocol::rpc::{RpcError, RpcStatus},
     types::CommsPublicKey,
 };
-use tari_dan_common_types::optional::IsNotFoundError;
+use taiji_dan_common_types::optional::IsNotFoundError;
 
 #[derive(Debug, thiserror::Error)]
 pub enum ValidatorNodeRpcClientError {

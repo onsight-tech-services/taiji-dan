@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -22,12 +22,12 @@
 
 use std::str::FromStr;
 
-use tari_common_types::types::FixedHash;
+use taiji_common_types::types::FixedHash;
 
 use crate::hashing::{hasher, EngineHashDomainLabel};
 
 /// Package (template) identifier
-pub type TemplateAddress = tari_template_lib::Hash;
+pub type TemplateAddress = taiji_template_lib::Hash;
 
 // TODO: should we refactor TemplateAddress as a newtype to implement FromStr?
 pub fn parse_template_address(s: String) -> Option<TemplateAddress> {

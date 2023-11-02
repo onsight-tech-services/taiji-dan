@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -29,7 +29,7 @@ pub use wasm::*;
 mod non_wasm;
 #[cfg(not(target_arch = "wasm32"))]
 pub use non_wasm::*;
-use tari_bor::{decode_exact, decode_len, encode_into};
+use taiji_bor::{decode_exact, decode_len, encode_into};
 
 use crate::{
     ops::EngineOp,
@@ -47,7 +47,7 @@ pub fn call_engine<T: Serialize + fmt::Debug, U: DeserializeOwned>(op: EngineOp,
     encode_into(input, &mut encoded).unwrap();
     let len = encoded.len();
     let input_ptr = wrap_ptr(encoded) as *const _;
-    let ptr = unsafe { tari_engine(op.as_i32(), input_ptr, len) };
+    let ptr = unsafe { taiji_engine(op.as_i32(), input_ptr, len) };
     if ptr.is_null() {
         panic!("Engine call returned null for op {:?}", op);
     }
@@ -71,7 +71,7 @@ pub fn call_debug<T: AsRef<[u8]>>(data: T) {
 
 /// Allocates a block of memory of length `len` bytes.
 #[no_mangle]
-pub extern "C" fn tari_alloc(len: u32) -> *mut u8 {
+pub extern "C" fn taiji_alloc(len: u32) -> *mut u8 {
     let cap = (len + 4) as usize;
     let mut buf = Vec::<u8>::with_capacity(cap);
     let ptr = buf.as_mut_ptr();
@@ -82,12 +82,12 @@ pub extern "C" fn tari_alloc(len: u32) -> *mut u8 {
     ptr
 }
 
-/// Frees a block of memory allocated by `tari_alloc`.
+/// Frees a block of memory allocated by `taiji_alloc`.
 ///
 /// # Safety
-/// Caller must ensure that ptr must be a valid pointer to a block of memory allocated by `tari_alloc`.
+/// Caller must ensure that ptr must be a valid pointer to a block of memory allocated by `taiji_alloc`.
 #[no_mangle]
-pub unsafe extern "C" fn tari_free(ptr: *mut u8) {
+pub unsafe extern "C" fn taiji_free(ptr: *mut u8) {
     let mut len = [0u8; 4];
     copy(ptr, len.as_mut_ptr(), 4);
 

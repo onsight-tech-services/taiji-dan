@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -29,14 +29,14 @@ use std::{
 };
 
 use log::debug;
-use tari_common_types::types::PublicKey;
-use tari_dan_common_types::{
+use taiji_common_types::types::PublicKey;
+use taiji_dan_common_types::{
     optional::Optional,
     services::template_provider::TemplateProvider,
     Epoch,
     NodeAddressable,
 };
-use tari_engine_types::{
+use taiji_engine_types::{
     bucket::Bucket,
     commit_result::{RejectReason, TransactionResult},
     component::{ComponentBody, ComponentHeader},
@@ -54,11 +54,11 @@ use tari_engine_types::{
     vault::Vault,
     TemplateAddress,
 };
-use tari_template_abi::TemplateDef;
-use tari_template_lib::{
+use taiji_template_abi::TemplateDef;
+use taiji_template_lib::{
     args::MintArg,
     auth::AccessRules,
-    constants::CONFIDENTIAL_TARI_RESOURCE_ADDRESS,
+    constants::CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS,
     models::{
         Amount,
         BucketId,
@@ -73,7 +73,7 @@ use tari_template_lib::{
     resource::ResourceType,
     Hash,
 };
-use tari_transaction::id_provider::IdProvider;
+use taiji_transaction::id_provider::IdProvider;
 
 use crate::{
     packager::LoadedTemplate,
@@ -87,7 +87,7 @@ use crate::{
     state_store::{memory::MemoryStateStore, AtomicDb, StateReader},
 };
 
-const LOG_TARGET: &str = "tari::dan::engine::runtime::state_tracker";
+const LOG_TARGET: &str = "taiji::dan::engine::runtime::state_tracker";
 
 pub struct FinalizeTracker {
     pub result: TransactionResult,
@@ -416,7 +416,7 @@ impl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> StateTracke
                 });
             }
             Ok(ResourceContainer::confidential(
-                CONFIDENTIAL_TARI_RESOURCE_ADDRESS,
+                CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS,
                 None,
                 amount,
             ))
@@ -673,7 +673,7 @@ impl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> StateTracke
             .sum::<Amount>();
 
         let mut fee_resource =
-            ResourceContainer::confidential(CONFIDENTIAL_TARI_RESOURCE_ADDRESS, None, Amount::zero());
+            ResourceContainer::confidential(CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS, None, Amount::zero());
 
         // Collect the fee
         let mut remaining_fees = total_fees;

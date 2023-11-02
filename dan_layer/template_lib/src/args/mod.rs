@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that
 // the  following conditions are met:
@@ -103,7 +103,7 @@ macro_rules! invoke_args {
     ($($args:expr),+) => {{
         let mut args = Vec::with_capacity($crate::__expr_counter!($($args),+));
         $(
-            $crate::args::__push(&mut args, tari_bor::encode(&$args).unwrap());
+            $crate::args::__push(&mut args, taiji_bor::encode(&$args).unwrap());
         )+
         args
     }}
@@ -165,11 +165,11 @@ mod tests {
 
         let args = args![Variable("foo"), "bar".to_string()];
         assert_eq!(args[0], Arg::Workspace("foo".into()));
-        assert_eq!(args[1], Arg::Literal(tari_bor::encode(&"bar".to_string()).unwrap()));
+        assert_eq!(args[1], Arg::Literal(taiji_bor::encode(&"bar".to_string()).unwrap()));
 
         let args = args!["foo".to_string(), Variable("bar"), 123u64];
-        assert_eq!(args[0], Arg::Literal(tari_bor::encode(&"foo".to_string()).unwrap()));
+        assert_eq!(args[0], Arg::Literal(taiji_bor::encode(&"foo".to_string()).unwrap()));
         assert_eq!(args[1], Arg::Workspace("bar".into()));
-        assert_eq!(args[2], Arg::Literal(tari_bor::encode(&123u64).unwrap()));
+        assert_eq!(args[2], Arg::Literal(taiji_bor::encode(&123u64).unwrap()));
     }
 }

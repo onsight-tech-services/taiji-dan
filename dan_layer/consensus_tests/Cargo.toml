@@ -2,25 +2,25 @@
 name = "consensus_tests"
 version = "0.50.0-pre.0"
 edition = "2021"
-authors = ["The Tari Development Community"]
-description = "Tari template runtime engine"
-repository = "https://github.com/tari-project/tari-dan"
+authors = ["OnSight Tech Services LLC"]
+description = "Taiji template runtime engine"
+repository = "https://github.com/onsight-tech-services/taiji-dan"
 license = "BSD-3-Clause"
 
 [dependencies]
 
 [dev-dependencies]
-tari_dan_common_types = { path = "../common_types" }
-tari_consensus = { path = "../consensus" }
-tari_dan_storage = { path = "../storage" }
-tari_state_store_sqlite = { path = "../state_store_sqlite" }
-tari_transaction = { path = "../transaction" }
-tari_engine_types = { path = "../engine_types" }
-tari_epoch_manager = { path = "../epoch_manager" }
+taiji_dan_common_types = { path = "../common_types" }
+taiji_consensus = { path = "../consensus" }
+taiji_dan_storage = { path = "../storage" }
+taiji_state_store_sqlite = { path = "../state_store_sqlite" }
+taiji_transaction = { path = "../transaction" }
+taiji_engine_types = { path = "../engine_types" }
+taiji_epoch_manager = { path = "../epoch_manager" }
 
-tari_common_types = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_mmr = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_shutdown = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
+taiji_common_types = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_mmr = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_shutdown = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
 tari_crypto = "0.18"
 
 anyhow = "1.0"

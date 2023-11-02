@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_engine_types::instruction::Instruction;
-use tari_template_lib::{args, models::ComponentAddress, prelude::Metadata};
-use tari_template_test_tooling::TemplateTest;
+use taiji_engine_types::instruction::Instruction;
+use taiji_template_lib::{args, models::ComponentAddress, prelude::Metadata};
+use taiji_template_test_tooling::TemplateTest;
 
 #[test]
 fn basic_nft_mint() {

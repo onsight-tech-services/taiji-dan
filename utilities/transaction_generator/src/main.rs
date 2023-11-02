@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 mod cli;
@@ -7,7 +7,7 @@ mod transaction_writer;
 use std::io::{stdout, Seek, SeekFrom, Write};
 
 use cli::Cli;
-use tari_template_lib::models::Amount;
+use taiji_template_lib::models::Amount;
 use transaction_generator::{read_number_of_transactions, read_transactions};
 
 use crate::{cli::SubCommand, transaction_writer::write_transactions};

@@ -1,9 +1,9 @@
-//    Copyright 2023 The Tari Project
+//    Copyright 2023 OnSight Tech Services LLC
 //    SPDX-License-Identifier: BSD-3-Clause
 
 use diesel::Queryable;
-use tari_dan_common_types::{Epoch, NodeHeight};
-use tari_dan_storage::{consensus_models, consensus_models::SubstateDestroyed, StorageError};
+use taiji_dan_common_types::{Epoch, NodeHeight};
+use taiji_dan_storage::{consensus_models, consensus_models::SubstateDestroyed, StorageError};
 use time::PrimitiveDateTime;
 
 use crate::serialization::{deserialize_hex_try_from, deserialize_json, parse_from_string};

@@ -1,18 +1,18 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{fmt::Display, str::FromStr};
 
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::PublicKey;
-use tari_dan_common_types::{Epoch, ShardId};
-use tari_engine_types::{
+use taiji_common_types::types::PublicKey;
+use taiji_dan_common_types::{Epoch, ShardId};
+use taiji_engine_types::{
     hashing::{hasher, EngineHashDomainLabel},
     instruction::Instruction,
     serde_with,
     substate::SubstateAddress,
 };
-use tari_template_lib::Hash;
+use taiji_template_lib::Hash;
 
 use crate::{builder::TransactionBuilder, transaction_id::TransactionId, TransactionSignature};
 

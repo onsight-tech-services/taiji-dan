@@ -1,13 +1,13 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::str::FromStr;
 
 use chrono::NaiveDateTime;
 use diesel::{Identifiable, Queryable};
-use tari_dan_wallet_sdk::storage::WalletStorageError;
-use tari_engine_types::substate::SubstateAddress;
-use tari_template_lib::{
+use taiji_dan_wallet_sdk::storage::WalletStorageError;
+use taiji_engine_types::substate::SubstateAddress;
+use taiji_template_lib::{
     models::{Amount, ResourceAddress},
     resource::ResourceType,
 };
@@ -32,8 +32,8 @@ impl Vault {
     pub(crate) fn try_into_vault(
         self,
         account_address: SubstateAddress,
-    ) -> Result<tari_dan_wallet_sdk::models::VaultModel, WalletStorageError> {
-        Ok(tari_dan_wallet_sdk::models::VaultModel {
+    ) -> Result<taiji_dan_wallet_sdk::models::VaultModel, WalletStorageError> {
+        Ok(taiji_dan_wallet_sdk::models::VaultModel {
             account_address,
             address: SubstateAddress::from_str(&self.address).map_err(|e| WalletStorageError::DecodingError {
                 operation: "try_into_vault",

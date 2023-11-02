@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_common_types::types::FixedHash;
-use tari_dan_common_types::{hashing::vote_signature_hasher, NodeAddressable};
-use tari_dan_storage::consensus_models::{BlockId, QuorumDecision, ValidatorSchnorrSignature, ValidatorSignature};
+use taiji_common_types::types::FixedHash;
+use taiji_dan_common_types::{hashing::vote_signature_hasher, NodeAddressable};
+use taiji_dan_storage::consensus_models::{BlockId, QuorumDecision, ValidatorSchnorrSignature, ValidatorSignature};
 
 pub trait ValidatorSignatureService<TAddr> {
     fn sign<M: AsRef<[u8]>>(&self, message: M) -> ValidatorSchnorrSignature;

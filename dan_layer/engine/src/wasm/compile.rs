@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -51,9 +51,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-tari_template_abi = { git="https://github.com/tari-project/tari-dan.git", package="tari_template_abi", default-features = false, branch="development" }
-tari_template_lib = { git="https://github.com/tari-project/tari-dan.git", package="tari_template_lib", branch = "development" }
-tari_template_macros = { git="https://github.com/tari-project/tari-dan.git", package="tari_template_macros", branch = "development" }
+taiji_template_abi = { git="https://github.com/onsight-tech-services/taiji-dan.git", package="taiji_template_abi", default-features = false, branch="development" }
+taiji_template_lib = { git="https://github.com/onsight-tech-services/taiji-dan.git", package="taiji_template_lib", branch = "development" }
+taiji_template_macros = { git="https://github.com/onsight-tech-services/taiji-dan.git", package="taiji_template_macros", branch = "development" }
 
 [profile.release]
 opt-level = 's'     # Optimize for size.

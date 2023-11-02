@@ -1,4 +1,4 @@
-//   Copyright 2023. The Tari Project
+//   Copyright 2023. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -24,8 +24,8 @@ use std::convert::{TryFrom, TryInto};
 
 use anyhow::anyhow;
 use serde::Serialize;
-use tari_bor::{decode_exact, encode};
-use tari_consensus::messages::{
+use taiji_bor::{decode_exact, encode};
+use taiji_consensus::messages::{
     FullBlock,
     HotstuffMessage,
     NewViewMessage,
@@ -37,8 +37,8 @@ use tari_consensus::messages::{
     VoteMessage,
 };
 use tari_crypto::tari_utilities::ByteArray;
-use tari_dan_common_types::{Epoch, NodeAddressable, NodeHeight, ValidatorMetadata};
-use tari_dan_storage::consensus_models::{
+use taiji_dan_common_types::{Epoch, NodeAddressable, NodeHeight, ValidatorMetadata};
+use taiji_dan_storage::consensus_models::{
     BlockId,
     Command,
     Decision,
@@ -51,8 +51,8 @@ use tari_dan_storage::consensus_models::{
     SubstateRecord,
     TransactionAtom,
 };
-use tari_engine_types::substate::{SubstateAddress, SubstateValue};
-use tari_transaction::TransactionId;
+use taiji_engine_types::substate::{SubstateAddress, SubstateValue};
+use taiji_transaction::TransactionId;
 
 use crate::proto;
 // -------------------------------- HotstuffMessage -------------------------------- //
@@ -247,8 +247,8 @@ impl TryFrom<proto::consensus::RequestedTransactionMessage> for RequestedTransac
 }
 //---------------------------------- Block --------------------------------------------//
 
-impl<TAddr: NodeAddressable> From<&tari_dan_storage::consensus_models::Block<TAddr>> for proto::consensus::Block {
-    fn from(value: &tari_dan_storage::consensus_models::Block<TAddr>) -> Self {
+impl<TAddr: NodeAddressable> From<&taiji_dan_storage::consensus_models::Block<TAddr>> for proto::consensus::Block {
+    fn from(value: &taiji_dan_storage::consensus_models::Block<TAddr>) -> Self {
         Self {
             height: value.height().as_u64(),
             epoch: value.epoch().as_u64(),
@@ -263,7 +263,7 @@ impl<TAddr: NodeAddressable> From<&tari_dan_storage::consensus_models::Block<TAd
 }
 
 impl<TAddr: NodeAddressable + Serialize> TryFrom<proto::consensus::Block>
-    for tari_dan_storage::consensus_models::Block<TAddr>
+    for taiji_dan_storage::consensus_models::Block<TAddr>
 {
     type Error = anyhow::Error;
 

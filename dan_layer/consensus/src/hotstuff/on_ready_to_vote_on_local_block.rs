@@ -1,15 +1,15 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{collections::HashSet, num::NonZeroU64, ops::DerefMut};
 
 use log::*;
-use tari_dan_common_types::{
+use taiji_dan_common_types::{
     committee::{Committee, CommitteeShard},
     optional::Optional,
     ShardId,
 };
-use tari_dan_storage::{
+use taiji_dan_storage::{
     consensus_models::{
         Block,
         BlockId,
@@ -31,8 +31,8 @@ use tari_dan_storage::{
     },
     StateStore,
 };
-use tari_epoch_manager::EpochManagerReader;
-use tari_transaction::Transaction;
+use taiji_epoch_manager::EpochManagerReader;
+use taiji_transaction::Transaction;
 use tokio::sync::{broadcast, mpsc};
 
 use crate::{
@@ -41,7 +41,7 @@ use crate::{
     traits::{ConsensusSpec, LeaderStrategy, StateManager, VoteSignatureService},
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::on_lock_block_ready";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::on_lock_block_ready";
 
 pub struct OnReadyToVoteOnLocalBlock<TConsensusSpec: ConsensusSpec> {
     validator_addr: TConsensusSpec::Addr,

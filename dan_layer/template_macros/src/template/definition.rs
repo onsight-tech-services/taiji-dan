@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -34,14 +34,14 @@ pub fn generate_definition(ast: &TemplateAst) -> TokenStream {
     quote! {
         #[allow(non_snake_case)]
         pub mod #template_mod_name {
-            use ::tari_template_lib::template_dependencies::*;
+            use ::taiji_template_lib::template_dependencies::*;
 
             #(#items)*
 
-            impl ::tari_template_lib::component::interface::ComponentInterface for #component_ident {
+            impl ::taiji_template_lib::component::interface::ComponentInterface for #component_ident {
                 type Component = #component_wrapper_ident;
 
-                fn create_with_options(self, access_rules: ::tari_template_lib::auth::AccessRules, component_id: Option<::tari_template_lib::Hash>) -> Self::Component {
+                fn create_with_options(self, access_rules: ::taiji_template_lib::auth::AccessRules, component_id: Option<::taiji_template_lib::Hash>) -> Self::Component {
                     let address = engine().create_component(self, access_rules, component_id);
                     #component_wrapper_ident{ address }
                 }
@@ -50,11 +50,11 @@ pub fn generate_definition(ast: &TemplateAst) -> TokenStream {
             #[derive(serde::Serialize, serde::Deserialize)]
             #[serde(transparent, crate = "self::serde")]
             pub struct #component_wrapper_ident {
-                address: tari_template_lib::models::ComponentAddress,
+                address: taiji_template_lib::models::ComponentAddress,
             }
 
-            impl ::tari_template_lib::component::interface::ComponentInstanceInterface for #component_wrapper_ident {
-                fn set_access_rules(self, rules: tari_template_lib::auth::AccessRules) -> Self {
+            impl ::taiji_template_lib::component::interface::ComponentInstanceInterface for #component_wrapper_ident {
+                fn set_access_rules(self, rules: taiji_template_lib::auth::AccessRules) -> Self {
                     engine().component_manager(self.address).set_access_rules(rules);
                     self
                 }
@@ -105,7 +105,7 @@ mod tests {
         assert_code_eq(output, quote! {
                    # [allow (non_snake_case)]
         pub mod Foo_template {
-            use :: tari_template_lib :: template_dependencies :: * ;
+            use :: taiji_template_lib :: template_dependencies :: * ;
             # [derive (Debug ,  serde :: Serialize , serde :: Deserialize)] # [serde (crate = "self::serde")] struct Foo { }
             impl Foo { pub fn no_args_function () -> String { "Hello World!" . to_string () }
                 pub fn some_args_function (a : i8 , b : String) -> u32 { 1_u32 }
@@ -114,19 +114,19 @@ mod tests {
                 pub fn method (& self) { }
                 fn private_function () { }
             }
-            impl :: tari_template_lib :: component :: interface :: ComponentInterface for Foo {
+            impl :: taiji_template_lib :: component :: interface :: ComponentInterface for Foo {
                 type Component = FooComponent ;
-                fn create_with_options (self , access_rules : :: tari_template_lib :: auth :: AccessRules , component_id : Option < :: tari_template_lib :: Hash > ) -> Self :: Component {
+                fn create_with_options (self , access_rules : :: taiji_template_lib :: auth :: AccessRules , component_id : Option < :: taiji_template_lib :: Hash > ) -> Self :: Component {
                     let address = engine () . create_component (self , access_rules, component_id) ;
                     FooComponent { address }
                 }
             }
             # [derive (serde :: Serialize , serde :: Deserialize)] # [serde (transparent , crate = "self::serde")]
             pub struct FooComponent {
-                address : tari_template_lib :: models :: ComponentAddress ,
+                address : taiji_template_lib :: models :: ComponentAddress ,
             }
-            impl :: tari_template_lib :: component :: interface :: ComponentInstanceInterface for FooComponent {
-                fn set_access_rules (self , rules : tari_template_lib :: auth :: AccessRules) -> Self {
+            impl :: taiji_template_lib :: component :: interface :: ComponentInstanceInterface for FooComponent {
+                fn set_access_rules (self , rules : taiji_template_lib :: auth :: AccessRules) -> Self {
                     engine () . component_manager (self . address) . set_access_rules (rules) ;
                     self
                 }

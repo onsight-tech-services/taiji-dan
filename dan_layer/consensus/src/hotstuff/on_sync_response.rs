@@ -1,19 +1,19 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::collections::HashSet;
 
 use log::*;
-use tari_dan_storage::{consensus_models::Block, StateStore};
-use tari_transaction::Transaction;
+use taiji_dan_storage::{consensus_models::Block, StateStore};
+use taiji_transaction::Transaction;
 use tokio::sync::mpsc;
 
 use crate::{hotstuff::HotStuffError, messages::SyncResponseMessage, traits::ConsensusSpec};
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::on_sync_request";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::on_sync_request";
 
 #[derive(Debug)]
 pub struct OnSyncResponse<TConsensusSpec: ConsensusSpec> {

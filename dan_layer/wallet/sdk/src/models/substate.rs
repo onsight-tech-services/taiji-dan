@@ -1,12 +1,12 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{fmt::Display, str::FromStr};
 
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::FixedHash;
-use tari_engine_types::{serde_with, substate::SubstateAddress, TemplateAddress};
-use tari_transaction::SubstateRequirement;
+use taiji_common_types::types::FixedHash;
+use taiji_engine_types::{serde_with, substate::SubstateAddress, TemplateAddress};
+use taiji_transaction::SubstateRequirement;
 
 #[derive(Debug, Clone)]
 pub struct SubstateModel {

@@ -1,7 +1,7 @@
-//   Copyright 2022 The Tari Project
+//   Copyright 2022 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-clause
 
-use tari_template_abi::{
+use taiji_template_abi::{
     rust::{format, io},
 };
 

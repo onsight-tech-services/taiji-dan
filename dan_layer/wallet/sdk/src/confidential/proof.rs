@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::mem::size_of;
@@ -17,7 +17,7 @@ use chacha20poly1305::{
 };
 use digest::FixedOutput;
 use lazy_static::lazy_static;
-use tari_common_types::types::{BulletRangeProof, Commitment, CommitmentFactory, PrivateKey, PublicKey};
+use taiji_common_types::types::{BulletRangeProof, Commitment, CommitmentFactory, PrivateKey, PublicKey};
 use tari_crypto::{
     commitment::{ExtensionDegree, HomomorphicCommitmentFactory},
     errors::RangeProofError,
@@ -28,7 +28,7 @@ use tari_crypto::{
     ristretto::bulletproofs_plus::{BulletproofsPlusService, RistrettoExtendedMask, RistrettoExtendedWitness},
     tari_utilities::ByteArray,
 };
-use tari_template_lib::{
+use taiji_template_lib::{
     crypto::RistrettoPublicKeyBytes,
     models::{Amount, ConfidentialOutputProof, ConfidentialStatement, EncryptedData},
 };
@@ -122,7 +122,7 @@ fn inner_encrypted_data_kdf_aead(encryption_key: &PrivateKey, commitment: &Commi
     // This has to be the same as the base layer so that burn claims are spendable
     hash_domain!(
         TransactionSecureNonceKdfDomain,
-        "com.tari.base_layer.core.transactions.secure_nonce_kdf",
+        "com.taiji.base_layer.core.transactions.secure_nonce_kdf",
         0
     );
     DomainSeparatedHasher::<Blake2b<U32>, TransactionSecureNonceKdfDomain>::new_with_label("encrypted_value_and_mask")
@@ -132,7 +132,7 @@ fn inner_encrypted_data_kdf_aead(encryption_key: &PrivateKey, commitment: &Commi
     aead_key
 }
 
-const ENCRYPTED_DATA_TAG: &[u8] = b"TARI_AAD_VALUE_AND_MASK_EXTEND_NONCE_VARIANT";
+const ENCRYPTED_DATA_TAG: &[u8] = b"TAIJI_AAD_VALUE_AND_MASK_EXTEND_NONCE_VARIANT";
 // Useful size constants, each in bytes
 const SIZE_NONCE: usize = size_of::<XNonce>();
 const SIZE_VALUE: usize = size_of::<u64>();
@@ -232,8 +232,8 @@ mod tests {
     use rand::rngs::OsRng;
     use tari_common_types::types::PrivateKey;
     use tari_crypto::keys::SecretKey;
-    use tari_engine_types::confidential::validate_confidential_proof;
-    use tari_template_lib::models::Amount;
+    use taiji_engine_types::confidential::validate_confidential_proof;
+    use taiji_template_lib::models::Amount;
 
     use super::*;
 

@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{fmt::Display, str::FromStr};
@@ -6,10 +6,10 @@ use std::{fmt::Display, str::FromStr};
 use anyhow::anyhow;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use tari_dan_storage::consensus_models::QuorumCertificate;
-use tari_engine_types::commit_result::{FinalizeResult, RejectReason};
-use tari_template_lib::models::Amount;
-use tari_transaction::Transaction;
+use taiji_dan_storage::consensus_models::QuorumCertificate;
+use taiji_engine_types::commit_result::{FinalizeResult, RejectReason};
+use taiji_template_lib::models::Amount;
+use taiji_transaction::Transaction;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct WalletTransaction<TAddr> {

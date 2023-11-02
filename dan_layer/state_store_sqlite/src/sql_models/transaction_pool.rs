@@ -1,8 +1,8 @@
-//    Copyright 2023 The Tari Project
+//    Copyright 2023 OnSight Tech Services LLC
 //    SPDX-License-Identifier: BSD-3-Clause
 
 use diesel::{Queryable, QueryableByName};
-use tari_dan_storage::{
+use taiji_dan_storage::{
     consensus_models,
     consensus_models::{Evidence, TransactionAtom},
     StorageError,

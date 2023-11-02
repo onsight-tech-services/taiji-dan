@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -8,9 +8,9 @@ use std::{
 };
 
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::FixedHash;
-use tari_dan_common_types::{Epoch, NodeAddressable, NodeHeight, ShardId};
-use tari_transaction::{Transaction, TransactionId};
+use taiji_common_types::types::FixedHash;
+use taiji_dan_common_types::{Epoch, NodeAddressable, NodeHeight, ShardId};
+use taiji_transaction::{Transaction, TransactionId};
 
 use crate::{
     consensus_models::{
@@ -41,7 +41,7 @@ use crate::{
     StorageError,
 };
 
-const LOG_TARGET: &str = "tari::dan::storage";
+const LOG_TARGET: &str = "taiji::dan::storage";
 
 pub trait StateStore {
     type Addr: NodeAddressable;

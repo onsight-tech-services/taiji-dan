@@ -1,11 +1,11 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::collections::HashMap;
 
-use tari_common_types::types::PublicKey;
-use tari_dan_common_types::{optional::Optional, Epoch};
-use tari_engine_types::{
+use taiji_common_types::types::PublicKey;
+use taiji_dan_common_types::{optional::Optional, Epoch};
+use taiji_engine_types::{
     bucket::Bucket,
     component::ComponentHeader,
     confidential::UnclaimedConfidentialOutput,
@@ -19,7 +19,7 @@ use tari_engine_types::{
     vault::Vault,
     virtual_substate::{VirtualSubstate, VirtualSubstateAddress},
 };
-use tari_template_lib::models::{
+use taiji_template_lib::models::{
     BucketId,
     ComponentAddress,
     NonFungibleAddress,

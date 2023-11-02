@@ -1,14 +1,14 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use blake2::Blake2b;
 use digest::consts::U32;
-use tari_common_types::types::PublicKey;
+use taiji_common_types::types::PublicKey;
 use tari_crypto::keys::PublicKey as PublicKeyTrait;
 //
 use tari_crypto::ristretto::RistrettoPublicKey;
-use tari_dan_common_types::optional::Optional;
-use tari_key_manager::{
+use taiji_dan_common_types::optional::Optional;
+use taiji_key_manager::{
     cipher_seed::CipherSeed,
     key_manager::{DerivedKey, KeyManager},
 };
@@ -48,7 +48,7 @@ impl<'a, TStore: WalletStore> KeyManagerApi<'a, TStore> {
             let km = self.get_key_manager(branch, index);
             let key = km
                 .derive_key(index)
-                .map_err(tari_key_manager::error::KeyManagerError::from)?;
+                .map_err(taiji_key_manager::error::KeyManagerError::from)?;
             let pk = PublicKey::from_secret_key(&key.key);
             keys.push((index, pk, active));
         }
@@ -60,7 +60,7 @@ impl<'a, TStore: WalletStore> KeyManagerApi<'a, TStore> {
         let key = km
                 .derive_key(index)
                 // TODO: Key manager shouldn't return other errors
-                .map_err(tari_key_manager::error::KeyManagerError::from)?;
+                .map_err(taiji_key_manager::error::KeyManagerError::from)?;
         Ok(key)
     }
 
@@ -71,7 +71,7 @@ impl<'a, TStore: WalletStore> KeyManagerApi<'a, TStore> {
         let key = key_manager
             .next_key()
             // TODO: Key manager shouldn't return other errors
-            .map_err(tari_key_manager::error::KeyManagerError::from)?;
+            .map_err(taiji_key_manager::error::KeyManagerError::from)?;
         tx.key_manager_insert(&key_manager.branch_seed, key_manager.key_index())?;
         tx.commit()?;
         Ok(key)
@@ -135,5 +135,5 @@ pub enum KeyManagerApiError {
     #[error("Store error: {0}")]
     StoreError(#[from] WalletStorageError),
     #[error("Key manager error: {0}")]
-    KeyManagerError(#[from] tari_key_manager::error::KeyManagerError),
+    KeyManagerError(#[from] taiji_key_manager::error::KeyManagerError),
 }

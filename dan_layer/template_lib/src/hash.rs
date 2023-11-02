@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -150,8 +150,8 @@ mod tests {
     fn serialize_deserialize() {
         let hash = Hash::default();
         let mut buf = Vec::new();
-        tari_bor::encode_into(&hash, &mut buf).unwrap();
-        let hash2 = tari_bor::decode(&buf).unwrap();
+        taiji_bor::encode_into(&hash, &mut buf).unwrap();
+        let hash2 = taiji_bor::decode(&buf).unwrap();
         assert_eq!(hash, hash2);
     }
 }

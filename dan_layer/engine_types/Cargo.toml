@@ -1,18 +1,18 @@
 [package]
-name = "tari_engine_types"
+name = "taiji_engine_types"
 version = "0.0.1"
 edition = "2021"
-authors = ["The Tari Development Community"]
-description = "Shared Tari engine data types"
-repository = "https://github.com/tari-project/tari-dan"
+authors = ["OnSight Tech Services LLC"]
+description = "Shared Taiji engine data types"
+repository = "https://github.com/onsight-tech-services/taiji-dan"
 license = "BSD-3-Clause"
 
 [dependencies]
-tari_bor = { path = "../tari_bor" }
-tari_common_types = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
+taiji_bor = { path = "../taiji_bor" }
+taiji_common_types = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
 tari_crypto = { version = "0.18", features = ["borsh"] }
-tari_template_abi = { path = "../template_abi", features = ["std"] }
-tari_template_lib = { path = "../template_lib" }
+taiji_template_abi = { path = "../template_abi", features = ["std"] }
+taiji_template_lib = { path = "../template_lib" }
 tari_utilities = "0.5.1"
 
 borsh = "0.10"

@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -21,7 +21,7 @@
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 extern "C" {
-    pub fn tari_engine(op: i32, input_ptr: *const u8, input_len: usize) -> *mut u8;
+    pub fn taiji_engine(op: i32, input_ptr: *const u8, input_len: usize) -> *mut u8;
     pub fn debug(input_ptr: *const u8, input_len: usize);
     pub fn on_panic(msg_ptr: *const u8, msg_len: u32, line: u32, column: u32);
 }

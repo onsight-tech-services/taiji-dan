@@ -1,13 +1,13 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::sync::{atomic::AtomicU32, Arc, Mutex};
 
-use tari_engine_types::{
+use taiji_engine_types::{
     component::new_component_address_from_parts,
     hashing::{hasher, EngineHashDomainLabel},
 };
-use tari_template_lib::{
+use taiji_template_lib::{
     models::{BucketId, ComponentAddress, ResourceAddress, TemplateAddress, VaultId},
     Hash,
 };

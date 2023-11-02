@@ -1,10 +1,10 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
 use std::collections::HashMap;
 
 use d3ne::{Node, OutputValue, Worker};
-use tari_dan_common_types::services::template_provider::TemplateProvider;
+use taiji_dan_common_types::services::template_provider::TemplateProvider;
 
 use crate::{flow::FlowContext, function_definitions::ArgType, packager::LoadedTemplate};
 
@@ -43,6 +43,6 @@ impl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> Worker<Flow
     }
 
     fn name(&self) -> &str {
-        "tari::arg"
+        "taiji::arg"
     }
 }

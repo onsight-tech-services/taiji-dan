@@ -1,8 +1,8 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
-use tari_bor::{decode_exact, encode, BorError};
+use taiji_bor::{decode_exact, encode, BorError};
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct InvokeResult(Result<Vec<u8>, String>);

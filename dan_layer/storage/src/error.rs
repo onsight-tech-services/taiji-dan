@@ -1,4 +1,4 @@
-//  Copyright 2021, The Tari Project
+//  Copyright 2021, OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -20,8 +20,8 @@
 //  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-use tari_common_types::types::FixedHashSizeError;
-use tari_dan_common_types::optional::IsNotFoundError;
+use taiji_common_types::types::FixedHashSizeError;
+use taiji_dan_common_types::optional::IsNotFoundError;
 
 #[derive(Debug, thiserror::Error)]
 pub enum StorageError {

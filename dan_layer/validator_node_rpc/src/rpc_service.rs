@@ -1,12 +1,12 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_comms::protocol::rpc::{Request, Response, RpcStatus, Streaming};
-use tari_comms_rpc_macros::tari_rpc;
+use taiji_comms::protocol::rpc::{Request, Response, RpcStatus, Streaming};
+use taiji_comms_rpc_macros::taiji_rpc;
 
 use crate::proto::rpc as proto;
 
-#[tari_rpc(protocol_name = b"t/vn/1", server_struct = ValidatorNodeRpcServer, client_struct = ValidatorNodeRpcClient)]
+#[taiji_rpc(protocol_name = b"t/vn/1", server_struct = ValidatorNodeRpcServer, client_struct = ValidatorNodeRpcClient)]
 pub trait ValidatorNodeRpcService: Send + Sync + 'static {
     #[rpc(method = 1)]
     async fn submit_transaction(

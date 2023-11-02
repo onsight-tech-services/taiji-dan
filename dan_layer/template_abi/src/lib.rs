@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -22,9 +22,9 @@
 
 #![cfg_attr(not(feature = "std"), no_std)]
 
-//! # Tari WASM module ABI (application binary interface)
+//! # Taiji WASM module ABI (application binary interface)
 //!
-//! This library provides types and encoding that allow low-level communication between the Tari WASM runtime and the
+//! This library provides types and encoding that allow low-level communication between the Taiji WASM runtime and the
 //! WASM modules.
 
 mod abi;

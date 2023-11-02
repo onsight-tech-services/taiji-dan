@@ -109,25 +109,25 @@ loggers:
       - dan_layer
     additive: false
 
-  tari::application:
+  taiji::application:
     level: debug
     appenders:
       - dan_layer
     additive: false
 
-  tari::validator_node:
+  taiji::validator_node:
     level: debug
     appenders:
       - dan_layer
     additive: false
 
-  tari::dan:
+  taiji::dan:
     level: debug
     appenders:
       - dan_layer
     additive: false
 
-  tari::indexer:
+  taiji::indexer:
     level: debug
     appenders:
       - dan_layer

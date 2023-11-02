@@ -1,13 +1,13 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use log::*;
-use tari_common_types::types::PublicKey;
-use tari_dan_common_types::optional::{IsNotFoundError, Optional};
-use tari_engine_types::{confidential::ConfidentialOutput, substate::SubstateAddress};
-use tari_key_manager::key_manager::DerivedKey;
-use tari_template_lib::models::Amount;
-use tari_transaction::TransactionId;
+use taiji_common_types::types::PublicKey;
+use taiji_dan_common_types::optional::{IsNotFoundError, Optional};
+use taiji_engine_types::{confidential::ConfidentialOutput, substate::SubstateAddress};
+use taiji_key_manager::key_manager::DerivedKey;
+use taiji_template_lib::models::Amount;
+use taiji_transaction::TransactionId;
 
 use crate::{
     apis::{
@@ -21,7 +21,7 @@ use crate::{
     storage::{WalletStorageError, WalletStore, WalletStoreReader, WalletStoreWriter},
 };
 
-const LOG_TARGET: &str = "tari::dan::wallet_sdk::apis::confidential_outputs";
+const LOG_TARGET: &str = "taiji::dan::wallet_sdk::apis::confidential_outputs";
 
 pub struct ConfidentialOutputsApi<'a, TStore> {
     store: &'a TStore,

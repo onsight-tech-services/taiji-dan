@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -26,15 +26,15 @@ use std::{
 };
 
 use log::warn;
-use tari_bor::encode;
-use tari_common_types::types::PublicKey;
+use taiji_bor::encode;
+use taiji_common_types::types::PublicKey;
 use tari_crypto::{
     range_proof::RangeProofService,
     ristretto::{RistrettoPublicKey, RistrettoSecretKey},
     tari_utilities::ByteArray,
 };
-use tari_dan_common_types::{services::template_provider::TemplateProvider, Epoch};
-use tari_engine_types::{
+use taiji_dan_common_types::{services::template_provider::TemplateProvider, Epoch};
+use taiji_engine_types::{
     base_layer_hashing::ownership_proof_hasher,
     commit_result::FinalizeResult,
     component::ComponentHeader,
@@ -45,8 +45,8 @@ use tari_engine_types::{
     resource_container::ResourceContainer,
     substate::{SubstateAddress, SubstateValue},
 };
-use tari_template_abi::TemplateDef;
-use tari_template_lib::{
+use taiji_template_abi::TemplateDef;
+use taiji_template_lib::{
     args::{
         Arg,
         BucketAction,
@@ -76,7 +76,7 @@ use tari_template_lib::{
         WorkspaceAction,
     },
     auth::AccessRules,
-    constants::CONFIDENTIAL_TARI_RESOURCE_ADDRESS,
+    constants::CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS,
     crypto::RistrettoPublicKeyBytes,
     models::{Amount, BucketId, ComponentAddress, Metadata, NonFungibleAddress, VaultRef},
 };
@@ -96,7 +96,7 @@ use crate::{
     transaction::TransactionProcessor,
 };
 
-const LOG_TARGET: &str = "tari::dan::engine::runtime::impl";
+const LOG_TARGET: &str = "taiji::dan::engine::runtime::impl";
 
 pub struct RuntimeInterfaceImpl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> {
     tracker: StateTracker<TTemplateProvider>,
@@ -177,7 +177,7 @@ impl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> RuntimeInte
         let template_address = self.tracker.get_template_address()?;
 
         let event = Event::new(component_address, template_address, tx_hash, topic, payload);
-        log::log!(target: "tari::dan::engine::runtime", log::Level::Debug, "{}", event.to_string());
+        log::log!(target: "taiji::dan::engine::runtime", log::Level::Debug, "{}", event.to_string());
         self.tracker.add_event(event);
         Ok(())
     }
@@ -193,7 +193,7 @@ impl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> RuntimeInte
         };
 
         // eprintln!("{}: {}", log_level, message);
-        log::log!(target: "tari::dan::engine::runtime", log_level, "{}", message);
+        log::log!(target: "taiji::dan::engine::runtime", log_level, "{}", message);
         self.tracker.add_log(LogEntry::new(level, message));
         Ok(())
     }
@@ -295,7 +295,7 @@ impl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> RuntimeInte
                 let mut output_bucket = None;
                 if let Some(mint_arg) = arg.mint_arg {
                     let bucket_id = self.tracker.mint_resource(resource_address, mint_arg)?;
-                    output_bucket = Some(tari_template_lib::models::Bucket::from_id(bucket_id));
+                    output_bucket = Some(taiji_template_lib::models::Bucket::from_id(bucket_id));
                 }
 
                 Ok(InvokeResult::encode(&(resource_address, output_bucket))?)
@@ -342,7 +342,7 @@ impl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> RuntimeInte
                 let mint_resource: MintResourceArg = args.get(0)?;
                 // TODO: access check
                 let bucket_id = self.tracker.mint_resource(resource_address, mint_resource.mint_arg)?;
-                let bucket = tari_template_lib::models::Bucket::from_id(bucket_id);
+                let bucket = taiji_template_lib::models::Bucket::from_id(bucket_id);
                 Ok(InvokeResult::encode(&bucket)?)
             },
             ResourceAction::GetNonFungible => {
@@ -365,7 +365,7 @@ impl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> RuntimeInte
                         resource_address,
                     });
                 }
-                Ok(InvokeResult::encode(&tari_template_lib::models::NonFungible::new(
+                Ok(InvokeResult::encode(&taiji_template_lib::models::NonFungible::new(
                     NonFungibleAddress::new(resource_address, arg.id),
                 ))?)
             },
@@ -896,7 +896,7 @@ impl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> RuntimeInte
 
         // 4. Create the confidential resource
         let mut resource = ResourceContainer::confidential(
-            CONFIDENTIAL_TARI_RESOURCE_ADDRESS,
+            CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS,
             Some((
                 unclaimed_output.commitment.as_public_key().clone(),
                 ConfidentialOutput {
@@ -935,7 +935,7 @@ impl<TTemplateProvider: TemplateProvider<Template = LoadedTemplate>> RuntimeInte
         output: Option<ConfidentialOutput>,
     ) -> Result<BucketId, RuntimeError> {
         let resource = ResourceContainer::confidential(
-            CONFIDENTIAL_TARI_RESOURCE_ADDRESS,
+            CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS,
             output.map(|o| (o.commitment.as_public_key().clone(), o)),
             revealed_amount,
         );

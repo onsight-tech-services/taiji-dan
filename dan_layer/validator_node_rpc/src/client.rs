@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::convert::{TryFrom, TryInto};
@@ -6,9 +6,9 @@ use std::convert::{TryFrom, TryInto};
 use anyhow::anyhow;
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
-use tari_bor::{decode, decode_exact, encode};
-use tari_common_types::types::PublicKey;
-use tari_comms::{
+use taiji_bor::{decode, decode_exact, encode};
+use taiji_common_types::types::PublicKey;
+use taiji_comms::{
     connectivity::ConnectivityRequester,
     peer_manager::{NodeId, PeerIdentityClaim},
     protocol::rpc::RpcPoolClient,
@@ -16,15 +16,15 @@ use tari_comms::{
     PeerConnection,
 };
 use tari_crypto::tari_utilities::ByteArray;
-use tari_dan_common_types::{NodeAddressable, ShardId};
-use tari_dan_p2p::DanPeer;
-use tari_dan_storage::consensus_models::Decision;
-use tari_engine_types::{
+use taiji_dan_common_types::{NodeAddressable, ShardId};
+use taiji_dan_p2p::DanPeer;
+use taiji_dan_storage::consensus_models::Decision;
+use taiji_engine_types::{
     commit_result::ExecuteResult,
     substate::{Substate, SubstateAddress, SubstateValue},
     virtual_substate::{VirtualSubstate, VirtualSubstateAddress},
 };
-use tari_transaction::{Transaction, TransactionId};
+use taiji_transaction::{Transaction, TransactionId};
 use tokio_stream::StreamExt;
 
 use crate::{
@@ -93,13 +93,13 @@ pub enum SubstateResult {
     },
 }
 
-pub struct TariCommsValidatorNodeRpcClient {
+pub struct TaijiCommsValidatorNodeRpcClient {
     connectivity: ConnectivityRequester,
     address: PublicKey,
     connection: Option<(PeerConnection, rpc_service::ValidatorNodeRpcClient)>,
 }
 
-impl TariCommsValidatorNodeRpcClient {
+impl TaijiCommsValidatorNodeRpcClient {
     pub async fn client_connection(
         &mut self,
     ) -> Result<rpc_service::ValidatorNodeRpcClient, ValidatorNodeRpcClientError> {
@@ -119,7 +119,7 @@ impl TariCommsValidatorNodeRpcClient {
 }
 
 #[async_trait]
-impl ValidatorNodeRpcClient for TariCommsValidatorNodeRpcClient {
+impl ValidatorNodeRpcClient for TaijiCommsValidatorNodeRpcClient {
     type Addr = CommsPublicKey;
     type Error = ValidatorNodeRpcClientError;
 
@@ -288,22 +288,22 @@ impl ValidatorNodeRpcClient for TariCommsValidatorNodeRpcClient {
 }
 
 #[derive(Clone, Debug)]
-pub struct TariCommsValidatorNodeClientFactory {
+pub struct TaijiCommsValidatorNodeClientFactory {
     connectivity: ConnectivityRequester,
 }
 
-impl TariCommsValidatorNodeClientFactory {
+impl TaijiCommsValidatorNodeClientFactory {
     pub fn new(connectivity: ConnectivityRequester) -> Self {
         Self { connectivity }
     }
 }
 
-impl ValidatorNodeClientFactory for TariCommsValidatorNodeClientFactory {
+impl ValidatorNodeClientFactory for TaijiCommsValidatorNodeClientFactory {
     type Addr = PublicKey;
-    type Client = TariCommsValidatorNodeRpcClient;
+    type Client = TaijiCommsValidatorNodeRpcClient;
 
     fn create_client(&self, address: &Self::Addr) -> Self::Client {
-        TariCommsValidatorNodeRpcClient {
+        TaijiCommsValidatorNodeRpcClient {
             connectivity: self.connectivity.clone(),
             address: address.clone(),
             connection: None,

@@ -1,15 +1,15 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::iter;
 
-use tari_common_types::types::{Commitment, PublicKey};
+use taiji_common_types::types::{Commitment, PublicKey};
 use tari_crypto::{
     extended_range_proof::{ExtendedRangeProofService, Statement},
     ristretto::bulletproofs_plus::RistrettoAggregatedPublicStatement,
     tari_utilities::ByteArray,
 };
-use tari_template_lib::models::ConfidentialOutputProof;
+use taiji_template_lib::models::ConfidentialOutputProof;
 
 use super::get_range_proof_service;
 use crate::{confidential::ConfidentialOutput, resource_container::ResourceError};

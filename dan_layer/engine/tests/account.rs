@@ -1,13 +1,13 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_engine_types::instruction::Instruction;
-use tari_template_lib::{
+use taiji_engine_types::instruction::Instruction;
+use taiji_template_lib::{
     args,
     models::{Amount, ComponentAddress, ResourceAddress},
 };
-use tari_template_test_tooling::TemplateTest;
-use tari_transaction::Transaction;
+use taiji_template_test_tooling::TemplateTest;
+use taiji_transaction::Transaction;
 
 #[test]
 fn basic_faucet_transfer() {

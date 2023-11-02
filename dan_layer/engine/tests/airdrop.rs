@@ -1,14 +1,14 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::iter;
 
-use tari_engine_types::{instruction::Instruction, substate::SubstateAddress};
-use tari_template_lib::{
+use taiji_engine_types::{instruction::Instruction, substate::SubstateAddress};
+use taiji_template_lib::{
     args,
     models::{Amount, ComponentAddress},
 };
-use tari_template_test_tooling::{SubstateType, TemplateTest};
+use taiji_template_test_tooling::{SubstateType, TemplateTest};
 
 fn setup() -> (TemplateTest, ComponentAddress, SubstateAddress) {
     let mut template_test = TemplateTest::new(vec!["tests/templates/nft/airdrop"]);

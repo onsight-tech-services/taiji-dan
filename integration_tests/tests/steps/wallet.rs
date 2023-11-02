@@ -1,18 +1,18 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::time::Duration;
 
 use cucumber::{given, when};
-use minotari_app_grpc::tari_rpc::GetBalanceRequest;
-use tari_common_types::types::{Commitment, PrivateKey, PublicKey};
+use minotaiji_app_grpc::taiji_rpc::GetBalanceRequest;
+use taiji_common_types::types::{Commitment, PrivateKey, PublicKey};
 use tari_crypto::{ristretto::RistrettoComSig, tari_utilities::ByteArray};
 use tokio::time::sleep;
 
-use crate::{spawn_wallet, TariWorld};
+use crate::{spawn_wallet, TaijiWorld};
 
 #[given(expr = "a wallet {word} connected to base node {word}")]
-async fn start_wallet(world: &mut TariWorld, wallet_name: String, bn_name: String) {
+async fn start_wallet(world: &mut TaijiWorld, wallet_name: String, bn_name: String) {
     spawn_wallet(world, wallet_name, bn_name).await;
 }
 
@@ -21,7 +21,7 @@ async fn start_wallet(world: &mut TariWorld, wallet_name: String, bn_name: Strin
             and claim public key {word}"
 )]
 async fn when_i_burn_on_wallet(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     amount: u64,
     wallet_name: String,
     commitment: String,
@@ -42,7 +42,7 @@ async fn when_i_burn_on_wallet(
 
     let mut client = wallet.create_client().await;
     let resp = client
-        .create_burn_transaction(minotari_app_grpc::tari_rpc::CreateBurnTransactionRequest {
+        .create_burn_transaction(minotaiji_app_grpc::taiji_rpc::CreateBurnTransactionRequest {
             amount: amount * 1_000_000,
             fee_per_gram: 1,
             message: "Burn".to_string(),
@@ -54,7 +54,7 @@ async fn when_i_burn_on_wallet(
 
     assert!(resp.is_success);
     world.commitments.insert(commitment, resp.commitment);
-    // TODO: use proto::transaction::CommitmentSignature to deserialize once we update tari to include https://github.com/tari-project/tari/pull/5200
+    // TODO: use proto::transaction::CommitmentSignature to deserialize once we update taiji to include https://github.com/onsight-tech-services/taiji/pull/5200
     let ownership_proof = resp.ownership_proof.unwrap();
     world.commitment_ownership_proofs.insert(
         proof,
@@ -72,7 +72,7 @@ async fn when_i_burn_on_wallet(
 }
 
 #[when(expr = "wallet {word} has at least {int} {word}")]
-async fn check_balance(world: &mut TariWorld, wallet_name: String, balance: u64, units: String) {
+async fn check_balance(world: &mut TaijiWorld, wallet_name: String, balance: u64, units: String) {
     let wallet = world
         .wallets
         .get(&wallet_name)

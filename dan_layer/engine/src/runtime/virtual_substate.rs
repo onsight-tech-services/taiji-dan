@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -6,7 +6,7 @@ use std::{
     ops::{Deref, DerefMut},
 };
 
-use tari_engine_types::virtual_substate::{VirtualSubstate, VirtualSubstateAddress};
+use taiji_engine_types::virtual_substate::{VirtualSubstate, VirtualSubstateAddress};
 
 // Developer note: this struct has two non-functional purposes:
 // 1. so that we do not have to type out the HashMap type in many places, and

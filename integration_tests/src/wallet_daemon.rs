@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -26,14 +26,14 @@ use std::{
 };
 
 use reqwest::Url;
-use tari_common::configuration::CommonConfig;
-use tari_dan_wallet_daemon::{
+use taiji_common::configuration::CommonConfig;
+use taiji_dan_wallet_daemon::{
     config::{ApplicationConfig, WalletDaemonConfig},
-    run_tari_dan_wallet_daemon,
+    run_taiji_dan_wallet_daemon,
 };
-use tari_dan_wallet_sdk::apis::jwt::{JrpcPermission, JrpcPermissions};
-use tari_shutdown::Shutdown;
-use tari_wallet_daemon_client::{
+use taiji_dan_wallet_sdk::apis::jwt::{JrpcPermission, JrpcPermissions};
+use taiji_shutdown::Shutdown;
+use taiji_wallet_daemon_client::{
     types::{AuthLoginAcceptRequest, AuthLoginRequest, AuthLoginResponse},
     WalletDaemonClient,
 };
@@ -42,7 +42,7 @@ use tokio::task;
 use crate::{
     helpers::{check_join_handle, get_os_assigned_ports, wait_listener_on_local_port},
     logging::get_base_dir_for_scenario,
-    TariWorld,
+    TaijiWorld,
 };
 
 #[derive(Debug)]
@@ -54,7 +54,7 @@ pub struct DanWalletDaemonProcess {
     pub shutdown: Shutdown,
 }
 
-pub async fn spawn_wallet_daemon(world: &mut TariWorld, wallet_daemon_name: String, indexer_name: String) {
+pub async fn spawn_wallet_daemon(world: &mut TaijiWorld, wallet_daemon_name: String, indexer_name: String) {
     let (signaling_server_port, json_rpc_port) = get_os_assigned_ports();
     let base_dir = get_base_dir_for_scenario(
         "wallet_daemon",
@@ -80,7 +80,7 @@ pub async fn spawn_wallet_daemon(world: &mut TariWorld, wallet_daemon_name: Stri
     config.dan_wallet_daemon.signaling_server_address = Some(signaling_server_addr);
     config.dan_wallet_daemon.indexer_node_json_rpc_url = indexer_url;
 
-    let handle = task::spawn(run_tari_dan_wallet_daemon(config, shutdown_signal));
+    let handle = task::spawn(run_taiji_dan_wallet_daemon(config, shutdown_signal));
 
     // Wait for node to start up
     let handle = wait_listener_on_local_port(handle, json_rpc_port).await;

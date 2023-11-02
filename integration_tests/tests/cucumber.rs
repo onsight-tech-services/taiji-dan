@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -43,15 +43,15 @@ use integration_tests::{
     wallet::spawn_wallet,
     wallet_daemon::spawn_wallet_daemon,
     wallet_daemon_cli,
-    TariWorld,
+    TaijiWorld,
 };
-use tari_common::initialize_logging;
-use tari_comms::multiaddr::Multiaddr;
+use taiji_common::initialize_logging;
+use taiji_comms::multiaddr::Multiaddr;
 use tari_crypto::tari_utilities::hex::Hex;
-use tari_dan_engine::abi::Type;
-use tari_dan_storage::consensus_models::QuorumDecision;
-use tari_shutdown::Shutdown;
-use tari_validator_node_client::types::{AddPeerRequest, GetRecentTransactionsRequest, GetTransactionResultRequest};
+use taiji_dan_engine::abi::Type;
+use taiji_dan_storage::consensus_models::QuorumDecision;
+use taiji_shutdown::Shutdown;
+use taiji_validator_node_client::types::{AddPeerRequest, GetRecentTransactionsRequest, GetTransactionResultRequest};
 
 const LOG_TARGET: &str = "cucumber";
 
@@ -66,7 +66,7 @@ async fn main() {
     let mock_port = spawn_template_http_server(shutdown.to_signal()).await;
 
     let file = fs::File::create("cucumber-output-junit.xml").unwrap();
-    TariWorld::cucumber()
+    TaijiWorld::cucumber()
         .max_concurrent_scenarios(1)
         .with_writer(writer::Tee::new(
             writer::JUnit::new(file, Verbosity::ShowWorldAndDocString).normalized(),
@@ -102,34 +102,34 @@ async fn main() {
 }
 
 #[given(expr = "a base node {word}")]
-async fn start_base_node(world: &mut TariWorld, bn_name: String) {
+async fn start_base_node(world: &mut TaijiWorld, bn_name: String) {
     spawn_base_node(world, bn_name).await;
 }
 
 #[given(expr = "fees are enabled")]
-async fn fees_are_enabled(world: &mut TariWorld) {
+async fn fees_are_enabled(world: &mut TaijiWorld) {
     world.fees_enabled = true;
 }
 
 #[given(expr = "a validator node {word} connected to base node {word} and wallet {word}")]
-async fn start_validator_node(world: &mut TariWorld, vn_name: String, bn_name: String, wallet_name: String) {
+async fn start_validator_node(world: &mut TaijiWorld, vn_name: String, bn_name: String, wallet_name: String) {
     let vn = spawn_validator_node(world, vn_name.clone(), bn_name, wallet_name).await;
     world.validator_nodes.insert(vn_name, vn);
 }
 
 #[when(expr = "I stop validator node {word}")]
-async fn stop_validator_node(world: &mut TariWorld, vn_name: String) {
+async fn stop_validator_node(world: &mut TaijiWorld, vn_name: String) {
     let vn_ps = world.validator_nodes.get_mut(&vn_name).unwrap();
     vn_ps.stop();
 }
 
 #[given(expr = "a wallet daemon {word} connected to indexer {word}")]
-async fn start_wallet_daemon(world: &mut TariWorld, wallet_daemon_name: String, indexer_name: String) {
+async fn start_wallet_daemon(world: &mut TaijiWorld, wallet_daemon_name: String, indexer_name: String) {
     spawn_wallet_daemon(world, wallet_daemon_name, indexer_name).await;
 }
 
 #[when(expr = "I stop wallet daemon {word}")]
-async fn stop_wallet_daemon(world: &mut TariWorld, wallet_daemon_name: String) {
+async fn stop_wallet_daemon(world: &mut TaijiWorld, wallet_daemon_name: String) {
     let walletd_ps = world.wallet_daemons.get_mut(&wallet_daemon_name).unwrap();
     walletd_ps.stop();
 }
@@ -138,7 +138,7 @@ async fn stop_wallet_daemon(world: &mut TariWorld, wallet_daemon_name: String) {
     expr = r#"I call function "{word}" on template "{word}" using account {word} to pay fees via wallet daemon {word} with args "{word}" and {int} outputs named "{word}""#
 )]
 async fn call_template_constructor_via_wallet_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     function_call: String,
     template_name: String,
     account_name: String,
@@ -168,7 +168,7 @@ async fn call_template_constructor_via_wallet_daemon(
     expr = r#"I call function "{word}" on template "{word}" on {word} with args "{word}" and {int} outputs named "{word}""#
 )]
 async fn call_template_constructor(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     function_call: String,
     template_name: String,
     vn_name: String,
@@ -188,7 +188,7 @@ async fn call_template_constructor(
     expr = r#"I call function "{word}" on template "{word}" on {word} with args "{word}" and {int} outputs named "{word}" with new resource "{word}""#
 )]
 async fn call_template_constructor_resource(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     function_call: String,
     template_name: String,
     vn_name: String,
@@ -211,7 +211,7 @@ async fn call_template_constructor_resource(
     expr = r#"I call function "{word}" on template "{word}" on {word} with {int} outputs named "{word}" with new resource "{word}""#
 )]
 async fn call_template_constructor_with_no_args(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     function_call: String,
     template_name: String,
     vn_name: String,
@@ -236,7 +236,7 @@ async fn call_template_constructor_with_no_args(
 
 #[when(expr = r#"I create a component {word} of template "{word}" on {word} using "{word}""#)]
 async fn call_template_constructor_without_args(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     component_name: String,
     template_name: String,
     vn_name: String,
@@ -259,7 +259,7 @@ async fn call_template_constructor_without_args(
 
 #[when(expr = r#"I create a component {word} of template "{word}" on {word} using "{word}" and new resource "{word}"#)]
 async fn call_template_constructor_without_args_and_resource(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     component_name: String,
     template_name: String,
     vn_name: String,
@@ -283,7 +283,7 @@ async fn call_template_constructor_without_args_and_resource(
 
 #[when(expr = r#"I invoke on {word} on component {word} the method call "{word}" with {int} outputs named "{word}""#)]
 async fn call_component_method(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     vn_name: String,
     component_name: String,
     method_call: String,
@@ -301,7 +301,7 @@ async fn call_component_method(
     expr = r#"I invoke on all validator nodes on component {word} the method call "{word}" with {int} outputs named "{word}""#
 )]
 async fn call_component_method_on_all_vns(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     component_name: String,
     method_call: String,
     _num_outputs: u64,
@@ -328,7 +328,7 @@ async fn call_component_method_on_all_vns(
             \"{word}\""
 )]
 async fn call_component_method_and_check_result(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     vn_name: String,
     component_name: String,
     method_call: String,
@@ -360,7 +360,7 @@ async fn call_component_method_and_check_result(
             result is \"{word}\""
 )]
 async fn call_component_method_on_all_vns_and_check_result(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     component_name: String,
     method_call: String,
     _num_outputs: u64,
@@ -396,17 +396,17 @@ async fn call_component_method_on_all_vns_and_check_result(
 }
 
 #[when(expr = "I use an account key named {word}")]
-async fn create_transaction_signing_key(world: &mut TariWorld, name: String) {
+async fn create_transaction_signing_key(world: &mut TaijiWorld, name: String) {
     validator_node_cli::create_or_use_key(world, name);
 }
 
 #[when(expr = "I create an account {word} on {word}")]
-async fn create_account(world: &mut TariWorld, account_name: String, vn_name: String) {
+async fn create_account(world: &mut TaijiWorld, account_name: String, vn_name: String) {
     validator_node_cli::create_account(world, account_name, vn_name).await;
 }
 
 #[when(expr = "I create {int} accounts on {word}")]
-async fn create_multiple_accounts(world: &mut TariWorld, num_accounts: u64, vn_name: String) {
+async fn create_multiple_accounts(world: &mut TaijiWorld, num_accounts: u64, vn_name: String) {
     for i in 1..=num_accounts {
         let account_name = format!("ACC_{i}");
         validator_node_cli::create_account(world, account_name, vn_name.clone()).await;
@@ -416,7 +416,7 @@ async fn create_multiple_accounts(world: &mut TariWorld, num_accounts: u64, vn_n
 
 #[when(expr = r#"I submit a transaction manifest on {word} with {int} outputs named "{word}" signed with key {word}"#)]
 async fn submit_manifest(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     step: &Step,
     vn_name: String,
     // TODO: remove
@@ -432,7 +432,7 @@ async fn submit_manifest(
     regex = r#"^I submit a transaction manifest on (\w+) with inputs "([^"]+)" and (\d+) outputs? named "(\w+)" signed with key (\w+)$"#
 )]
 async fn submit_manifest_with_inputs(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     step: &Step,
     vn_name: String,
     inputs: String,
@@ -446,7 +446,7 @@ async fn submit_manifest_with_inputs(
 }
 
 #[when(expr = "account {word} reveals {int} burned tokens via wallet daemon {word}")]
-async fn reveal_burned_funds(world: &mut TariWorld, account_name: String, amount: u64, wallet_daemon_name: String) {
+async fn reveal_burned_funds(world: &mut TaijiWorld, account_name: String, amount: u64, wallet_daemon_name: String) {
     wallet_daemon_cli::reveal_burned_funds(world, account_name, amount, wallet_daemon_name).await;
 }
 
@@ -454,7 +454,7 @@ async fn reveal_burned_funds(world: &mut TariWorld, account_name: String, amount
     regex = r#"^I submit a transaction manifest via wallet daemon (\w+) with inputs "([^"]+)" and (\d+) outputs? named "(\w+)"$"#
 )]
 async fn submit_transaction_manifest_via_wallet_daemon(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     step: &Step,
     wallet_daemon_name: String,
     inputs: String,
@@ -469,7 +469,7 @@ async fn submit_transaction_manifest_via_wallet_daemon(
     regex = r#"^I submit a transaction manifest via wallet daemon (\w+) signed by the key of (\w+) with inputs "([^"]+)" and (\d+) outputs? named "(\w+)"$"#
 )]
 async fn submit_transaction_manifest_via_wallet_daemon_with_signing_keys(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     step: &Step,
     wallet_daemon_name: String,
     account_signing_key: String,
@@ -492,7 +492,7 @@ async fn submit_transaction_manifest_via_wallet_daemon_with_signing_keys(
 
 #[when(expr = "I mint a new non fungible token {word} on {word} using wallet daemon {word}")]
 async fn mint_new_nft_on_account(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     nft_name: String,
     account_name: String,
     wallet_daemon_name: String,
@@ -502,7 +502,7 @@ async fn mint_new_nft_on_account(
 
 #[when(expr = "I mint a new non fungible token {word} on {word} using wallet daemon with metadata {word}")]
 async fn mint_new_nft_on_account_with_metadata(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     nft_name: String,
     account_name: String,
     wallet_daemon_name: String,
@@ -512,7 +512,7 @@ async fn mint_new_nft_on_account_with_metadata(
     wallet_daemon_cli::mint_new_nft_on_account(world, nft_name, account_name, wallet_daemon_name, Some(metadata)).await;
 }
 
-fn wrap_manifest_in_main(world: &TariWorld, contents: &str) -> String {
+fn wrap_manifest_in_main(world: &TaijiWorld, contents: &str) -> String {
     // define all templates
     let template_defs = world.templates.iter().fold(String::new(), |acc, (name, template)| {
         format!("{}\nuse template_{} as {};", acc, template.address, name)
@@ -521,12 +521,12 @@ fn wrap_manifest_in_main(world: &TariWorld, contents: &str) -> String {
 }
 
 #[given(expr = "an indexer {word} connected to base node {word}")]
-async fn start_indexer(world: &mut TariWorld, indexer_name: String, bn_name: String) {
+async fn start_indexer(world: &mut TaijiWorld, indexer_name: String, bn_name: String) {
     spawn_indexer(world, indexer_name, bn_name).await;
 }
 
 #[given(expr = "{word} indexer GraphQL request works")]
-async fn works_indexer_graphql(world: &mut TariWorld, indexer_name: String) {
+async fn works_indexer_graphql(world: &mut TaijiWorld, indexer_name: String) {
     let indexer: &mut IndexerProcess = world.indexers.get_mut(&indexer_name).unwrap();
     // insert event mock data in the substate manager database
     indexer.insert_event_mock_data().await;
@@ -540,7 +540,7 @@ async fn works_indexer_graphql(world: &mut TariWorld, indexer_name: String) {
         tx_hash.to_hex()
     );
     let res = graphql_client
-        .send_request::<HashMap<String, Vec<tari_indexer::graphql::model::events::Event>>>(&query, None, None)
+        .send_request::<HashMap<String, Vec<taiji_indexer::graphql::model::events::Event>>>(&query, None, None)
         .await
         .expect("Failed to obtain getEventsForTransaction query result");
     let res = res.get("getEventsForTransaction").unwrap();
@@ -557,7 +557,7 @@ async fn works_indexer_graphql(world: &mut TariWorld, indexer_name: String) {
 
 #[when(expr = "indexer {word} scans the network {int} events for account {word} with topics {word}")]
 async fn indexer_scans_network_events(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     indexer_name: String,
     num_events: u32,
     account_name: String,
@@ -577,7 +577,7 @@ async fn indexer_scans_network_events(
         component_address.address, component_address.version
     );
     let res = graphql_client
-        .send_request::<HashMap<String, Vec<tari_indexer::graphql::model::events::Event>>>(&query, None, None)
+        .send_request::<HashMap<String, Vec<taiji_indexer::graphql::model::events::Event>>>(&query, None, None)
         .await
         .expect("Failed to obtain getEventsForComponent query result");
 
@@ -594,7 +594,7 @@ async fn indexer_scans_network_events(
 }
 
 #[when(expr = "the indexer {word} tracks the address {word}")]
-async fn track_addresss_in_indexer(world: &mut TariWorld, indexer_name: String, output_ref: String) {
+async fn track_addresss_in_indexer(world: &mut TaijiWorld, indexer_name: String, output_ref: String) {
     let indexer = world.indexers.get(&indexer_name).unwrap();
     assert!(!indexer.handle.is_finished(), "Indexer {} is not running", indexer_name);
     indexer.add_address(world, output_ref).await;
@@ -602,7 +602,7 @@ async fn track_addresss_in_indexer(world: &mut TariWorld, indexer_name: String, 
 
 #[then(expr = "the indexer {word} returns version {int} for substate {word}")]
 async fn assert_indexer_substate_version(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     indexer_name: String,
     version: u32,
     output_ref: String,
@@ -619,7 +619,7 @@ async fn assert_indexer_substate_version(
 
 #[then(expr = "the indexer {word} returns {int} non fungibles for resource {word}")]
 async fn assert_indexer_non_fungible_list(
-    world: &mut TariWorld,
+    world: &mut TaijiWorld,
     indexer_name: String,
     count: usize,
     output_ref: String,
@@ -638,7 +638,7 @@ async fn assert_indexer_non_fungible_list(
 }
 
 #[given(expr = "all validator nodes are connected to each other")]
-async fn given_all_validator_connects_to_other_vns(world: &mut TariWorld) {
+async fn given_all_validator_connects_to_other_vns(world: &mut TaijiWorld) {
     let details = world
         .validator_nodes
         .values()
@@ -672,13 +672,13 @@ async fn given_all_validator_connects_to_other_vns(world: &mut TariWorld) {
 }
 
 #[when(expr = "I wait {int} seconds")]
-async fn wait_seconds(_world: &mut TariWorld, seconds: u64) {
+async fn wait_seconds(_world: &mut TaijiWorld, seconds: u64) {
     // println!("NOT Waiting {} seconds", seconds);
     tokio::time::sleep(Duration::from_secs(seconds)).await;
 }
 
 #[then(expr = "all transactions succeed on all validator nodes")]
-async fn successful_transaction(world: &mut TariWorld) {
+async fn successful_transaction(world: &mut TaijiWorld) {
     // loop over each validator node to check if transaction
     // was accepted by each
     for vn_ps in world.validator_nodes.values() {
@@ -716,7 +716,7 @@ async fn successful_transaction(world: &mut TariWorld) {
 }
 
 #[when(expr = "I print the cucumber world")]
-async fn print_world(world: &mut TariWorld) {
+async fn print_world(world: &mut TaijiWorld) {
     eprintln!();
     eprintln!("======================================");
     eprintln!("============= TEST STATE =============");
@@ -784,7 +784,7 @@ async fn print_world(world: &mut TariWorld) {
 }
 
 #[when(expr = "I save the {word} database of {word}")]
-async fn when_i_save_the_database(world: &mut TariWorld, database_name: String, validator_name: String) {
+async fn when_i_save_the_database(world: &mut TaijiWorld, database_name: String, validator_name: String) {
     let validator = world
         .validator_nodes
         .get(&validator_name)

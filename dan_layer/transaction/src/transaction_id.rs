@@ -1,4 +1,4 @@
-//    Copyright 2023 The Tari Project
+//    Copyright 2023 OnSight Tech Services LLC
 //    SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -7,9 +7,9 @@ use std::{
 };
 
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::FixedHashSizeError;
+use taiji_common_types::types::FixedHashSizeError;
 use tari_crypto::tari_utilities::hex::{from_hex, Hex};
-use tari_engine_types::serde_with;
+use taiji_engine_types::serde_with;
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Deserialize, Serialize, Default)]
 #[serde(transparent)]

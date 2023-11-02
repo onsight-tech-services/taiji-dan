@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -21,8 +21,8 @@
 //   USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
-use tari_bor::BorError;
-use tari_template_abi::Type;
+use taiji_bor::BorError;
+use taiji_template_abi::Type;
 
 use crate::{indexed_value::IndexedValue, serde_with};
 
@@ -44,6 +44,6 @@ impl InstructionResult {
     }
 
     pub fn decode<T: DeserializeOwned>(&self) -> Result<T, BorError> {
-        tari_bor::decode(&self.raw)
+        taiji_bor::decode(&self.raw)
     }
 }

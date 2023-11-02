@@ -1,23 +1,23 @@
 [package]
-name = "tari_dan_engine"
+name = "taiji_dan_engine"
 version = "0.0.1"
 edition = "2021"
-authors = ["The Tari Development Community"]
-description = "Tari template runtime engine"
-repository = "https://github.com/tari-project/tari-dan"
+authors = ["OnSight Tech Services LLC"]
+description = "Taiji template runtime engine"
+repository = "https://github.com/onsight-tech-services/taiji-dan"
 license = "BSD-3-Clause"
 
 [dependencies]
-tari_bor = { path = "../tari_bor" }
-tari_common_types = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2", package = "tari_common_types" }
+taiji_bor = { path = "../taiji_bor" }
+taiji_common_types = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2", package = "taiji_common_types" }
 tari_crypto = { version = "0.18", features = ["borsh"] }
-tari_dan_common_types = { path = "../common_types" }
-tari_engine_types = { path = "../engine_types" }
-tari_mmr = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2", package = "tari_mmr" }
-tari_template_abi = { path = "../template_abi", features = ["std"] }
-tari_template_lib = { path = "../template_lib" }
+taiji_dan_common_types = { path = "../common_types" }
+taiji_engine_types = { path = "../engine_types" }
+taiji_mmr = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2", package = "taiji_mmr" }
+taiji_template_abi = { path = "../template_abi", features = ["std"] }
+taiji_template_lib = { path = "../template_lib" }
 tari_utilities = "0.4.10"
-tari_transaction = { path = "../transaction" }
+taiji_transaction = { path = "../transaction" }
 
 anyhow = "1.0.53"
 blake2 = "0.10.6"
@@ -33,6 +33,6 @@ wasmer = "2.3.0"
 wasmer-middlewares = "2.3.0"
 
 [dev-dependencies]
-tari_template_test_tooling = { path = "../template_test_tooling" }
-tari_transaction_manifest = { path = "../transaction_manifest" }
-tari_transaction = { path = "../transaction" }
+taiji_template_test_tooling = { path = "../template_test_tooling" }
+taiji_transaction_manifest = { path = "../transaction_manifest" }
+taiji_transaction = { path = "../transaction" }

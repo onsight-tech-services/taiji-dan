@@ -1,15 +1,15 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use tari_dan_storage::consensus_models::Decision;
-use tari_engine_types::{
+use taiji_dan_storage::consensus_models::Decision;
+use taiji_engine_types::{
     commit_result::ExecuteResult,
     substate::{Substate, SubstateAddress},
 };
-use tari_transaction::{SubstateRequirement, Transaction, TransactionId};
+use taiji_transaction::{SubstateRequirement, Transaction, TransactionId};
 
 #[async_trait]
 pub trait WalletNetworkInterface {

@@ -1,10 +1,10 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use chrono::NaiveDateTime;
-use tari_common_types::types::{Commitment, PublicKey};
-use tari_dan_wallet_sdk::{models::ConfidentialOutputModel, storage::WalletStorageError};
-use tari_template_lib::models::EncryptedData;
+use taiji_common_types::types::{Commitment, PublicKey};
+use taiji_dan_wallet_sdk::{models::ConfidentialOutputModel, storage::WalletStorageError};
+use taiji_template_lib::models::EncryptedData;
 use tari_utilities::hex::Hex;
 
 use crate::schema::outputs;

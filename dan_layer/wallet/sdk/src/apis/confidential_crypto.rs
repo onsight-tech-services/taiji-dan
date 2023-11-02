@@ -1,16 +1,16 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use chacha20poly1305::aead;
 use rand::rngs::OsRng;
-use tari_common_types::types::{Commitment, PrivateKey, PublicKey, Signature};
+use taiji_common_types::types::{Commitment, PrivateKey, PublicKey, Signature};
 use tari_crypto::{
     commitment::HomomorphicCommitmentFactory,
     keys::{PublicKey as _, SecretKey},
     tari_utilities::ByteArray,
 };
-use tari_engine_types::confidential::{challenges, ConfidentialOutput};
-use tari_template_lib::{
+use taiji_engine_types::confidential::{challenges, ConfidentialOutput};
+use taiji_template_lib::{
     crypto::BalanceProofSignature,
     models::{Amount, ConfidentialOutputProof, ConfidentialWithdrawProof, EncryptedData},
 };

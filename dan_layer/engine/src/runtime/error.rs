@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -23,16 +23,16 @@
 use std::fmt::Display;
 
 use anyhow::anyhow;
-use tari_bor::BorError;
-use tari_common_types::types::PublicKey;
-use tari_dan_common_types::{optional::IsNotFoundError, Epoch};
-use tari_engine_types::{
+use taiji_bor::BorError;
+use taiji_common_types::types::PublicKey;
+use taiji_dan_common_types::{optional::IsNotFoundError, Epoch};
+use taiji_engine_types::{
     resource_container::ResourceError,
     substate::SubstateAddress,
     transaction_receipt::TransactionReceiptAddress,
     virtual_substate::VirtualSubstateAddress,
 };
-use tari_template_lib::models::{
+use taiji_template_lib::models::{
     Amount,
     BucketId,
     ComponentAddress,
@@ -42,7 +42,7 @@ use tari_template_lib::models::{
     UnclaimedConfidentialOutputAddress,
     VaultId,
 };
-use tari_transaction::id_provider::IdProviderError;
+use taiji_transaction::id_provider::IdProviderError;
 
 use super::workspace::WorkspaceError;
 use crate::{

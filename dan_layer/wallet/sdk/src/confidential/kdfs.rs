@@ -1,11 +1,11 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use chacha20poly1305::{aead::generic_array::GenericArray, Key};
 use digest::FixedOutput;
-use tari_common_types::types::{PrivateKey, PublicKey};
+use taiji_common_types::types::{PrivateKey, PublicKey};
 use tari_crypto::{dhke::DiffieHellmanSharedSecret, tari_utilities::ByteArray};
-use tari_engine_types::base_layer_hashing::encrypted_data_hasher;
+use taiji_engine_types::base_layer_hashing::encrypted_data_hasher;
 use tari_utilities::{hidden_type, safe_array::SafeArray, Hidden};
 use zeroize::Zeroize;
 

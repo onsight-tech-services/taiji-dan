@@ -1,12 +1,12 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::collections::HashSet;
 
 use serde::Serialize;
-use tari_dan_common_types::Epoch;
-use tari_dan_storage::consensus_models::BlockId;
-use tari_transaction::TransactionId;
+use taiji_dan_common_types::Epoch;
+use taiji_dan_storage::consensus_models::BlockId;
+use taiji_transaction::TransactionId;
 
 #[derive(Debug, Clone, Serialize)]
 pub struct RequestMissingTransactionsMessage {

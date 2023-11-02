@@ -1,4 +1,4 @@
-//   Copyright 2023. The Tari Project
+//   Copyright 2023. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -23,11 +23,11 @@
 use std::convert::{TryFrom, TryInto};
 
 use anyhow::anyhow;
-use tari_common_types::types::{PrivateKey, PublicKey, Signature};
+use taiji_common_types::types::{PrivateKey, PublicKey, Signature};
 use tari_crypto::{hashing::DomainSeparation, signatures::SchnorrSignature, tari_utilities::ByteArray};
-use tari_dan_common_types::{Epoch, NodeAddressable, ShardId};
-use tari_dan_storage::consensus_models::{ValidatorSchnorrSignature, ValidatorSignature};
-use tari_transaction::TransactionSignature;
+use taiji_dan_common_types::{Epoch, NodeAddressable, ShardId};
+use taiji_dan_storage::consensus_models::{ValidatorSchnorrSignature, ValidatorSignature};
+use taiji_transaction::TransactionSignature;
 
 use crate::proto;
 

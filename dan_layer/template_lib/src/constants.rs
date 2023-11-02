@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use crate::{models::ResourceAddress, Hash};
@@ -11,4 +11,4 @@ pub const PUBLIC_IDENTITY_RESOURCE_ADDRESS: ResourceAddress = ResourceAddress::n
     1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]));
 
-pub const CONFIDENTIAL_TARI_RESOURCE_ADDRESS: ResourceAddress = ResourceAddress::new(Hash::from_array([1u8; 32]));
+pub const CONFIDENTIAL_TAIJI_RESOURCE_ADDRESS: ResourceAddress = ResourceAddress::new(Hash::from_array([1u8; 32]));

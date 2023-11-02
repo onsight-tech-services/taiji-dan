@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 pub fn setup_logger() {
@@ -12,7 +12,7 @@ pub fn setup_logger() {
             out.finish(format_args!(
                 "{} [{}] {} {}",
                 humantime::format_rfc3339(std::time::SystemTime::now()),
-                record.target().strip_prefix("tari::dan::consensus::hotstuff::").unwrap_or(record.target()),
+                record.target().strip_prefix("taiji::dan::consensus::hotstuff::").unwrap_or(record.target()),
                 record.level(),
                 message
             ))

@@ -1,8 +1,8 @@
-//    Copyright 2023 The Tari Project
+//    Copyright 2023 OnSight Tech Services LLC
 //    SPDX-License-Identifier: BSD-3-Clause
 
 use rand::{rngs::OsRng, Rng};
-use tari_dan_common_types::{shard_bucket::ShardBucket, uint::U256, ShardId};
+use taiji_dan_common_types::{shard_bucket::ShardBucket, uint::U256, ShardId};
 
 pub(crate) fn random_shard_in_bucket(bucket: ShardBucket, num_committees: u32) -> ShardId {
     let shard_size = U256::MAX / U256::from(num_committees);

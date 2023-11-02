@@ -1,3 +1,3 @@
-# Tari Dan application grpc
+# Taiji Dan application grpc
 
-This crate is to provide a single source for all cross application grpc files and conversions to and from tari-dan applications
+This crate is to provide a single source for all cross application grpc files and conversions to and from taiji-dan applications

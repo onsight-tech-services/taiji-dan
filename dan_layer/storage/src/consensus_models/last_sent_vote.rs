@@ -1,7 +1,7 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_dan_common_types::{hashing::ValidatorNodeMerkleProof, Epoch, NodeHeight};
+use taiji_dan_common_types::{hashing::ValidatorNodeMerkleProof, Epoch, NodeHeight};
 
 use super::{QuorumDecision, ValidatorSignature};
 use crate::{consensus_models::BlockId, StateStoreReadTransaction, StateStoreWriteTransaction, StorageError};

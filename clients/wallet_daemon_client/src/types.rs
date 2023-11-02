@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -24,13 +24,13 @@ use std::{collections::HashMap, time::Duration};
 
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use tari_common_types::types::PublicKey;
-use tari_dan_common_types::{Epoch, ShardId};
-use tari_dan_wallet_sdk::{
+use taiji_common_types::types::PublicKey;
+use taiji_dan_common_types::{Epoch, ShardId};
+use taiji_dan_wallet_sdk::{
     apis::jwt::{Claims, JrpcPermissions},
     models::{Account, ConfidentialProofId, TransactionStatus},
 };
-use tari_engine_types::{
+use taiji_engine_types::{
     commit_result::{ExecuteResult, FinalizeResult, RejectReason},
     instruction::Instruction,
     instruction_result::InstructionResult,
@@ -38,13 +38,13 @@ use tari_engine_types::{
     substate::SubstateAddress,
     TemplateAddress,
 };
-use tari_template_lib::{
+use taiji_template_lib::{
     args::Arg,
     auth::AccessRules,
     models::{Amount, ConfidentialOutputProof, NonFungibleId, ResourceAddress},
     prelude::{ConfidentialWithdrawProof, ResourceType},
 };
-use tari_transaction::{SubstateRequirement, Transaction, TransactionId};
+use taiji_transaction::{SubstateRequirement, Transaction, TransactionId};
 
 use crate::{
     serialize::{opt_string_or_struct, string_or_struct},

@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -12,8 +12,8 @@ use diesel::{sql_query, Connection, RunQueryDsl, SqliteConnection};
 use diesel_migrations::{embed_migrations, EmbeddedMigrations, MigrationHarness};
 use log::log;
 use serde::{de::DeserializeOwned, Serialize};
-use tari_dan_common_types::NodeAddressable;
-use tari_dan_storage::{StateStore, StorageError};
+use taiji_dan_common_types::NodeAddressable;
+use taiji_dan_storage::{StateStore, StorageError};
 use time::Instant;
 
 use crate::{
@@ -23,7 +23,7 @@ use crate::{
     writer::SqliteStateStoreWriteTransaction,
 };
 
-const LOG_TARGET: &str = "tari::dan::storage::sqlite::state_store";
+const LOG_TARGET: &str = "taiji::dan::storage::sqlite::state_store";
 
 pub struct SqliteStateStore<TAddr> {
     connection: Arc<Mutex<SqliteConnection>>,

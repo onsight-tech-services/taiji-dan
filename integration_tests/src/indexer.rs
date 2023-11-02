@@ -1,4 +1,4 @@
-//   Copyright 2023. The Tari Project
+//   Copyright 2023. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -27,27 +27,27 @@ use tari_common::{
     configuration::{CommonConfig, StringList},
     exit_codes::ExitError,
 };
-use tari_comms::multiaddr::Multiaddr;
+use taiji_comms::multiaddr::Multiaddr;
 use tari_comms_dht::{DbConnectionUrl, DhtConfig};
 use tari_crypto::tari_utilities::{hex::Hex, message_format::MessageFormat};
-use tari_engine_types::substate::SubstateAddress;
-use tari_indexer::{
+use taiji_engine_types::substate::SubstateAddress;
+use taiji_indexer::{
     config::{ApplicationConfig, IndexerConfig},
     run_indexer,
 };
-use tari_indexer_client::{
+use taiji_indexer_client::{
     graphql_client::IndexerGraphQLClient,
     json_rpc_client::IndexerJsonRpcClient,
     types::{GetNonFungiblesRequest, GetSubstateRequest, GetSubstateResponse, NonFungibleSubstate},
 };
-use tari_p2p::{Network, PeerSeedsConfig, TransportType};
-use tari_shutdown::Shutdown;
+use taiji_p2p::{Network, PeerSeedsConfig, TransportType};
+use taiji_shutdown::Shutdown;
 use tokio::task;
 
 use crate::{
     helpers::{check_join_handle, get_os_assigned_ports, wait_listener_on_local_port},
     logging::get_base_dir_for_scenario,
-    TariWorld,
+    TaijiWorld,
 };
 
 #[derive(Debug)]
@@ -65,14 +65,14 @@ pub struct IndexerProcess {
 }
 
 impl IndexerProcess {
-    pub async fn add_address(&self, world: &TariWorld, output_ref: String) {
+    pub async fn add_address(&self, world: &TaijiWorld, output_ref: String) {
         let address = get_address_from_output(world, output_ref);
 
         let mut jrpc_client = self.get_jrpc_indexer_client();
         jrpc_client.add_address(address.clone()).await.unwrap();
     }
 
-    pub async fn get_substate(&self, world: &TariWorld, output_ref: String, version: u32) -> GetSubstateResponse {
+    pub async fn get_substate(&self, world: &TaijiWorld, output_ref: String, version: u32) -> GetSubstateResponse {
         let address = get_address_from_output(world, output_ref);
 
         let mut jrpc_client = self.get_jrpc_indexer_client();
@@ -88,7 +88,7 @@ impl IndexerProcess {
 
     pub async fn get_non_fungibles(
         &self,
-        world: &TariWorld,
+        world: &TaijiWorld,
         output_ref: String,
         start_index: u64,
         end_index: u64,
@@ -122,7 +122,7 @@ impl IndexerProcess {
             component_address, template_address, tx_hash, topic, payload, version
         );
         let res = graphql_client
-            .send_request::<HashMap<String, tari_indexer::graphql::model::events::Event>>(&query, None, None)
+            .send_request::<HashMap<String, taiji_indexer::graphql::model::events::Event>>(&query, None, None)
             .await
             .unwrap_or_else(|e| panic!("Failed to save event via graphql client: {}", e));
         let res = res.get("saveEvent").unwrap();
@@ -141,7 +141,7 @@ impl IndexerProcess {
     }
 }
 
-fn get_address_from_output(world: &TariWorld, output_ref: String) -> &SubstateAddress {
+fn get_address_from_output(world: &TaijiWorld, output_ref: String) -> &SubstateAddress {
     world
         .outputs
         .iter()
@@ -157,7 +157,7 @@ fn get_address_from_output(world: &TariWorld, output_ref: String) -> &SubstateAd
         .unwrap()
 }
 
-pub async fn spawn_indexer(world: &mut TariWorld, indexer_name: String, base_node_name: String) {
+pub async fn spawn_indexer(world: &mut TaijiWorld, indexer_name: String, base_node_name: String) {
     // each spawned indexer will use different ports
     let (port, json_rpc_port) = get_os_assigned_ports();
     let (graphql_port, http_ui_port) = get_os_assigned_ports();

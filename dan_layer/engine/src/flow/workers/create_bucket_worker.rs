@@ -1,4 +1,4 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -7,8 +7,8 @@ use std::{
 };
 
 use d3ne::{InputData, Node, OutputData, OutputDataBuilder, Worker};
-use tari_common_types::types::PublicKey;
-use tari_template_lib::{args::ResourceRef, models::ResourceAddress};
+use taiji_common_types::types::PublicKey;
+use taiji_template_lib::{args::ResourceRef, models::ResourceAddress};
 use tari_utilities::{hex::Hex, ByteArray};
 
 pub struct CreateBucketWorker<TUnitOfWork: StateDbUnitOfWork> {
@@ -17,7 +17,7 @@ pub struct CreateBucketWorker<TUnitOfWork: StateDbUnitOfWork> {
 
 impl<TUnitOfWork> Worker for CreateBucketWorker<TUnitOfWork> {
     fn name(&self) -> &str {
-        "tari::create_bucket"
+        "taiji::create_bucket"
     }
 
     fn work(&self, node: &Node, input_data: InputData) -> anyhow::Result<OutputData> {

@@ -1,13 +1,13 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use diesel::{Connection, SqliteConnection};
 use rand::rngs::OsRng;
-use tari_common_types::types::PublicKey;
+use taiji_common_types::types::PublicKey;
 use tari_crypto::keys::PublicKey as _;
-use tari_dan_common_types::{Epoch, ShardId};
-use tari_dan_storage::global::{GlobalDb, ValidatorNodeDb};
-use tari_dan_storage_sqlite::global::SqliteGlobalDbAdapter;
+use taiji_dan_common_types::{Epoch, ShardId};
+use taiji_dan_storage::global::{GlobalDb, ValidatorNodeDb};
+use taiji_dan_storage_sqlite::global::SqliteGlobalDbAdapter;
 use tari_utilities::ByteArray;
 
 fn create_db() -> GlobalDb<SqliteGlobalDbAdapter> {

@@ -1,45 +1,45 @@
 [package]
 name = "integration_tests"
-authors = ["The Tari Development Community"]
-description = "The Tari validator node implementation"
-repository = "https://github.com/tari-project/tari-dan"
+authors = ["OnSight Tech Services LLC"]
+description = "The Taiji validator node implementation"
+repository = "https://github.com/onsight-tech-services/taiji-dan"
 license = "BSD-3-Clause"
 version = "0.50.0-pre.0"
 edition = "2021"
 
 [dependencies]
-minotari_app_grpc = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-minotari_app_utilities = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-minotari_node = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-minotari_node_grpc_client = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_common = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_common_types = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_comms = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_comms_dht = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-minotari_console_wallet = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-minotari_wallet = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_p2p = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_shutdown = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
+minotaiji_app_grpc = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+minotaiji_app_utilities = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+minotaiji_node = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+minotaiji_node_grpc_client = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_common = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_common_types = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_comms = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_comms_dht = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+minotaiji_console_wallet = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+minotaiji_wallet = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_p2p = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_shutdown = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
 
 tari_crypto = "0.18"
-tari_indexer = { path = "../applications/tari_indexer" }
-tari_validator_node_cli = { path = "../applications/tari_validator_node_cli" }
-tari_dan_common_types = { path = "../dan_layer/common_types" }
-tari_dan_engine = { path = "../dan_layer/engine" }
-tari_dan_storage = { path = "../dan_layer/storage" }
-tari_dan_wallet_daemon = { path = "../applications/tari_dan_wallet_daemon" }
-tari_engine_types = { path = "../dan_layer/engine_types" }
-tari_indexer_client = { path = "../clients/tari_indexer_client" }
-tari_template_builtin = { path = "../dan_layer/template_builtin" }
-tari_template_lib = { path = "../dan_layer/template_lib" }
-tari_transaction = { path = "../dan_layer/transaction" }
-tari_validator_node_client = { path = "../clients/validator_node_client" }
-tari_validator_node = { path = "../applications/tari_validator_node" }
-tari_wallet_daemon_client = { path = "../clients/wallet_daemon_client" }
-tari_base_node_client = { path = "../clients/base_node_client" }
-tari_transaction_manifest = { path = "../dan_layer/transaction_manifest" }
-tari_dan_wallet_sdk = { path = "../dan_layer/wallet/sdk" }
-#tari_consensus = { path = "../../dan_layer/consensus" }
+taiji_indexer = { path = "../applications/taiji_indexer" }
+taiji_validator_node_cli = { path = "../applications/taiji_validator_node_cli" }
+taiji_dan_common_types = { path = "../dan_layer/common_types" }
+taiji_dan_engine = { path = "../dan_layer/engine" }
+taiji_dan_storage = { path = "../dan_layer/storage" }
+taiji_dan_wallet_daemon = { path = "../applications/taiji_dan_wallet_daemon" }
+taiji_engine_types = { path = "../dan_layer/engine_types" }
+taiji_indexer_client = { path = "../clients/taiji_indexer_client" }
+taiji_template_builtin = { path = "../dan_layer/template_builtin" }
+taiji_template_lib = { path = "../dan_layer/template_lib" }
+taiji_transaction = { path = "../dan_layer/transaction" }
+taiji_validator_node_client = { path = "../clients/validator_node_client" }
+taiji_validator_node = { path = "../applications/taiji_validator_node" }
+taiji_wallet_daemon_client = { path = "../clients/wallet_daemon_client" }
+taiji_base_node_client = { path = "../clients/base_node_client" }
+taiji_transaction_manifest = { path = "../dan_layer/transaction_manifest" }
+taiji_dan_wallet_sdk = { path = "../dan_layer/wallet/sdk" }
+#taiji_consensus = { path = "../../dan_layer/consensus" }
 
 anyhow = "1.0.53"
 base64 = "0.21.0"

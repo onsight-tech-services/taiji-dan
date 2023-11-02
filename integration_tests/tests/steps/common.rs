@@ -1,13 +1,13 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 
 use cucumber::when;
 use tari_crypto::tari_utilities::hex::Hex;
 
-use crate::TariWorld;
+use crate::TaijiWorld;
 
 #[when(expr = "I convert commitment {word} into {word} address")]
-async fn when_i_convert_commitment_into_address(world: &mut TariWorld, commitment_name: String, new_name: String) {
+async fn when_i_convert_commitment_into_address(world: &mut TaijiWorld, commitment_name: String, new_name: String) {
     let commitment = world
         .commitments
         .get(&commitment_name)

@@ -1,11 +1,11 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::str::FromStr;
 
 use serde::{Deserialize, Deserializer};
 use serde_json as json;
-use tari_template_lib::{arg, args::Arg, models::Amount};
+use taiji_template_lib::{arg, args::Arg, models::Amount};
 
 use crate::{substate::SubstateAddress, template::parse_template_address, TemplateAddress};
 
@@ -139,8 +139,8 @@ pub enum ArgParseError {
 #[cfg(test)]
 mod tests {
     use serde::Serialize;
-    use tari_bor::decode_exact;
-    use tari_template_lib::{
+    use taiji_bor::decode_exact;
+    use taiji_template_lib::{
         args,
         models::{ComponentAddress, ResourceAddress},
     };

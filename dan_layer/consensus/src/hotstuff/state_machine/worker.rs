@@ -1,10 +1,10 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{future::Future, marker::PhantomData, time::Duration};
 
 use log::*;
-use tari_shutdown::ShutdownSignal;
+use taiji_shutdown::ShutdownSignal;
 use tokio::{sync::watch, time};
 
 use crate::{
@@ -20,7 +20,7 @@ use crate::{
     traits::{ConsensusSpec, SyncManager},
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::sm::worker";
+const LOG_TARGET: &str = "taiji::dan::consensus::sm::worker";
 
 #[derive(Debug)]
 pub struct ConsensusWorker<TSpec> {

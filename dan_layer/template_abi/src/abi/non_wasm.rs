@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -22,8 +22,8 @@
 
 /// # Safety
 /// This function should not be called
-pub unsafe fn tari_engine(_op: i32, _input_ptr: *const u8, _input_len: usize) -> *mut u8 {
-    todo!("tari_engine not implemented for non-wasm targets")
+pub unsafe fn taiji_engine(_op: i32, _input_ptr: *const u8, _input_len: usize) -> *mut u8 {
+    todo!("taiji_engine not implemented for non-wasm targets")
 }
 
 /// # Safety

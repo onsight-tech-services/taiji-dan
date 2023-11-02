@@ -8,7 +8,7 @@ if [ "$1" == "" -o "$2" == "" ]; then
 fi
 member_crate_name=$1
 member_source_dir=$2
-source_root_dir="tari"
+source_root_dir="taiji"
 build_dir="target/debug/"
 report_dir="report/$member_crate_name"
 
@@ -20,13 +20,13 @@ if [ "$primary_dir" == "scripts" ]; then
     cd ..
 fi
 
-# Check if in Tari primary folder before proceeding
+# Check if in Taiji primary folder before proceeding
 path=$(pwd)
 primary_dir=$(basename $path)
 if [ "$primary_dir" == "$source_root_dir" ]; then
     echo "    + Correct directory"
 else
-    echo "    + Error: Incorrect directory -> start code_coverage from script or tari folder!"
+    echo "    + Error: Incorrect directory -> start code_coverage from script or taiji folder!"
     exit 1
 fi
 

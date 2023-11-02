@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -27,12 +27,12 @@ use std::{
 };
 
 use log::*;
-use tari_base_node_client::{grpc::GrpcBaseNodeClient, types::BaseLayerConsensusConstants, BaseNodeClient};
-use tari_common_types::types::{FixedHash, PublicKey};
-use tari_comms::types::CommsPublicKey;
-use tari_core::{blocks::BlockHeader, transactions::transaction_components::ValidatorNodeRegistration};
+use taiji_base_node_client::{grpc::GrpcBaseNodeClient, types::BaseLayerConsensusConstants, BaseNodeClient};
+use taiji_common_types::types::{FixedHash, PublicKey};
+use taiji_comms::types::CommsPublicKey;
+use taiji_core::{blocks::BlockHeader, transactions::transaction_components::ValidatorNodeRegistration};
 use tari_crypto::tari_utilities::ByteArray;
-use tari_dan_common_types::{
+use taiji_dan_common_types::{
     committee::{Committee, CommitteeShard},
     hashing::{ValidatorNodeBalancedMerkleTree, ValidatorNodeMerkleProof},
     optional::Optional,
@@ -40,13 +40,13 @@ use tari_dan_common_types::{
     Epoch,
     ShardId,
 };
-use tari_dan_storage::global::{models::ValidatorNode, DbEpoch, GlobalDb, MetadataKey};
-use tari_dan_storage_sqlite::global::SqliteGlobalDbAdapter;
+use taiji_dan_storage::global::{models::ValidatorNode, DbEpoch, GlobalDb, MetadataKey};
+use taiji_dan_storage_sqlite::global::SqliteGlobalDbAdapter;
 use tokio::sync::broadcast;
 
 use crate::{base_layer::config::EpochManagerConfig, error::EpochManagerError, EpochManagerEvent};
 
-const LOG_TARGET: &str = "tari::dan::epoch_manager::base_layer";
+const LOG_TARGET: &str = "taiji::dan::epoch_manager::base_layer";
 
 #[derive(Clone)]
 pub struct BaseLayerEpochManager<TGlobalStore, TBaseNodeClient> {

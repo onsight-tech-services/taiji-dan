@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -25,8 +25,8 @@ pub mod memory;
 use std::{error::Error, fmt::Debug};
 
 use serde::{de::DeserializeOwned, Serialize};
-use tari_bor::{decode_exact, encode, BorError};
-use tari_dan_common_types::optional::IsNotFoundError;
+use taiji_bor::{decode_exact, encode, BorError};
+use taiji_dan_common_types::optional::IsNotFoundError;
 
 // pub trait StateStorage<'a>: AtomicDb<'a, Error = StateStoreError> + Send + Sync {}
 //

@@ -1,11 +1,11 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::ops::DerefMut;
 
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::FixedHash;
-use tari_dan_common_types::{
+use taiji_common_types::types::FixedHash;
+use taiji_dan_common_types::{
     hashing::{vote_hasher, ValidatorNodeMerkleProof},
     optional::Optional,
     Epoch,

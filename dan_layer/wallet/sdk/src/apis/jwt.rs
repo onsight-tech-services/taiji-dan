@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{
@@ -8,8 +8,8 @@ use std::{
 
 use jsonwebtoken::{decode, encode, errors, DecodingKey, EncodingKey, Header, Validation};
 use serde::{Deserialize, Serialize};
-use tari_engine_types::substate::SubstateAddress;
-use tari_template_lib::prelude::{ComponentAddress, ResourceAddress};
+use taiji_engine_types::substate::SubstateAddress;
+use taiji_template_lib::prelude::{ComponentAddress, ResourceAddress};
 
 use crate::storage::{WalletStorageError, WalletStore, WalletStoreReader, WalletStoreWriter};
 

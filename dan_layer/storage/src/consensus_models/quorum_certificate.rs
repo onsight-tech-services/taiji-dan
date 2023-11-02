@@ -1,12 +1,12 @@
-//   Copyright 2022 The Tari Project
+//   Copyright 2022 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{fmt::Display, ops::DerefMut};
 
 use log::*;
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::{FixedHash, FixedHashSizeError};
-use tari_dan_common_types::{
+use taiji_common_types::types::{FixedHash, FixedHashSizeError};
+use taiji_dan_common_types::{
     hashing::{
         quorum_certificate_hasher,
         MergedValidatorNodeMerkleProof,
@@ -19,7 +19,7 @@ use tari_dan_common_types::{
     Epoch,
     NodeHeight,
 };
-use tari_mmr::MergedBalancedBinaryMerkleProof;
+use taiji_mmr::MergedBalancedBinaryMerkleProof;
 
 use crate::{
     consensus_models::{Block, BlockId, HighQc, LastVoted, LeafBlock, QuorumDecision, ValidatorSignature},
@@ -28,7 +28,7 @@ use crate::{
     StorageError,
 };
 
-const LOG_TARGET: &str = "tari::dan::storage::quorum_certificate";
+const LOG_TARGET: &str = "taiji::dan::storage::quorum_certificate";
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct QuorumCertificate<TAddr> {

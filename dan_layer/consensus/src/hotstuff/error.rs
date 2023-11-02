@@ -1,14 +1,14 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_dan_common_types::{Epoch, NodeHeight};
-use tari_dan_storage::{
+use taiji_dan_common_types::{Epoch, NodeHeight};
+use taiji_dan_storage::{
     consensus_models::{BlockId, LeafBlock, LockedBlock, TransactionPoolError},
     StorageError,
 };
-use tari_epoch_manager::EpochManagerError;
-use tari_mmr::BalancedBinaryMerkleProofError;
-use tari_transaction::TransactionId;
+use taiji_epoch_manager::EpochManagerError;
+use taiji_mmr::BalancedBinaryMerkleProofError;
+use taiji_transaction::TransactionId;
 
 #[derive(Debug, thiserror::Error)]
 pub enum HotStuffError {

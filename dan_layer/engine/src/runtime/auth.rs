@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::sync::Arc;
 
-use tari_template_lib::{auth::AccessRules, models::NonFungibleAddress};
+use taiji_template_lib::{auth::AccessRules, models::NonFungibleAddress};
 
 use crate::runtime::{FunctionIdent, RuntimeError};
 

@@ -1,4 +1,4 @@
-//  Copyright 2022 The Tari Project
+//  Copyright 2022 OnSight Tech Services LLC
 //  SPDX-License-Identifier: BSD-3-Clause
 use std::{
     cmp,
@@ -6,7 +6,7 @@ use std::{
 };
 
 use log::*;
-use tari_dan_common_types::NodeHeight;
+use taiji_dan_common_types::NodeHeight;
 use tokio::sync::mpsc;
 
 use crate::hotstuff::{
@@ -18,7 +18,7 @@ use crate::hotstuff::{
     HotStuffError,
 };
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::pacemaker";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::pacemaker";
 const MAX_DELTA: Duration = Duration::from_secs(300);
 
 pub struct PaceMaker {

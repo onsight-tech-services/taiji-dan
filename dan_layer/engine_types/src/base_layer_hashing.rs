@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -29,18 +29,18 @@ use tari_crypto::{
     hash_domain,
     hashing::{DomainSeparatedHasher, DomainSeparation},
 };
-use tari_template_lib::Hash;
+use taiji_template_lib::Hash;
 
-hash_domain!(ConfidentialOutputHashDomain, "com.tari.dan.confidential_output", 1);
+hash_domain!(ConfidentialOutputHashDomain, "com.taiji.dan.confidential_output", 1);
 
 hash_domain!(
     WalletOutputEncryptionKeysDomain,
-    "com.tari.base_layer.wallet.output_encryption_keys",
+    "com.taiji.base_layer.wallet.output_encryption_keys",
     1
 );
 
-fn confidential_hasher(label: &'static str) -> TariBaseLayerHasher {
-    TariBaseLayerHasher::new_with_label::<ConfidentialOutputHashDomain>(label)
+fn confidential_hasher(label: &'static str) -> TaijiBaseLayerHasher {
+    TaijiBaseLayerHasher::new_with_label::<ConfidentialOutputHashDomain>(label)
 }
 
 type WalletOutputEncryptionKeysDomainHasher = DomainSeparatedHasher<Blake2b<U32>, WalletOutputEncryptionKeysDomain>;
@@ -48,16 +48,16 @@ pub fn encrypted_data_hasher() -> WalletOutputEncryptionKeysDomainHasher {
     WalletOutputEncryptionKeysDomainHasher::new_with_label("")
 }
 
-pub fn ownership_proof_hasher() -> TariBaseLayerHasher {
+pub fn ownership_proof_hasher() -> TaijiBaseLayerHasher {
     confidential_hasher("commitment_signature")
 }
 
 #[derive(Debug, Clone)]
-pub struct TariBaseLayerHasher {
+pub struct TaijiBaseLayerHasher {
     hasher: Blake2b<U32>,
 }
 
-impl TariBaseLayerHasher {
+impl TaijiBaseLayerHasher {
     pub fn new_with_label<TDomain: DomainSeparation>(label: &'static str) -> Self {
         let mut hasher = Blake2b::<U32>::new();
         TDomain::add_domain_separation_tag(&mut hasher, label);

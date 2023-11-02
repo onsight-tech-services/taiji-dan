@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -26,7 +26,7 @@ use std::{
 };
 
 use async_trait::async_trait;
-use tari_dan_common_types::{
+use taiji_dan_common_types::{
     committee::{Committee, CommitteeShard},
     hashing::ValidatorNodeMerkleProof,
     shard_bucket::ShardBucket,
@@ -34,7 +34,7 @@ use tari_dan_common_types::{
     NodeAddressable,
     ShardId,
 };
-use tari_dan_storage::global::models::ValidatorNode;
+use taiji_dan_storage::global::models::ValidatorNode;
 use tokio::sync::broadcast;
 
 use crate::{EpochManagerError, EpochManagerEvent};

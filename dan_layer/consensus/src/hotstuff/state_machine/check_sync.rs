@@ -1,4 +1,4 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::marker::PhantomData;
@@ -11,7 +11,7 @@ use crate::{
     traits::{ConsensusSpec, SyncManager, SyncStatus},
 };
 
-const _LOG_TARGET: &str = "tari::dan::consensus::sm::check_sync";
+const _LOG_TARGET: &str = "taiji::dan::consensus::sm::check_sync";
 
 #[derive(Debug, Clone)]
 pub struct CheckSync<TSpec>(PhantomData<TSpec>);

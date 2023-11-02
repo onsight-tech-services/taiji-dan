@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -23,7 +23,7 @@
 
 use core::ptr;
 
-pub use tari_template_abi::{tari_alloc, tari_free};
+pub use taiji_template_abi::{taiji_alloc, taiji_free};
 
 #[global_allocator]
 static ALLOC: lol_alloc::AssumeSingleThreaded<lol_alloc::FreeListAllocator> =
@@ -32,12 +32,12 @@ static ALLOC: lol_alloc::AssumeSingleThreaded<lol_alloc::FreeListAllocator> =
 #[cfg(any(feature = "call_engine_in_abi", feature = "unexpected_export_function"))]
 #[no_mangle]
 pub extern "C" fn Buggy_abi() -> *mut u8 {
-    use tari_bor::encode_with_len;
-    use tari_template_abi::*;
+    use taiji_bor::encode_with_len;
+    use taiji_template_abi::*;
     // Call the engine in the ABI code, you aren't allowed to do that *shakes head*
     #[cfg(feature = "call_engine_in_abi")]
     unsafe {
-        tari_engine(123, ptr::null_mut(), 0)
+        taiji_engine(123, ptr::null_mut(), 0)
     };
     wrap_ptr(encode_with_len(&TemplateDef {
         template_name: "".to_string(),
@@ -57,7 +57,7 @@ pub extern "C" fn Buggy_main(_call_info: *mut u8, _call_info_len: usize) -> *mut
 }
 
 extern "C" {
-    pub fn tari_engine(op: i32, input_ptr: *const u8, input_len: usize) -> *mut u8;
+    pub fn taiji_engine(op: i32, input_ptr: *const u8, input_len: usize) -> *mut u8;
     pub fn debug(input_ptr: *const u8, input_len: usize);
     pub fn on_panic(msg_ptr: *const u8, msg_len: u32, line: u32, column: u32);
 }

@@ -1,4 +1,4 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
 pub mod storage;
@@ -11,4 +11,4 @@ mod sdk;
 pub use sdk::{DanWalletSdk, WalletSdkConfig};
 pub mod network;
 
-pub use tari_key_manager::cipher_seed::CipherSeed;
+pub use taiji_key_manager::cipher_seed::CipherSeed;

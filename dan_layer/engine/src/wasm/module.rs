@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -25,7 +25,7 @@ use std::sync::{
     Arc,
 };
 
-use tari_template_abi::{FunctionDef, TemplateDef};
+use taiji_template_abi::{FunctionDef, TemplateDef};
 use wasmer::{
     BaseTunables,
     CompilerConfig,
@@ -125,7 +125,7 @@ fn initialize_and_load_template_abi(
 
     // Load ABI from memory
     let data = env.read_memory_with_embedded_len(ptr)?;
-    let decoded = tari_bor::decode(&data).map_err(WasmExecutionError::AbiDecodeError)?;
+    let decoded = taiji_bor::decode(&data).map_err(WasmExecutionError::AbiDecodeError)?;
     Ok(decoded)
 }
 
@@ -191,5 +191,5 @@ fn validate_instance(instance: &Instance) -> Result<(), WasmExecutionError> {
 }
 
 fn is_func_permitted(name: &str) -> bool {
-    name.ends_with("_abi") || name.ends_with("_main") || name == "tari_alloc" || name == "tari_free"
+    name.ends_with("_abi") || name.ends_with("_main") || name == "taiji_alloc" || name == "taiji_free"
 }

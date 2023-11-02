@@ -1,8 +1,8 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_consensus::traits::ConsensusSpec;
-use tari_state_store_sqlite::SqliteStateStore;
+use taiji_consensus::traits::ConsensusSpec;
+use taiji_state_store_sqlite::SqliteStateStore;
 
 use crate::support::{
     address::TestAddress,

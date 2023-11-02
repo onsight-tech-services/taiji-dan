@@ -1,4 +1,4 @@
-//   Copyright 2022. The Tari Project
+//   Copyright 2022. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -26,7 +26,7 @@ use std::{
 };
 
 use serde::{Deserialize, Serialize};
-pub use tari_template_lib::args::LogLevel;
+pub use taiji_template_lib::args::LogLevel;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct LogEntry {

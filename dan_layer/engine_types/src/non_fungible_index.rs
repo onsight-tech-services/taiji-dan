@@ -1,4 +1,4 @@
-//   Copyright 2023. The Tari Project
+//   Copyright 2023. OnSight Tech Services LLC
 //
 //   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //   following conditions are met:
@@ -21,7 +21,7 @@
 //   USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 use serde::{Deserialize, Serialize};
-use tari_template_lib::prelude::NonFungibleAddress;
+use taiji_template_lib::prelude::NonFungibleAddress;
 
 /// Holds a reference to another substate
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]

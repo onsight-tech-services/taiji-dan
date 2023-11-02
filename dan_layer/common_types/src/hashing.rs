@@ -1,7 +1,7 @@
-//   Copyright 2022 The Tari Project
+//   Copyright 2022 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-clause
 
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -25,40 +25,40 @@
 
 use blake2::{digest::consts::U32, Blake2b};
 use tari_crypto::{hash_domain, hashing::DomainSeparatedHasher};
-use tari_mmr::{BalancedBinaryMerkleProof, BalancedBinaryMerkleTree, MergedBalancedBinaryMerkleProof};
+use taiji_mmr::{BalancedBinaryMerkleProof, BalancedBinaryMerkleTree, MergedBalancedBinaryMerkleProof};
 
-use crate::hasher::{tari_hasher, TariHasher};
+use crate::hasher::{taiji_hasher, TaijiHasher};
 
-hash_domain!(TariDanConsensusHashDomain, "com.tari.dan.consensus", 0);
+hash_domain!(TaijiDanConsensusHashDomain, "com.taiji.dan.consensus", 0);
 
-pub fn block_hasher() -> TariHasher {
+pub fn block_hasher() -> TaijiHasher {
     dan_hasher("Block")
 }
 
-pub fn quorum_certificate_hasher() -> TariHasher {
+pub fn quorum_certificate_hasher() -> TaijiHasher {
     dan_hasher("QuorumCertificate")
 }
 
-pub fn pledge_hasher() -> TariHasher {
+pub fn pledge_hasher() -> TaijiHasher {
     dan_hasher("Pledges")
 }
 
-pub fn vote_hasher() -> TariHasher {
+pub fn vote_hasher() -> TaijiHasher {
     dan_hasher("Vote")
 }
 
-pub fn vote_signature_hasher() -> TariHasher {
+pub fn vote_signature_hasher() -> TaijiHasher {
     dan_hasher("VoteSignature")
 }
 
-fn dan_hasher(label: &'static str) -> TariHasher {
-    tari_hasher::<TariDanConsensusHashDomain>(label)
+fn dan_hasher(label: &'static str) -> TaijiHasher {
+    taiji_hasher::<TaijiDanConsensusHashDomain>(label)
 }
 
-// From tari_core
+// From taiji_core
 hash_domain!(
     ValidatorNodeBmtHashDomain,
-    "com.tari.base_layer.core.validator_node_mmr",
+    "com.taiji.base_layer.core.validator_node_mmr",
     1
 );
 pub type ValidatorNodeBmtHasherBlake2b = DomainSeparatedHasher<Blake2b<U32>, ValidatorNodeBmtHashDomain>;

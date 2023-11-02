@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -20,8 +20,8 @@
 //  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-use tari_bor::BorTag;
-use tari_template_abi::rust::{
+use taiji_bor::BorTag;
+use taiji_template_abi::rust::{
     fmt,
     fmt::{Display, Formatter},
     str::FromStr,
@@ -112,14 +112,14 @@ mod tests {
             assert_eq!(r, resource);
 
             // Check that CBOR does not include the string
-            let cbor = tari_bor::encode(&resource).unwrap();
+            let cbor = taiji_bor::encode(&resource).unwrap();
             assert!(
                 !cbor.windows(resx_str.len()).any(|window| window == resx_str.as_bytes()),
                 "CBOR is serializing a string"
             );
 
             // Deserialize from CBOR
-            let r = tari_bor::decode::<ResourceAddress>(&cbor).unwrap();
+            let r = taiji_bor::decode::<ResourceAddress>(&cbor).unwrap();
             assert_eq!(r, resource);
         }
     }

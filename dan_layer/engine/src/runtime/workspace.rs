@@ -1,9 +1,9 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::collections::HashMap;
 
-use tari_bor::{decode, encode, BorError, Value};
+use taiji_bor::{decode, encode, BorError, Value};
 
 #[derive(Debug, thiserror::Error)]
 pub enum WorkspaceError {
@@ -25,7 +25,7 @@ impl Workspace {
         self.variables.insert(key.clone(), value.clone());
 
         // if the value is an array then we need to add entries for all items
-        let value: tari_bor::Value = decode(&value)?;
+        let value: taiji_bor::Value = decode(&value)?;
         // TODO: support for structs
         if let Value::Array(items) = value {
             let key_str = String::from_utf8_lossy(&key);
@@ -47,7 +47,7 @@ impl Workspace {
 
 #[cfg(test)]
 mod tests {
-    use tari_bor::encode;
+    use taiji_bor::encode;
     use tari_utilities::ByteArray;
 
     use super::Workspace;

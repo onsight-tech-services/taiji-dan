@@ -1,26 +1,26 @@
 [package]
-name = "tari_validator_node_rpc"
-authors = ["The Tari Development Community"]
-description = "This crate is to provide a single source for all cross application grpc files and conversions to and from tari-dan applications"
-repository = "https://github.com/tari-project/tari-dan"
+name = "taiji_validator_node_rpc"
+authors = ["OnSight Tech Services LLC"]
+description = "This crate is to provide a single source for all cross application grpc files and conversions to and from taiji-dan applications"
+repository = "https://github.com/onsight-tech-services/taiji-dan"
 license = "BSD-3-Clause"
 version = "0.50.0-pre.0"
 edition = "2021"
 
 [dependencies]
-tari_common_types = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_comms = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
-tari_comms_rpc_macros = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2" }
+taiji_common_types = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_comms = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
+taiji_comms_rpc_macros = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2" }
 tari_crypto = "0.18"
 
-tari_consensus = { path = "../consensus" }
-tari_dan_common_types = { path = "../common_types" }
-tari_dan_p2p = { path = "../p2p" }
-tari_dan_storage = { path = "../storage" }
-tari_engine_types = { path = "../engine_types" }
-tari_template_lib = { path = "../template_lib" }
-tari_transaction = { path = "../transaction" }
-tari_bor = { path = "../tari_bor" }
+taiji_consensus = { path = "../consensus" }
+taiji_dan_common_types = { path = "../common_types" }
+taiji_dan_p2p = { path = "../p2p" }
+taiji_dan_storage = { path = "../storage" }
+taiji_engine_types = { path = "../engine_types" }
+taiji_template_lib = { path = "../template_lib" }
+taiji_transaction = { path = "../transaction" }
+taiji_bor = { path = "../taiji_bor" }
 
 anyhow = "1.0.53"
 async-trait = "0.1"
@@ -32,7 +32,7 @@ thiserror = "1.0"
 tokio-stream = "0.1"
 
 [build-dependencies]
-tari_common = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2", package = "tari_common", features = ["build"] }
+taiji_common = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2", package = "taiji_common", features = ["build"] }
 
 [package.metadata.cargo-machete]
 ignored = [

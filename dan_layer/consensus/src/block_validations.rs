@@ -1,8 +1,8 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_dan_common_types::{committee::Committee, NodeAddressable};
-use tari_dan_storage::consensus_models::Block;
+use taiji_dan_common_types::{committee::Committee, NodeAddressable};
+use taiji_dan_storage::consensus_models::Block;
 
 use crate::{hotstuff::ProposalValidationError, traits::LeaderStrategy};
 

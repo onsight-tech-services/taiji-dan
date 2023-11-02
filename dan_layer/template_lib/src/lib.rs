@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -20,12 +20,12 @@
 //  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-//! This crate contains an interface for WASM templates to interact with the state of the Tari Network, as well as
+//! This crate contains an interface for WASM templates to interact with the state of the Taiji Network, as well as
 //! some utilities for executing functions that may be slow in the WASM environment.
 //!
 //! In most cases, you will only require the `prelude` which can be included with:
 //! ```
-//! use tari_template_lib::prelude::*;
+//! use taiji_template_lib::prelude::*;
 //! ```
 
 pub mod auth;
@@ -67,7 +67,7 @@ pub mod prelude;
 #[cfg(feature = "macro")]
 pub use prelude::template;
 // Re-export for macro
-pub use tari_bor::encode;
+pub use taiji_bor::encode;
 
 pub mod constants;
 #[cfg(target_arch = "wasm32")]

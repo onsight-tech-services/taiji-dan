@@ -1,4 +1,4 @@
-//  Copyright 2022. The Tari Project
+//  Copyright 2022. OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -24,7 +24,7 @@ use std::{collections::HashMap, str::FromStr};
 
 use proc_macro2::TokenStream;
 use syn::parse2;
-use tari_engine_types::instruction::Instruction;
+use taiji_engine_types::instruction::Instruction;
 
 use self::ast::ManifestAst;
 pub use crate::value::ManifestValue;

@@ -1,13 +1,13 @@
-// Copyright 2022 The Tari Project
+// Copyright 2022 OnSight Tech Services LLC
 // SPDX-License-Identifier: BSD-3-Clause
 
 use std::{collections::HashMap, sync::Arc};
 
 use d3ne::{Engine, Node, Workers, WorkersBuilder};
 use serde_json::Value as JsValue;
-use tari_dan_common_types::services::template_provider::TemplateProvider;
-use tari_engine_types::instruction_result::InstructionResult;
-use tari_template_lib::args::Arg;
+use taiji_dan_common_types::services::template_provider::TemplateProvider;
+use taiji_engine_types::instruction_result::InstructionResult;
+use taiji_template_lib::args::Arg;
 
 use crate::{
     flow::{
@@ -34,7 +34,7 @@ impl FlowInstance {
         value: JsValue,
         workers: Workers<FlowContext<TTemplateProvider>>,
     ) -> Result<Self, FlowEngineError> {
-        let engine = Engine::new("tari_engine@0.1.0".to_string(), workers);
+        let engine = Engine::new("taiji_engine@0.1.0".to_string(), workers);
         // dbg!(&value);
         let nodes = engine.parse_value(value).expect("could not create engine");
         Ok(FlowInstance {
@@ -54,7 +54,7 @@ impl FlowInstance {
         recursion_depth: usize,
         max_recursion_depth: usize,
     ) -> Result<InstructionResult, FlowEngineError> {
-        let engine = Engine::new("tari@0.1.0".to_string(), load_workers());
+        let engine = Engine::new("taiji@0.1.0".to_string(), load_workers());
         let args = runtime.resolve_args(args.to_vec())?;
         let mut args_map = HashMap::new();
         for (i, arg_def) in arg_defs.iter().enumerate() {

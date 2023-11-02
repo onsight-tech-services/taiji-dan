@@ -1,14 +1,14 @@
 [package]
-name = "tari_dan_storage_sqlite"
+name = "taiji_dan_storage_sqlite"
 version = "0.0.1"
 edition = "2021"
 license = "BSD-3-Clause"
 
 [dependencies]
-tari_common_types = { git = "https://github.com/tari-project/tari.git", branch = "feature-dan2", package = "tari_common_types" }
-tari_dan_common_types = { path = "../common_types" }
+taiji_common_types = { git = "https://github.com/onsight-tech-services/taiji.git", branch = "taiji-feature-dan2", package = "taiji_common_types" }
+taiji_dan_common_types = { path = "../common_types" }
 tari_utilities = "0.5.1"
-tari_dan_storage = { path = "../storage" }
+taiji_dan_storage = { path = "../storage" }
 
 diesel = { version = "2", default-features = false, features = ["sqlite", "chrono"] }
 diesel_migrations = "2"

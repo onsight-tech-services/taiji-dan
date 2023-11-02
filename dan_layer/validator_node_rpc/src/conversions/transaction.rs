@@ -1,4 +1,4 @@
-//  Copyright 2023, The Tari Project
+//  Copyright 2023, OnSight Tech Services LLC
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 //  following conditions are met:
@@ -23,21 +23,21 @@
 use std::convert::{TryFrom, TryInto};
 
 use anyhow::anyhow;
-use tari_common_types::types::{Commitment, PrivateKey, PublicKey};
+use taiji_common_types::types::{Commitment, PrivateKey, PublicKey};
 use tari_crypto::{ristretto::RistrettoComSig, tari_utilities::ByteArray};
-use tari_dan_p2p::NewTransactionMessage;
-use tari_engine_types::{
+use taiji_dan_p2p::NewTransactionMessage;
+use taiji_engine_types::{
     confidential::{ConfidentialClaim, ConfidentialOutput},
     instruction::Instruction,
     substate::SubstateAddress,
 };
-use tari_template_lib::{
+use taiji_template_lib::{
     args::Arg,
     crypto::{BalanceProofSignature, RistrettoPublicKeyBytes},
     models::{ConfidentialOutputProof, ConfidentialStatement, ConfidentialWithdrawProof, EncryptedData},
     Hash,
 };
-use tari_transaction::{SubstateRequirement, Transaction};
+use taiji_transaction::{SubstateRequirement, Transaction};
 
 use crate::{
     proto::{
@@ -219,7 +219,7 @@ impl TryFrom<proto::transaction::Instruction> for Instruction {
             },
             InstructionType::CreateFreeTestCoins => Instruction::CreateFreeTestCoins {
                 revealed_amount: request.create_free_test_coins_amount.try_into()?,
-                output: tari_bor::decode(&request.create_free_test_coins_output_blob)?,
+                output: taiji_bor::decode(&request.create_free_test_coins_output_blob)?,
             },
         };
 
@@ -279,8 +279,8 @@ impl From<Instruction> for proto::transaction::Instruction {
                 result.instruction_type = InstructionType::CreateFreeTestCoins as i32;
                 result.create_free_test_coins_amount = amount.value() as u64;
                 result.create_free_test_coins_output_blob = output
-                    .map(|o| tari_bor::encode(&o).unwrap())
-                    .unwrap_or_else(|| tari_bor::encode(&None::<ConfidentialOutput>).unwrap());
+                    .map(|o| taiji_bor::encode(&o).unwrap())
+                    .unwrap_or_else(|| taiji_bor::encode(&None::<ConfidentialOutput>).unwrap());
             },
             Instruction::ClaimValidatorFees {
                 epoch,

@@ -1,8 +1,8 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use async_trait::async_trait;
-use tari_consensus::{
+use taiji_consensus::{
     hotstuff::HotStuffError,
     traits::{SyncManager, SyncStatus},
 };

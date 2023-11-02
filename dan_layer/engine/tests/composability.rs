@@ -1,18 +1,18 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
-use tari_dan_engine::transaction::MAX_CALL_DEPTH;
-use tari_engine_types::{
+use taiji_dan_engine::transaction::MAX_CALL_DEPTH;
+use taiji_engine_types::{
     commit_result::{ExecuteResult, RejectReason},
     instruction::Instruction,
 };
-use tari_template_lib::{
+use taiji_template_lib::{
     args,
     models::{ComponentAddress, TemplateAddress},
     prelude::{Amount, ResourceAddress},
 };
-use tari_template_test_tooling::TemplateTest;
-use tari_transaction::Transaction;
+use taiji_template_test_tooling::TemplateTest;
+use taiji_transaction::Transaction;
 
 struct ComposabilityTest {
     template_test: TemplateTest,

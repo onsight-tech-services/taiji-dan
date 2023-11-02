@@ -9,17 +9,17 @@ fi
 function update_versions {
     packages=${@:-'
    applications/validator_node_rpc
-   applications/tari_dan_app_utilities
-   applications/tari_dan_wallet_cli
-   applications/tari_dan_wallet_daemon
-   applications/tari_indexer
-   applications/tari_validator_node
-   applications/tari_validator_node_cli
-   clients/tari_indexer_client
+   applications/taiji_dan_app_utilities
+   applications/taiji_dan_wallet_cli
+   applications/taiji_dan_wallet_daemon
+   applications/taiji_indexer
+   applications/taiji_validator_node
+   applications/taiji_validator_node_cli
+   clients/taiji_indexer_client
    clients/validator_node_client
    clients/validator_node_grpc_client
    clients/wallet_daemon_client
-   comms/tari_comms_logging
+   comms/taiji_comms_logging
    dan_layer/common_types
    dan_layer/core
    dan_layer/engine
@@ -28,7 +28,7 @@ function update_versions {
    dan_layer/storage
    dan_layer/storage_lmdb
    dan_layer/storage_sqlite
-   dan_layer/tari_bor
+   dan_layer/taiji_bor
    dan_layer/template_abi
    dan_layer/template_builtin
    dan_layer/template_lib

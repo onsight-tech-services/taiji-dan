@@ -1,11 +1,11 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use std::{collections::HashMap, io};
 
-use tari_bor::encode_into;
-use tari_dan_common_types::services::template_provider::TemplateProvider;
-use tari_engine_types::{
+use taiji_bor::encode_into;
+use taiji_dan_common_types::services::template_provider::TemplateProvider;
+use taiji_engine_types::{
     fees::FeeSource,
     substate::{SubstateAddress, SubstateValue},
 };

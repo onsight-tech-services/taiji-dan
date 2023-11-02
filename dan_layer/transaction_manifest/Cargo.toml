@@ -1,16 +1,16 @@
 [package]
-name = "tari_transaction_manifest"
+name = "taiji_transaction_manifest"
 version = "0.0.1"
 edition = "2021"
-authors = ["The Tari Development Community"]
-description = "Tari transaction manifest"
-repository = "https://github.com/tari-project/tari-dan"
+authors = ["OnSight Tech Services LLC"]
+description = "Taiji transaction manifest"
+repository = "https://github.com/onsight-tech-services/taiji-dan"
 license = "BSD-3-Clause"
 
 [dependencies]
-tari_template_lib = { path = "../template_lib" }
-tari_engine_types = { path = "../engine_types" }
-tari_template_builtin = { path = "../template_builtin" }
+taiji_template_lib = { path = "../template_lib" }
+taiji_engine_types = { path = "../engine_types" }
+taiji_template_builtin = { path = "../template_builtin" }
 
 proc-macro2 = "1.0.42"
 syn = { version = "1.0.98", features = ["full", "extra-traits"] }

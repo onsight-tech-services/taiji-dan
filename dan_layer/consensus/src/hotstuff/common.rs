@@ -1,13 +1,13 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use log::*;
-use tari_dan_common_types::{committee::Committee, Epoch, NodeAddressable, NodeHeight};
-use tari_dan_storage::consensus_models::{Block, QuorumCertificate};
+use taiji_dan_common_types::{committee::Committee, Epoch, NodeAddressable, NodeHeight};
+use taiji_dan_storage::consensus_models::{Block, QuorumCertificate};
 
 use crate::{messages::HotstuffMessage, traits::LeaderStrategy};
 
-const LOG_TARGET: &str = "tari::dan::consensus::hotstuff::common";
+const LOG_TARGET: &str = "taiji::dan::consensus::hotstuff::common";
 
 /// The value that fees are divided by to determine the amount of fees to burn. 0 means no fees are burned.
 /// This is a placeholder for the fee exhaust consensus constant so that we know where it's used later.

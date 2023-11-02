@@ -1,10 +1,10 @@
-//   Copyright 2023 The Tari Project
+//   Copyright 2023 OnSight Tech Services LLC
 //   SPDX-License-Identifier: BSD-3-Clause
 
 use serde::{Deserialize, Serialize};
-use tari_common_types::types::{FixedHash, PublicKey};
-use tari_core::transactions::{tari_amount::MicroMinotari, transaction_components::TransactionOutput};
-use tari_dan_common_types::{Epoch, ShardId};
+use taiji_common_types::types::{FixedHash, PublicKey};
+use taiji_core::transactions::{taiji_amount::MicroMinotaiji, transaction_components::TransactionOutput};
+use taiji_dan_common_types::{Epoch, ShardId};
 
 #[derive(Debug, Clone)]
 pub struct BaseLayerMetadata {
@@ -35,7 +35,7 @@ pub struct ValidatorNode {
 pub struct BaseLayerConsensusConstants {
     pub validator_node_registration_expiry: u64,
     pub epoch_length: u64,
-    pub validator_node_registration_min_deposit_amount: MicroMinotari,
+    pub validator_node_registration_min_deposit_amount: MicroMinotaiji,
 }
 
 impl BaseLayerConsensusConstants {
@@ -51,7 +51,7 @@ impl BaseLayerConsensusConstants {
         Epoch(self.validator_node_registration_expiry)
     }
 
-    pub fn validator_node_registration_min_deposit_amount(&self) -> MicroMinotari {
+    pub fn validator_node_registration_min_deposit_amount(&self) -> MicroMinotaiji {
         self.validator_node_registration_min_deposit_amount
     }
 
