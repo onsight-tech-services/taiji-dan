@@ -19,13 +19,15 @@
 //   SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
 //   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 //   USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-use chrono::{DateTime, Local, Months};
+use chrono::{ DateTime, Months, Utc };
+use chrono::serde::ts_seconds;
 use taiji_template_lib::prelude::*;
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct Membership {
     pub human: bool,
-    pub expiration_date: DateTime,
+    #[serde(with = "ts_seconds")]
+    pub expiration_date: DateTime<Utc>,
 }
 
 #[template]
@@ -67,9 +69,9 @@ mod membership_nft_template {
                 &immutable_data,
                 &Membership {
                     human: true,
-                    expiration_date: Local::now()
-                        .naive_utc()
+                    expiration_date: Utc::now()
                         .checked_add_months(Months::new(12))
+                        .expect("UTC DateTime issue!")
                 }
             )
         }
