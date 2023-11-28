@@ -1,10 +1,10 @@
 #[cfg(test)]
 mod test {
-    use tari_engine_types::instruction::Instruction;
-    use tari_template_lib::args;
-    use tari_template_lib::models::ComponentAddress;
-    use tari_template_lib::prelude::*;
-    use tari_template_test_tooling::TemplateTest;
+    use taiji_engine_types::instruction::Instruction;
+    use taiji_template_lib::args;
+    use taiji_template_lib::models::ComponentAddress;
+    use taiji_template_lib::prelude::*;
+    use taiji_template_test_tooling::TemplateTest;
 
     #[test]
     fn test_nft() {

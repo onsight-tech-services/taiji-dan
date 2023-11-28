@@ -23,12 +23,12 @@
 use std::{collections::HashMap, path::PathBuf, str::FromStr, time::Duration};
 
 use reqwest::Url;
-use tari_common::{
+use taiji_common::{
     configuration::{CommonConfig, StringList},
     exit_codes::ExitError,
 };
 use taiji_comms::multiaddr::Multiaddr;
-use tari_comms_dht::{DbConnectionUrl, DhtConfig};
+use taiji_comms_dht::{DbConnectionUrl, DhtConfig};
 use tari_crypto::tari_utilities::{hex::Hex, message_format::MessageFormat};
 use taiji_engine_types::substate::SubstateAddress;
 use taiji_indexer::{

@@ -230,7 +230,7 @@ fn generate_extended_bullet_proof(
 #[cfg(test)]
 mod tests {
     use rand::rngs::OsRng;
-    use tari_common_types::types::PrivateKey;
+    use taiji_common_types::types::PrivateKey;
     use tari_crypto::keys::SecretKey;
     use taiji_engine_types::confidential::validate_confidential_proof;
     use taiji_template_lib::models::Amount;
